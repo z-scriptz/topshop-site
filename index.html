@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>topshop · Produtos inteligentes. Conteúdo estratégico.</title>
+<style>
+  :root {
+    --bg: #0a0a12; --bg-soft: #12121f; --ink: #f4f4f8; --muted: #9a9ab0;
+    --pop: #6d5dfc; --pop2: #00d4ff; --gold: #ffc83d; --cta: #00e0b8;
+    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.10);
+    --grad: linear-gradient(135deg, #6d5dfc 0%, #00d4ff 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; text-decoration: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(24px);
+              transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+  nav { position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,18,0.72); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--glass-border); }
+  .nav-in { display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 24px; max-width: 1140px; margin: 0 auto; }
+  .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; }
+  .logo b { background: var(--grad); -webkit-background-clip: text;
+            background-clip: text; color: transparent; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--muted); font-weight: 600; font-size: 0.92rem;
+                 transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+  .hero { position: relative; text-align: center; padding: 110px 0 90px; }
+  .hero::before { content: ''; position: absolute; top: -10%; left: 50%;
+    transform: translateX(-50%); width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(109,93,252,0.22) 0%, transparent 60%);
+    z-index: -1; animation: float 8s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); }
+                     50% { transform: translateX(-50%) translateY(-24px); } }
+  .badge { display: inline-block; background: var(--glass);
+    border: 1px solid var(--glass-border); color: var(--pop2);
+    font-weight: 600; font-size: 0.82rem; letter-spacing: 0.06em;
+    padding: 8px 18px; border-radius: 100px; margin-bottom: 30px;
+    text-transform: uppercase; }
+  .hero h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 800;
+             letter-spacing: -0.03em; line-height: 1.04; margin-bottom: 26px; }
+  .hero h1 b { background: var(--grad); -webkit-background-clip: text;
+               background-clip: text; color: transparent; }
+  .hero p { font-size: 1.22rem; color: var(--muted); max-width: 600px;
+            margin: 0 auto 40px; }
+  .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 700; font-size: 1rem; padding: 15px 32px;
+    border-radius: 100px; cursor: pointer; border: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  .btn-primary { background: var(--grad); color: #fff;
+                 box-shadow: 0 8px 30px rgba(109,93,252,0.4); }
+  .btn-primary:hover { transform: translateY(-2px);
+                       box-shadow: 0 14px 40px rgba(109,93,252,0.55); }
+  .btn-ghost { background: var(--glass); color: var(--ink);
+               border: 1px solid var(--glass-border); }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--pop2); }
+  section { padding: 90px 0; }
+  .eyebrow { color: var(--pop2); font-weight: 700; font-size: 0.85rem;
+             letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+  .sec-title { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800;
+               letter-spacing: -0.02em; margin-bottom: 18px; }
+  .sec-sub { color: var(--muted); font-size: 1.12rem; max-width: 600px;
+             margin-bottom: 56px; }
+  .center { text-align: center; }
+  .center .sec-sub { margin-left: auto; margin-right: auto; }
+  .glass { background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 20px; backdrop-filter: blur(12px);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+  .glass:hover { transform: translateY(-6px); border-color: rgba(109,93,252,0.5);
+                 box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+  @media (max-width: 860px) { .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+  .feat { padding: 32px 28px; }
+  .feat .ico { width: 46px; height: 46px; border-radius: 12px;
+               background: var(--grad); display: flex; align-items: center;
+               justify-content: center; margin-bottom: 18px; font-size: 1.3rem; }
+  .feat h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+  .feat p { color: var(--muted); font-size: 0.96rem; }
+  .difs { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 32px; margin-top: 10px; }
+  @media (max-width: 760px) { .difs { grid-template-columns: 1fr; } }
+  .dif { display: flex; align-items: center; gap: 14px; padding: 16px 0;
+         border-bottom: 1px solid var(--glass-border); }
+  .dif .check { color: var(--pop2); font-weight: 800; font-size: 1.1rem; }
+  .dif span:last-child { font-weight: 600; }
+  /* ===== Vitrine (busca + filtros + destaque + grade) ===== */
+  .busca-wrap { max-width: 560px; margin: 0 auto 18px; }
+  #busca { width: 100%; padding: 14px 18px; border-radius: 14px;
+    border: 1px solid var(--glass-border); background: var(--glass);
+    color: var(--ink); font-size: 1rem; outline: none; font-family: inherit;
+    transition: border-color .2s, box-shadow .2s; }
+  #busca:focus { border-color: var(--pop); box-shadow: 0 0 0 3px rgba(109,93,252,0.25); }
+  #busca::placeholder { color: var(--muted); }
+  .filtros { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 40px; }
+  .filtro { background: var(--glass); color: var(--muted);
+    border: 1px solid var(--glass-border); border-radius: 100px;
+    padding: 8px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+    transition: all .2s; font-family: inherit; }
+  .filtro:hover { color: var(--ink); border-color: var(--pop2); }
+  .filtro.ativo { background: var(--grad); color: #fff; border-color: transparent;
+    box-shadow: 0 6px 20px rgba(109,93,252,0.4); }
+  .prod-destaque { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    background: linear-gradient(135deg, rgba(109,93,252,0.12), var(--glass));
+    border: 1px solid var(--pop); border-radius: 24px; overflow: hidden;
+    margin-bottom: 50px; box-shadow: 0 0 40px rgba(109,93,252,0.25);
+    transition: transform .2s; }
+  .prod-destaque:hover { transform: translateY(-4px); }
+  @media (max-width: 760px) { .prod-destaque { grid-template-columns: 1fr; } }
+  .pd-img { position: relative; aspect-ratio: 1/1; background: linear-gradient(135deg,#1a1a2e,#16213e);
+    display: flex; align-items: center; justify-content: center; }
+  .pd-img img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-ph { position: absolute; font-size: 3rem; opacity: 0.4; }
+  .pd-body { padding: 36px 32px; display: flex; flex-direction: column;
+    justify-content: center; gap: 18px; }
+  .pd-body h3 { font-size: 1.5rem; font-weight: 800; line-height: 1.25; }
+  .pd-cta { align-self: flex-start; background: var(--cta); color: #04201b;
+    font-weight: 800; padding: 13px 26px; border-radius: 100px; font-size: 1rem;
+    animation: pulsar 2.6s ease-in-out infinite; }
+  @keyframes pulsar { 0%,100% { box-shadow: 0 0 0 0 rgba(0,224,184,0); transform: scale(1); }
+    50% { box-shadow: 0 0 22px 3px rgba(0,224,184,0.5); transform: scale(1.03); } }
+  @media (prefers-reduced-motion: reduce) { .pd-cta { animation: none; } }
+  .selo { position: absolute; top: 14px; left: 14px; background: var(--gold);
+    color: #0a0a12; font-weight: 800; font-size: 0.72rem; padding: 6px 12px;
+    border-radius: 100px; letter-spacing: 0.03em; z-index: 3; }
+  .prod { overflow: hidden; display: flex; flex-direction: column; }
+  .prod .thumb { position: relative; aspect-ratio: 1/1;
+    background: linear-gradient(135deg,#1a1a2e,#16213e);
+    display: flex; align-items: center; justify-content: center; }
+  .prod .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .prod .body { padding: 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .prod h3 { font-size: 1rem; font-weight: 700; line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .prod .ver { margin-top: auto; display: block; text-align: center; background: var(--glass);
+    border: 1px solid var(--glass-border); padding: 11px; border-radius: 100px;
+    font-weight: 700; font-size: 0.92rem; transition: background 0.2s, border-color 0.2s; }
+  .prod .ver:hover { border-color: var(--pop2); background: rgba(0,212,255,0.08); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .ci { display: flex; align-items: center; gap: 14px; color: var(--muted); }
+  .ci .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--glass);
+    border: 1px solid var(--glass-border); display: flex; align-items: center;
+    justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .ci a { color: var(--ink); font-weight: 600; }
+  .contact-btns { display: flex; flex-direction: column; gap: 14px; }
+  .contact-btns .btn { justify-content: center; width: 100%; }
+  .btn-wa { background: #25d366; color: #052e16; }
+  .btn-tg { background: #29a9eb; color: #03263a; }
+  .btn-mail { background: var(--glass); border: 1px solid var(--glass-border); color: var(--ink); }
+  .contact-btns .btn:hover { transform: translateY(-2px); }
+  footer { background: var(--bg-soft); border-top: 1px solid var(--glass-border);
+           padding: 60px 0 30px; margin-top: 40px; }
+  .foot-top { display: flex; justify-content: space-between; flex-wrap: wrap;
+              gap: 30px; margin-bottom: 40px; }
+  .foot-brand { max-width: 320px; }
+  .foot-brand .logo { font-size: 1.5rem; margin-bottom: 12px; }
+  .foot-brand p { color: var(--muted); font-size: 0.95rem; }
+  .foot-links { display: flex; gap: 50px; flex-wrap: wrap; }
+  .foot-col h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;
+                 color: var(--muted); margin-bottom: 14px; }
+  .foot-col a { display: block; color: var(--ink); font-weight: 600; font-size: 0.95rem;
+                margin-bottom: 10px; opacity: 0.85; transition: opacity 0.2s; }
+  .foot-col a:hover { opacity: 1; color: var(--pop2); }
+  .afiliado { color: var(--muted); font-size: 0.82rem; line-height: 1.6;
+              border-top: 1px solid var(--glass-border); padding-top: 24px; margin-bottom: 16px; }
+  .copy { color: var(--muted); font-size: 0.85rem; text-align: center; }
+  .copy a { color: var(--muted); margin: 0 8px; }
+  .copy a:hover { color: var(--pop2); }
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="logo">top<b>shop</b>.</div>
+  <div class="nav-links">
+    <a href="#inicio">Início</a><a href="#diferenciais">Diferenciais</a>
+    <a href="#servicos">Serviços</a><a href="#produtos">Produtos</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a href="#contato" class="btn btn-primary" style="padding:10px 22px;font-size:0.9rem;">Parcerias</a>
+</div></nav>
+
+<header class="hero" id="inicio"><div class="wrap">
+  <span class="badge">Curadoria · Conteúdo · Tecnologia</span>
+  <h1>Produtos inteligentes.<br><b>Conteúdo que converte.</b></h1>
+  <p>A topshop garimpa, testa e transforma achados em vídeos estratégicos —
+     unindo curadoria afiada e inteligência artificial pra escalar resultado.</p>
+  <div class="hero-cta">
+    <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+    <a href="#contato" class="btn btn-ghost">Propor parceria</a>
+  </div>
+</div></header>
+
+<section id="diferenciais" class="wrap reveal">
+  <span class="eyebrow">Por que a topshop</span>
+  <h2 class="sec-title">Diferenciais que entregam</h2>
+  <p class="sec-sub">Não é sobre postar muito. É sobre postar o que funciona, com método e tecnologia por trás.</p>
+  <div class="difs">
+    <div class="dif"><span class="check">✦</span><span>Curadoria inteligente de produtos</span></div>
+    <div class="dif"><span class="check">✦</span><span>Conteúdo feito pra prender atenção</span></div>
+    <div class="dif"><span class="check">✦</span><span>Uso estratégico de inteligência artificial</span></div>
+    <div class="dif"><span class="check">✦</span><span>Foco em produtos úteis e virais</span></div>
+    <div class="dif"><span class="check">✦</span><span>Presença em múltiplas plataformas</span></div>
+    <div class="dif"><span class="check">✦</span><span>Mentalidade de escala</span></div>
+    <div class="dif"><span class="check">✦</span><span>Atendimento direto pra parcerias</span></div>
+    <div class="dif"><span class="check">✦</span><span>Tecnologia própria em movimento</span></div>
+  </div>
+</section>
+
+<section id="servicos" class="wrap reveal">
+  <div class="center">
+    <span class="eyebrow">O que fazemos</span>
+    <h2 class="sec-title">Serviços</h2>
+    <p class="sec-sub">Do achado ao alcance — uma operação completa de conteúdo e divulgação.</p>
+  </div>
+  <div class="grid-3">
+    <div class="glass feat"><div class="ico">📢</div><h3>Divulgação de produtos</h3><p>Seu produto apresentado pra um público pronto pra comprar.</p></div>
+    <div class="glass feat"><div class="ico">🎬</div><h3>Conteúdo para redes</h3><p>Vídeos curtos e diretos, pensados pra cada plataforma.</p></div>
+    <div class="glass feat"><div class="ico">⭐</div><h3>Reviews e demonstrações</h3><p>Demonstração honesta que mostra o produto em ação.</p></div>
+    <div class="glass feat"><div class="ico">🔗</div><h3>Estratégia de afiliados</h3><p>Links rastreáveis e conversão acompanhada de perto.</p></div>
+    <div class="glass feat"><div class="ico">🤝</div><h3>Parcerias comerciais</h3><p>Colaborações sob medida pra marcas e lojistas.</p></div>
+    <div class="glass feat"><div class="ico">⚡</div><h3>Campanhas com vídeos curtos</h3><p>Volume e ritmo de publicação pensados pra escala.</p></div>
+  </div>
+</section>
+
+<section id="produtos" class="wrap reveal">
+  <div class="center">
+    <span class="eyebrow">Achados da vez</span>
+    <h2 class="sec-title">Vitrine topshop</h2>
+    <p class="sec-sub">Os produtos que ganharam o selo de achado esperto. Busque, filtre e garanta o seu.</p>
+  </div>
+  <div class="busca-wrap"><input id="busca" type="search" placeholder="🔍 Buscar produto do vídeo..." autocomplete="off"></div><div class="filtros" id="filtros"><button class="filtro ativo" data-filtro="todos">Tudo</button><button class="filtro" data-filtro="Beleza">Beleza</button><button class="filtro" data-filtro="Tech">Tech</button><button class="filtro" data-filtro="Fitness">Fitness</button><button class="filtro" data-filtro="Carro">Carro</button><button class="filtro" data-filtro="Cozinha">Cozinha</button><button class="filtro" data-filtro="Casa">Casa</button></div>
+    <a class="prod-destaque" href="https://s.shopee.com.br/9fIjXW3oss" target="_blank" rel="noopener"
+       data-busca="maimeite automático giratório modelador de cachos cabelo… modelador de cachos automatico" data-categoria="Beleza">
+      <div class="pd-img"><img src="https://cf.shopee.com.br/file/br-11134207-820m1-mmfnwbl1h79i12" alt="MAIMEITE Automático Giratório Modelador De Cachos Cabelo…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+        <span class="selo">⭐ Produto do dia</span></div>
+      <div class="pd-body">
+        <h3>MAIMEITE Automático Giratório Modelador De Cachos Cabelo…</h3>
+        <span class="pd-cta">🛒 PEGAR MEU DESCONTO</span>
+      </div>
+    </a><div class="grid-3" id="grade-prod">
+      <a class="glass prod" href="https://s.shopee.com.br/70HyMcRAfs" target="_blank" rel="noopener"
+         data-busca="basike mini power bank carregador portátil magnético por… carregador sem fio por inducao" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820la-mmi929jlyio0eb" alt="Basike Mini Power Bank Carregador Portátil Magnético Por…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Basike Mini Power Bank Carregador Portátil Magnético Por…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/4qDTmdDQ8L" target="_blank" rel="noopener"
+         data-busca="massageador pescoço elétrico cervical recarregável… massageador cervical" data-categoria="Fitness">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-825zr-mlekzb2ulngj3f" alt="Massageador Pescoço Elétrico Cervical Recarregável…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Massageador Pescoço Elétrico Cervical Recarregável…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/1LdbcCzsDl" target="_blank" rel="noopener"
+         data-busca="power bank solar 50.000mah com 4 portas usb carregamento rápido… power bank carregamento rapido" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m6-mlxv9dcxbyf40d" alt="Power Bank Solar 50.000mAh com 4 Portas USB Carregamento Rápido…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Power Bank Solar 50.000mAh com 4 Portas USB Carregamento Rápido…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/7fXf9qkZ0p" target="_blank" rel="noopener"
+         data-busca="tapete eva extra grande 1,80x1,20 fitness yoga pilates… tapete de yoga antiderrapante" data-categoria="Fitness">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820mh-mnek0fn9getdd2" alt="Tapete EVA Extra Grande 1,80x1,20 Fitness Yoga Pilates…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Tapete EVA Extra Grande 1,80x1,20 Fitness Yoga Pilates…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/60PRAnHJ0r" target="_blank" rel="noopener"
+         data-busca="copo térmico inox 1.2l com alça giratória 180° caneca grande… caneca termica de inox" data-categoria="Carro">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l9-mpa6895p0qo5d3" alt="Copo Térmico Inox 1.2L com Alça Giratória 180° Caneca Grande…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Copo Térmico Inox 1.2L com Alça Giratória 180° Caneca Grande…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/20tIPRJP2v" target="_blank" rel="noopener"
+         data-busca="suporte de metal ajustável para notebook 10 a 17&quot; dobrável 360°… suporte para notebook" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820mc-mo55dnpyql8h71" alt="Suporte de Metal Ajustável Para Notebook 10 a 17&quot; Dobrável 360°…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Suporte de Metal Ajustável Para Notebook 10 a 17&quot; Dobrável 360°…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/9Kft8vCJfr" target="_blank" rel="noopener"
+         data-busca="kit 2 balanças digital cozinha e bioimpedância para dieta e… balanca digital de cozinha" data-categoria="Cozinha">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-822xv-mi3eod0m641vb1" alt="Kit 2 Balanças Digital Cozinha e Bioimpedância Para Dieta e…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Kit 2 Balanças Digital Cozinha e Bioimpedância Para Dieta e…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/7pr5MAnmpF" target="_blank" rel="noopener"
+         data-busca="garrafa de água 350ml aço inox parede dupla isolada térmica c/… garrafa termica inox" data-categoria="Cozinha">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-820lc-mnvt7zhlntvmae" alt="Garrafa De Água 350ml Aço Inox Parede Dupla Isolada Térmica c/…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Garrafa De Água 350ml Aço Inox Parede Dupla Isolada Térmica c/…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/9zvZw9Myd3" target="_blank" rel="noopener"
+         data-busca="processador elétrico 600ml 110v - cortador triturador legumes… cortador de legumes" data-categoria="Cozinha">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ln-ml78d0ng6z9h2f" alt="Processador Elétrico 600ml 110v - Cortador Triturador Legumes…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Processador Elétrico 600ml 110v - Cortador Triturador Legumes…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/7fXf9tA11I" target="_blank" rel="noopener"
+         data-busca="luminária astronauta projetor de luz galáxia nebulosa estrelas… luminaria projetora de astronauta" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-824is-mea1gq7hjzlxee" alt="Luminária Astronauta Projetor De Luz Galáxia Nebulosa Estrelas…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Luminária Astronauta Projetor De Luz Galáxia Nebulosa Estrelas…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/Ll4QOTkA8" target="_blank" rel="noopener"
+         data-busca="2 peças umidificador atomizador de ar doméstico portátil… umidificador de ar" data-categoria="Casa">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lzyphixn1gzl52" alt="2 Peças Umidificador Atomizador De Ar Doméstico Portátil…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>2 Peças Umidificador Atomizador De Ar Doméstico Portátil…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/9fIjXY2wXQ" target="_blank" rel="noopener"
+         data-busca="escova secadora e alisadora 3 em 1/110v e 220v – cabelos lisos… escova secadora e alisadora 3 em 1" data-categoria="Beleza">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-825b4-mg404ujdhzpm1c" alt="Escova Secadora e Alisadora 3 em 1/110V e 220v – Cabelos Lisos…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Escova Secadora e Alisadora 3 em 1/110V e 220v – Cabelos Lisos…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/110mSsElfd" target="_blank" rel="noopener"
+         data-busca="picador de legumes frutas batata palito frita cabrita cortador… descascador de legumes" data-categoria="Cozinha">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820le-mpazvoqp3cp1c1" alt="Picador de Legumes Frutas Batata Palito Frita Cabrita Cortador…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Picador de Legumes Frutas Batata Palito Frita Cabrita Cortador…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/80AVYUMLlO" target="_blank" rel="noopener"
+         data-busca="espelho decorativo com led de mesa redondo / quadrado para… luminaria led de mesa" data-categoria="Beleza">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mfzb63enqjgga0" alt="Espelho Decorativo com LED de Mesa Redondo / Quadrado para…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Espelho Decorativo com LED de Mesa Redondo / Quadrado para…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/gNw4Fpdg8" target="_blank" rel="noopener"
+         data-busca="mini liquidificador portátil copo caneca 500ml e 450ml com 10… mini liquidificador portatil" data-categoria="Cozinha">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rav7-maa0t3e5yenmdb" alt="Mini Liquidificador Portátil Copo Caneca 500ml e 450ml Com 10…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Mini Liquidificador Portátil Copo Caneca 500ml e 450ml Com 10…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/6pyYALrOa3" target="_blank" rel="noopener"
+         data-busca="suporte celular carro veicular trava anti queda 360º gps… suporte de celular para carro" data-categoria="Carro">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-mj6il2z151j769" alt="Suporte Celular Carro Veicular Trava Anti Queda 360º GPS…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Suporte Celular Carro Veicular Trava Anti Queda 360º GPS…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/20tIrU3E2r" target="_blank" rel="noopener"
+         data-busca="mini aspirador de pó portátil automotivo e casa potente… mini aspirador de po automotivo" data-categoria="Carro">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd4y-luzhols24wtcf8" alt="Mini Aspirador De pó Portátil Automotivo e Casa Potente…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Mini Aspirador De pó Portátil Automotivo e Casa Potente…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/5VTBp9Wpmg" target="_blank" rel="noopener"
+         data-busca="kit 3 super band elástico borracha crossfit extra forte faixas… faixas elasticas de resistencia" data-categoria="Fitness">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m30eldvb1o7p0d" alt="Kit 3 Super Band Elástico Borracha Crossfit Extra Forte Faixas…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Kit 3 Super Band Elástico Borracha Crossfit Extra Forte Faixas…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/3Vi7RTnSD8" target="_blank" rel="noopener"
+         data-busca="mini projetor portatil 5g android hdmi smart cinema 4k hd hy320… mini projetor portatil" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820lq-mpjmtc49hywx86" alt="Mini Projetor Portatil 5G Android HDMI Smart Cinema 4K HD HY320…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Mini Projetor Portatil 5G Android HDMI Smart Cinema 4K HD HY320…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/6AirN92KTP" target="_blank" rel="noopener"
+         data-busca="mouse gamer sem fio attack shark x11 modo triplo 2.4g bt5.0… mouse sem fio recarregavel" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8260m-mkgdbl6xws8wfc" alt="Mouse Gamer Sem Fio Attack Shark X11 Modo Triplo 2.4G BT5.0…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Mouse Gamer Sem Fio Attack Shark X11 Modo Triplo 2.4G BT5.0…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/6pyYAN8WR2" target="_blank" rel="noopener"
+         data-busca="rolo posicionador meia lua ortopédico fisioterapia exercício… rolo de espuma para massagem" data-categoria="Fitness">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-mc9p1pgtkov449" alt="Rolo Posicionador Meia Lua Ortopédico Fisioterapia Exercício…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Rolo Posicionador Meia Lua Ortopédico Fisioterapia Exercício…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/8V6m9RFEqY" target="_blank" rel="noopener"
+         data-busca="corda de pular com contador digital ajustável para fitness… corda de pular digital" data-categoria="Fitness">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-823r1-morft68zbm6kb2" alt="Corda de Pular com Contador Digital Ajustável para Fitness…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Corda de Pular com Contador Digital Ajustável para Fitness…</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a>
+
+      <a class="glass prod" href="https://s.shopee.com.br/20tIPUrJuC" target="_blank" rel="noopener"
+         data-busca="case organizador de fones e cabos feita em silicone importado organizador de cabos de silicone" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l8-mmistkec5m9sa3" alt="Case Organizador de Fones e Cabos Feita em Silicone Importado" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+          <span class="selo">Achado topshop</span></div>
+        <div class="body">
+          <h3>Case Organizador de Fones e Cabos Feita em Silicone Importado</h3>
+          <span class="ver">Ver oferta →</span>
+        </div>
+      </a></div><p class="sem-res" id="sem-res" style="display:none;text-align:center;color:var(--muted);padding:24px;">Nenhum produto encontrado 🔍</p>
+</section>
+
+<section id="contato" class="wrap reveal">
+  <div class="contact-grid">
+    <div>
+      <span class="eyebrow">Vamos conversar</span>
+      <h2 class="sec-title">Fale comigo</h2>
+      <p class="sec-sub" style="margin-bottom:30px;">Quer indicar um produto, propor uma parceria ou entrar nos grupos de achadinhos? Chama aí.</p>
+      <div class="contact-info">
+
+        <div class="ci"><div class="ico">👥</div><span>Grupo no WhatsApp: <a href="https://chat.whatsapp.com/G0DPGQV0rRc1tFRWIwOjrv" target="_blank">Entrar no grupo</a></span></div><div class="ci"><div class="ico">📨</div><span>Canal no Telegram: <a href="https://t.me/achadinhosrelampagoh" target="_blank">Entrar no canal</a></span></div>
+        <div class="ci"><div class="ico">✉️</div><span>E-mail: <a href="mailto:jhon-henrique2018@hotmail.com">jhon-henrique2018@hotmail.com</a></span></div>
+        <div class="ci"><div class="ico">📍</div><span>Goiânia — GO</span></div>
+        <div class="ci"><div class="ico">📸</div><span>Instagram: <a href="https://www.instagram.com/topshop.__/" target="_blank">@topshop.__</a></span></div>
+        <div class="ci"><div class="ico">🎵</div><span>TikTok: <a href="https://www.tiktok.com/@topshop.__" target="_blank">@topshop.__</a></span></div>
+        <div class="ci"><div class="ico">▶️</div><span>YouTube: <a href="https://www.youtube.com/@TopShop._0" target="_blank">TopShop_.</a></span></div>
+      </div>
+    </div>
+    <div class="contact-btns">
+      <a href="mailto:jhon-henrique2018@hotmail.com" class="btn btn-mail">Enviar e-mail</a>
+      <a href="#produtos" class="btn btn-primary" style="justify-content:center;">Ver ofertas</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="logo">top<b>shop</b>.</div>
+      <p>Produtos inteligentes. Conteúdo estratégico. Tecnologia em movimento.</p>
+    </div>
+    <div class="foot-links">
+      <div class="foot-col"><h4>Navegação</h4>
+        <a href="#inicio">Início</a><a href="#produtos">Produtos</a>
+        <a href="#servicos">Serviços</a><a href="#contato">Contato</a></div>
+      <div class="foot-col"><h4>Redes</h4>
+        <a href="https://www.instagram.com/topshop.__/" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@topshop.__" target="_blank">TikTok</a>
+        <a href="https://www.youtube.com/@TopShop._0" target="_blank">YouTube</a></div>
+    </div>
+  </div>
+  <p class="afiliado">Aviso de afiliado: a topshop participa de programas de afiliados.
+     Alguns links nesta página podem gerar comissão sobre compras, sem custo adicional
+     para você. Esta página não coleta dados pessoais. As ofertas e disponibilidades são
+     de responsabilidade das lojas anunciantes.</p>
+  <p class="copy">© 2026 topshop · 24 achados · atualizado em 23/06/2026</p>
+</div></footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Busca + filtro da vitrine
+  const busca = document.getElementById('busca');
+  if (busca) {
+    const cards = Array.from(document.querySelectorAll('.prod, .prod-destaque'));
+    const semRes = document.getElementById('sem-res');
+    const filtros = document.querySelectorAll('.filtro');
+    let catAtiva = 'todos';
+    function aplicar() {
+      const termo = busca.value.trim().toLowerCase();
+      let achou = 0;
+      cards.forEach(function(c) {
+        const alvo = c.getAttribute('data-busca') || '';
+        const cat = c.getAttribute('data-categoria') || '';
+        const okB = !termo || alvo.indexOf(termo) !== -1;
+        const okC = catAtiva === 'todos' || cat === catAtiva;
+        const mostra = okB && okC;
+        c.style.display = mostra ? '' : 'none';
+        if (mostra) achou++;
+      });
+      if (semRes) semRes.style.display = achou === 0 ? 'block' : 'none';
+    }
+    busca.addEventListener('input', aplicar);
+    filtros.forEach(function(b) {
+      b.addEventListener('click', function() {
+        filtros.forEach(function(x) { x.classList.remove('ativo'); });
+        b.classList.add('ativo');
+        catAtiva = b.getAttribute('data-filtro');
+        aplicar();
+      });
+    });
+  }
+</script>
+</body>
+</html>
