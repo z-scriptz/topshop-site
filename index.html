@@ -4,25 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>topshop · Produtos inteligentes. Conteúdo estratégico.</title>
-
 <link rel="icon" type="image/png" href="/favicon-96x96.png?v=v1" sizes="96x96" />
 <link rel="shortcut icon" href="/favicon.ico?v=v1" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=v1" />
 <meta name="apple-mobile-web-app-title" content="TopShop" />
 <link rel="manifest" href="/site.webmanifest?v=v1" />
-
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   :root {
     --bg: #0a0a12; --bg-soft: #12121f; --ink: #f4f4f8; --muted: #9a9ab0;
     --pop: #6d5dfc; --pop2: #00d4ff; --gold: #ffc83d; --cta: #00e0b8;
-    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.10);
     --grad: linear-gradient(135deg, #6d5dfc 0%, #00d4ff 100%);
+    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.10);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', -apple-system, Segoe UI, Roboto, sans-serif;
+  html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg); color: var(--ink); line-height: 1.6;
-    -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    max-width: 100%; position: relative; }
   .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
   a { color: inherit; text-decoration: none; }
   @media (prefers-reduced-motion: no-preference) {
@@ -43,11 +43,11 @@
                  transition: color 0.2s; }
   .nav-links a:hover { color: var(--ink); }
   @media (max-width: 760px) { .nav-links { display: none; } }
-  .hero { position: relative; text-align: center; padding: 110px 0 90px; }
+  .hero { position: relative; text-align: center; padding: 110px 0 90px; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -10%; left: 50%;
-    transform: translateX(-50%); width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(109,93,252,0.22) 0%, transparent 60%);
-    z-index: -1; animation: float 8s ease-in-out infinite; }
+    transform: translateX(-50%); width: min(700px, 100vw); height: min(700px, 100vw);
+    max-width: 100%; background: radial-gradient(circle, rgba(109,93,252,0.22) 0%, transparent 60%);
+    z-index: -1; animation: float 8s ease-in-out infinite; pointer-events: none; }
   @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); }
                      50% { transform: translateX(-50%) translateY(-24px); } }
   .badge { display: inline-block; background: var(--glass);
@@ -186,6 +186,36 @@
   .copy { color: var(--muted); font-size: 0.85rem; text-align: center; }
   .copy a { color: var(--muted); margin: 0 8px; }
   .copy a:hover { color: var(--pop2); }
+
+  /* ===== AJUSTES MOBILE (telas pequenas) ===== */
+  @media (max-width: 600px) {
+    .wrap { padding: 0 18px; }
+    section { padding: 56px 0; }
+    .nav-in { padding: 14px 18px; }
+    .logo { font-size: 1.15rem; }
+    .hero { padding: 64px 0 56px; }
+    .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.1; margin-bottom: 20px; }
+    .hero p { font-size: 1.02rem; padding: 0 4px; }
+    .badge { font-size: 0.7rem; padding: 7px 14px; margin-bottom: 22px; }
+    .sec-title { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+    .sec-sub { font-size: 1rem; margin-bottom: 36px; }
+    .hero-cta { gap: 12px; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+    .btn { padding: 14px 26px; font-size: 0.98rem; }
+    .feat { padding: 26px 22px; }
+    .pd-body { padding: 26px 22px; }
+    .pd-body h3 { font-size: 1.25rem; }
+    .prod h3 { font-size: 0.98rem; }
+    .difs { gap: 4px 0; }
+    .dif { padding: 14px 0; }
+    /* trava qualquer vazamento horizontal */
+    section, .wrap, .hero, .prod-destaque, .grid-3, .grid-2 { max-width: 100%; }
+    img { max-width: 100%; height: auto; }
+  }
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.85rem; }
+    .sec-title { font-size: 1.6rem; }
+  }
 </style>
 </head>
 <body>
@@ -249,7 +279,7 @@
     <p class="sec-sub">Os produtos que ganharam o selo de achado esperto. Busque, filtre e garanta o seu.</p>
   </div>
   <div class="busca-wrap"><input id="busca" type="search" placeholder="🔍 Buscar produto do vídeo..." autocomplete="off"></div><div class="filtros" id="filtros"><button class="filtro ativo" data-filtro="todos">Tudo</button><button class="filtro" data-filtro="Beleza">Beleza</button><button class="filtro" data-filtro="Tech">Tech</button><button class="filtro" data-filtro="Fitness">Fitness</button><button class="filtro" data-filtro="Carro">Carro</button><button class="filtro" data-filtro="Cozinha">Cozinha</button><button class="filtro" data-filtro="Casa">Casa</button></div>
-    <a class="prod-destaque" href="https://s.shopee.com.br/9fIjXW3oss" target="_blank" rel="noopener"
+    <a class="prod-destaque" href="https://s.shopee.com.br/9AMXSz13Ar" target="_blank" rel="noopener"
        data-busca="maimeite automático giratório modelador de cachos cabelo… modelador de cachos automatico" data-categoria="Beleza">
       <div class="pd-img"><img src="https://cf.shopee.com.br/file/br-11134207-820m1-mmfnwbl1h79i12" alt="MAIMEITE Automático Giratório Modelador De Cachos Cabelo…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
         <span class="selo">⭐ Produto do dia</span></div>
@@ -258,17 +288,17 @@
         <span class="pd-cta">🛒 PEGAR MEU DESCONTO</span>
       </div>
     </a><div class="grid-3" id="grade-prod">
-      <a class="glass prod" href="https://s.shopee.com.br/70HyMcRAfs" target="_blank" rel="noopener"
-         data-busca="basike mini power bank carregador portátil magnético por… carregador sem fio por inducao" data-categoria="Tech">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820la-mmi929jlyio0eb" alt="Basike Mini Power Bank Carregador Portátil Magnético Por…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+      <a class="glass prod" href="https://s.shopee.com.br/6AivtTLCav" target="_blank" rel="noopener"
+         data-busca="carregador portátil power bank magsafe i2go 10000mah 15w… carregador sem fio por inducao" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbl7-m5k588a1hisrd6" alt="Carregador Portátil Power Bank Magsafe i2GO 10000mAh 15W…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
-          <h3>Basike Mini Power Bank Carregador Portátil Magnético Por…</h3>
+          <h3>Carregador Portátil Power Bank Magsafe i2GO 10000mAh 15W…</h3>
           <span class="ver">Ver oferta →</span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4qDTmdDQ8L" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/8KnQTRqxHm" target="_blank" rel="noopener"
          data-busca="massageador pescoço elétrico cervical recarregável… massageador cervical" data-categoria="Fitness">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-825zr-mlekzb2ulngj3f" alt="Massageador Pescoço Elétrico Cervical Recarregável…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -278,7 +308,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1LdbcCzsDl" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/1Vx6KtqAQi" target="_blank" rel="noopener"
          data-busca="power bank solar 50.000mah com 4 portas usb carregamento rápido… power bank carregamento rapido" data-categoria="Tech">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m6-mlxv9dcxbyf40d" alt="Power Bank Solar 50.000mAh com 4 Portas USB Carregamento Rápido…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -288,7 +318,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/7fXf9qkZ0p" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/7pr9sXe9fc" target="_blank" rel="noopener"
          data-busca="tapete eva extra grande 1,80x1,20 fitness yoga pilates… tapete de yoga antiderrapante" data-categoria="Fitness">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820mh-mnek0fn9getdd2" alt="Tapete EVA Extra Grande 1,80x1,20 Fitness Yoga Pilates…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -298,7 +328,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/60PRAnHJ0r" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/3qL17CGYAt" target="_blank" rel="noopener"
          data-busca="copo térmico inox 1.2l com alça giratória 180° caneca grande… caneca termica de inox" data-categoria="Carro">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l9-mpa6895p0qo5d3" alt="Copo Térmico Inox 1.2L com Alça Giratória 180° Caneca Grande…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -308,7 +338,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/20tIPRJP2v" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/7fXjgEnaaW" target="_blank" rel="noopener"
          data-busca="suporte de metal ajustável para notebook 10 a 17&quot; dobrável 360°… suporte para notebook" data-categoria="Tech">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820mc-mo55dnpyql8h71" alt="Suporte de Metal Ajustável Para Notebook 10 a 17&quot; Dobrável 360°…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -318,7 +348,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9Kft8vCJfr" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/W4Z94gRHf" target="_blank" rel="noopener"
          data-busca="kit 2 balanças digital cozinha e bioimpedância para dieta e… balanca digital de cozinha" data-categoria="Cozinha">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-822xv-mi3eod0m641vb1" alt="Kit 2 Balanças Digital Cozinha e Bioimpedância Para Dieta e…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -328,17 +358,17 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/7pr5MAnmpF" target="_blank" rel="noopener"
-         data-busca="garrafa de água 350ml aço inox parede dupla isolada térmica c/… garrafa termica inox" data-categoria="Cozinha">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-820lc-mnvt7zhlntvmae" alt="Garrafa De Água 350ml Aço Inox Parede Dupla Isolada Térmica c/…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+      <a class="glass prod" href="https://s.shopee.com.br/110pk04jA2" target="_blank" rel="noopener"
+         data-busca="garrafa térmica inox 1l antivazamento premium mantém quente por… garrafa termica inox" data-categoria="Cozinha">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mhc49qh4av407d" alt="Garrafa Térmica Inox 1L Antivazamento Premium Mantém Quente por…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
-          <h3>Garrafa De Água 350ml Aço Inox Parede Dupla Isolada Térmica c/…</h3>
+          <h3>Garrafa Térmica Inox 1L Antivazamento Premium Mantém Quente por…</h3>
           <span class="ver">Ver oferta →</span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9zvZw9Myd3" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/1qZwjWoM7f" target="_blank" rel="noopener"
          data-busca="processador elétrico 600ml 110v - cortador triturador legumes… cortador de legumes" data-categoria="Cozinha">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ln-ml78d0ng6z9h2f" alt="Processador Elétrico 600ml 110v - Cortador Triturador Legumes…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -348,7 +378,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/7fXf9tA11I" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/3LOkWJHRIL" target="_blank" rel="noopener"
          data-busca="luminária astronauta projetor de luz galáxia nebulosa estrelas… luminaria projetora de astronauta" data-categoria="Tech">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-824is-mea1gq7hjzlxee" alt="Luminária Astronauta Projetor De Luz Galáxia Nebulosa Estrelas…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -358,7 +388,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/Ll4QOTkA8" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/gNzLOEvy7" target="_blank" rel="noopener"
          data-busca="2 peças umidificador atomizador de ar doméstico portátil… umidificador de ar" data-categoria="Casa">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lzyphixn1gzl52" alt="2 Peças Umidificador Atomizador De Ar Doméstico Portátil…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -368,7 +398,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9fIjXY2wXQ" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/6L2M5o6d5E" target="_blank" rel="noopener"
          data-busca="escova secadora e alisadora 3 em 1/110v e 220v – cabelos lisos… escova secadora e alisadora 3 em 1" data-categoria="Beleza">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-825b4-mg404ujdhzpm1c" alt="Escova Secadora e Alisadora 3 em 1/110V e 220v – Cabelos Lisos…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -378,7 +408,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/110mSsElfd" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/4qDYJ3yfR3" target="_blank" rel="noopener"
          data-busca="picador de legumes frutas batata palito frita cabrita cortador… descascador de legumes" data-categoria="Cozinha">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820le-mpazvoqp3cp1c1" alt="Picador de Legumes Frutas Batata Palito Frita Cabrita Cortador…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -388,17 +418,17 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/80AVYUMLlO" target="_blank" rel="noopener"
-         data-busca="espelho decorativo com led de mesa redondo / quadrado para… luminaria led de mesa" data-categoria="Beleza">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mfzb63enqjgga0" alt="Espelho Decorativo com LED de Mesa Redondo / Quadrado para…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+      <a class="glass prod" href="https://s.shopee.com.br/6ffCUQIYjp" target="_blank" rel="noopener"
+         data-busca="luminaria luz led recarregável sensor de movimento arandela de… luminaria led de mesa" data-categoria="Casa">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd5l-m7qowow2w0ag72" alt="Luminaria Luz Led Recarregável Sensor de Movimento Arandela de…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
-          <h3>Espelho Decorativo com LED de Mesa Redondo / Quadrado para…</h3>
+          <h3>Luminaria Luz Led Recarregável Sensor de Movimento Arandela de…</h3>
           <span class="ver">Ver oferta →</span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/gNw4Fpdg8" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/AKYUrAGdAl" target="_blank" rel="noopener"
          data-busca="mini liquidificador portátil copo caneca 500ml e 450ml com 10… mini liquidificador portatil" data-categoria="Cozinha">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rav7-maa0t3e5yenmdb" alt="Mini Liquidificador Portátil Copo Caneca 500ml e 450ml Com 10…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -408,7 +438,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6pyYALrOa3" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/1Vx6Kw2Q6O" target="_blank" rel="noopener"
          data-busca="suporte celular carro veicular trava anti queda 360º gps… suporte de celular para carro" data-categoria="Carro">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-mj6il2z151j769" alt="Suporte Celular Carro Veicular Trava Anti Queda 360º GPS…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -418,7 +448,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/20tIrU3E2r" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/60PVhDG5Tf" target="_blank" rel="noopener"
          data-busca="mini aspirador de pó portátil automotivo e casa potente… mini aspirador de po automotivo" data-categoria="Carro">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd4y-luzhols24wtcf8" alt="Mini Aspirador De pó Portátil Automotivo e Casa Potente…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -428,27 +458,27 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/5VTBp9Wpmg" target="_blank" rel="noopener"
-         data-busca="kit 3 super band elástico borracha crossfit extra forte faixas… faixas elasticas de resistencia" data-categoria="Fitness">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m30eldvb1o7p0d" alt="Kit 3 Super Band Elástico Borracha Crossfit Extra Forte Faixas…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+      <a class="glass prod" href="https://s.shopee.com.br/50WyVNXIcr" target="_blank" rel="noopener"
+         data-busca="kit 5/10 faixas elásticas de resistência fitness treino… faixas elasticas de resistencia" data-categoria="Fitness">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81ztq-mkkg5rk9zytd86" alt="Kit 5/10 Faixas Elásticas de Resistência Fitness Treino…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
-          <h3>Kit 3 Super Band Elástico Borracha Crossfit Extra Forte Faixas…</h3>
+          <h3>Kit 5/10 Faixas Elásticas de Resistência Fitness Treino…</h3>
           <span class="ver">Ver oferta →</span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3Vi7RTnSD8" target="_blank" rel="noopener"
-         data-busca="mini projetor portatil 5g android hdmi smart cinema 4k hd hy320… mini projetor portatil" data-categoria="Tech">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820lq-mpjmtc49hywx86" alt="Mini Projetor Portatil 5G Android HDMI Smart Cinema 4K HD HY320…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+      <a class="glass prod" href="https://s.shopee.com.br/3ViAiclbSI" target="_blank" rel="noopener"
+         data-busca="mini projetor hy320 portátil full hd 1080p | compatível 4k,… mini projetor portatil" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8262w-mlwdotts5nuqbd" alt="Mini Projetor HY320 Portátil Full HD 1080p | Compatível 4K,…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
-          <h3>Mini Projetor Portatil 5G Android HDMI Smart Cinema 4K HD HY320…</h3>
+          <h3>Mini Projetor HY320 Portátil Full HD 1080p | Compatível 4K,…</h3>
           <span class="ver">Ver oferta →</span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6AirN92KTP" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/110pk28Wey" target="_blank" rel="noopener"
          data-busca="mouse gamer sem fio attack shark x11 modo triplo 2.4g bt5.0… mouse sem fio recarregavel" data-categoria="Tech">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8260m-mkgdbl6xws8wfc" alt="Mouse Gamer Sem Fio Attack Shark X11 Modo Triplo 2.4G BT5.0…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -458,7 +488,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6pyYAN8WR2" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/6ffCURuaHH" target="_blank" rel="noopener"
          data-busca="rolo posicionador meia lua ortopédico fisioterapia exercício… rolo de espuma para massagem" data-categoria="Fitness">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-mc9p1pgtkov449" alt="Rolo Posicionador Meia Lua Ortopédico Fisioterapia Exercício…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -468,7 +498,7 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8V6m9RFEqY" target="_blank" rel="noopener"
+      <a class="glass prod" href="https://s.shopee.com.br/6L2M5qA9V6" target="_blank" rel="noopener"
          data-busca="corda de pular com contador digital ajustável para fitness… corda de pular digital" data-categoria="Fitness">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-823r1-morft68zbm6kb2" alt="Corda de Pular com Contador Digital Ajustável para Fitness…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
@@ -478,12 +508,12 @@
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/20tIPUrJuC" target="_blank" rel="noopener"
-         data-busca="case organizador de fones e cabos feita em silicone importado organizador de cabos de silicone" data-categoria="Tech">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l8-mmistkec5m9sa3" alt="Case Organizador de Fones e Cabos Feita em Silicone Importado" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
+      <a class="glass prod" href="https://s.shopee.com.br/7pr9sbHdlx" target="_blank" rel="noopener"
+         data-busca="acessórios para bobinador de cabos de silicone usb linha de… organizador de cabos de silicone" data-categoria="Tech">
+        <div class="thumb"><img src="https://cf.shopee.com.br/file/b259e8c871044bfe0aa0bbeefc390df0" alt="Acessórios Para Bobinador De Cabos De Silicone USB Linha De…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
-          <h3>Case Organizador de Fones e Cabos Feita em Silicone Importado</h3>
+          <h3>Acessórios Para Bobinador De Cabos De Silicone USB Linha De…</h3>
           <span class="ver">Ver oferta →</span>
         </div>
       </a></div><p class="sem-res" id="sem-res" style="display:none;text-align:center;color:var(--muted);padding:24px;">Nenhum produto encontrado 🔍</p>
@@ -532,7 +562,7 @@
      Alguns links nesta página podem gerar comissão sobre compras, sem custo adicional
      para você. Esta página não coleta dados pessoais. As ofertas e disponibilidades são
      de responsabilidade das lojas anunciantes.</p>
-  <p class="copy">© 2026 topshop · 24 achados · atualizado em 23/06/2026</p>
+  <p class="copy">© 2026 topshop · 24 achados · atualizado em 25/06/2026</p>
 </div></footer>
 
 <script>
