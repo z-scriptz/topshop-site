@@ -90,7 +90,12 @@
   .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
   .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
   @media (max-width: 860px) { .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+  /* no celular os cards de PRODUTO ficam 2-por-linha (menores/mais "shopáveis");
+     só os cards de texto (grid-2) é que passam pra 1 coluna. */
+  @media (max-width: 560px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
   .feat { padding: 32px 28px; }
   .feat .ico { width: 46px; height: 46px; border-radius: 12px;
                background: var(--grad); display: flex; align-items: center;
@@ -205,7 +210,9 @@
     .feat { padding: 26px 22px; }
     .pd-body { padding: 26px 22px; }
     .pd-body h3 { font-size: 1.25rem; }
-    .prod h3 { font-size: 0.98rem; }
+    .prod h3 { font-size: 0.9rem; line-height: 1.3; }
+    .prod .body { padding: 12px; gap: 8px; }
+    .prod .ver { padding: 9px; font-size: 0.85rem; }
     .difs { gap: 4px 0; }
     .dif { padding: 14px 0; }
     /* trava qualquer vazamento horizontal */
@@ -278,7 +285,7 @@
     <h2 class="sec-title">Vitrine topshop</h2>
     <p class="sec-sub">Os produtos que ganharam o selo de achado esperto. Busque, filtre e garanta o seu.</p>
   </div>
-  <div class="busca-wrap"><input id="busca" type="search" placeholder="🔍 Buscar produto do vídeo..." autocomplete="off"></div><div class="filtros" id="filtros"><button class="filtro ativo" data-filtro="todos">Tudo</button><button class="filtro" data-filtro="Outros">Outros</button><button class="filtro" data-filtro="Cozinha">Cozinha</button></div>
+  <div class="busca-wrap"><input id="busca" type="search" placeholder="🔍 Buscar produto do vídeo..." autocomplete="off"></div><div class="filtros" id="filtros"><button class="filtro ativo" data-filtro="todos">Tudo</button><button class="filtro" data-filtro="Cozinha">Cozinha</button><button class="filtro" data-filtro="Beleza">Beleza</button><button class="filtro" data-filtro="Tech">Tech</button><button class="filtro" data-filtro="Fitness">Fitness</button><button class="filtro" data-filtro="Utilidades">Utilidades</button><button class="filtro" data-filtro="Casa">Casa</button><button class="filtro" data-filtro="Outros">Outros</button></div>
     <a class="prod-destaque" href="https://s.shopee.com.br/4LHb6Yxomx?lp=aff" target="_blank" rel="noopener"
        data-busca="mesa para computador compacta mesa para computador compacta" data-categoria="Outros">
       <div class="pd-img"><span class="pd-ph">🛍️</span>
@@ -349,7 +356,7 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/60PoxIFjTT?lp=aff" target="_blank" rel="noopener"
-         data-busca="controle de xbox 360 controle de xbox 360" data-categoria="Outros">
+         data-busca="controle de xbox 360 controle de xbox 360" data-categoria="Tech">
         <div class="thumb"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
@@ -369,7 +376,7 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/6AjF8D1N3u?lp=aff" target="_blank" rel="noopener"
-         data-busca="20 litro com pedal 20 litro com pedal" data-categoria="Outros">
+         data-busca="20 litro com pedal 20 litro com pedal" data-categoria="Utilidades">
         <div class="thumb"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
@@ -379,7 +386,7 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/7fY1jfNBEn?lp=aff" target="_blank" rel="noopener"
-         data-busca="sacolas plásticas boca palhaço sacolas plásticas boca palhaço" data-categoria="Outros">
+         data-busca="sacolas plásticas boca palhaço sacolas plásticas boca palhaço" data-categoria="Utilidades">
         <div class="thumb"><span class="pd-ph">🛍️</span>
           <span class="selo">Achado topshop</span></div>
         <div class="body">
@@ -436,10 +443,22 @@
 </div></footer>
 
 <script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  const reveals = document.querySelectorAll('.reveal');
+  function revelarTudo() { reveals.forEach(el => el.classList.add('in')); }
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => obs.observe(el));
+    // rede de segurança: no celular, uma seção mais alta que a tela pode nunca
+    // "intersectar" o suficiente e ficaria invisível (opacity:0). Depois de um
+    // tempinho, mostra tudo de qualquer jeito.
+    setTimeout(revelarTudo, 1600);
+  } else {
+    revelarTudo();
+  }
 
   // Busca + filtro da vitrine
   const busca = document.getElementById('busca');
