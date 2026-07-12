@@ -117,13 +117,20 @@
   #busca:focus { border-color: var(--pop); box-shadow: 0 0 0 3px rgba(109,93,252,0.25); }
   #busca::placeholder { color: var(--muted); }
   .filtros { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 40px; }
-  .filtro { background: var(--glass); color: var(--muted);
+  .filtros-plat { margin-bottom: 16px; }
+  .filtro, .filtro-plat { background: var(--glass); color: var(--muted);
     border: 1px solid var(--glass-border); border-radius: 100px;
     padding: 8px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
     transition: all .2s; font-family: inherit; }
-  .filtro:hover { color: var(--ink); border-color: var(--pop2); }
-  .filtro.ativo { background: var(--grad); color: #fff; border-color: transparent;
+  .filtro:hover, .filtro-plat:hover { color: var(--ink); border-color: var(--pop2); }
+  .filtro.ativo, .filtro-plat.ativo { background: var(--grad); color: #fff; border-color: transparent;
     box-shadow: 0 6px 20px rgba(109,93,252,0.4); }
+  .plat-badge { position: absolute; top: 14px; right: 14px; z-index: 2;
+    font-size: 0.62rem; font-weight: 800; letter-spacing: .3px;
+    padding: 4px 9px; border-radius: 100px; color: #fff; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .plat-shopee { background: #ee4d2d; }
+  .plat-amazon { background: #ff9900; color: #131a22; }
   .prod-destaque { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
     background: linear-gradient(135deg, rgba(109,93,252,0.12), var(--glass));
     border: 1px solid var(--pop); border-radius: 24px; overflow: hidden;
@@ -287,18 +294,22 @@
   </div>
   <div class="busca-wrap"><input id="busca" type="search" placeholder="🔍 Buscar produto do vídeo..." autocomplete="off"></div><div class="filtros" id="filtros"><button class="filtro ativo" data-filtro="todos">Tudo</button><button class="filtro" data-filtro="Cozinha">Cozinha</button><button class="filtro" data-filtro="Beleza">Beleza</button><button class="filtro" data-filtro="Tech">Tech</button><button class="filtro" data-filtro="Fitness">Fitness</button><button class="filtro" data-filtro="Utilidades">Utilidades</button><button class="filtro" data-filtro="Casa">Casa</button><button class="filtro" data-filtro="Outros">Outros</button></div>
     <a class="prod-destaque" href="https://s.shopee.com.br/8V7HbhUb8J?lp=aff" target="_blank" rel="noopener"
-       data-busca="livro bíblico do bebê capa dura livro bíblico do bebê capa dura" data-categoria="Utilidades">
+       data-busca="livro bíblico do bebê capa dura livro bíblico do bebê capa dura" data-categoria="Utilidades"
+       data-plataforma="shopee">
       <div class="pd-img"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lrurnv12ybsr9f" alt="Livro Bíblico do Bebê Capa Dura" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-        <span class="selo">⭐ Produto do dia</span></div>
+        <span class="selo">⭐ Produto do dia</span>
+        <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
       <div class="pd-body">
         <h3>Livro Bíblico do Bebê Capa Dura</h3>
         <span class="pd-cta">🛒 PEGAR MEU DESCONTO</span>
       </div>
     </a><div class="grid-3" id="grade-prod">
       <a class="glass prod" href="https://s.shopee.com.br/903YBYFl0S?lp=aff" target="_blank" rel="noopener"
-         data-busca="caixa organizadora para sapatos dobrável caixa organizadora para sapatos dobrável" data-categoria="Utilidades">
+         data-busca="caixa organizadora para sapatos dobrável caixa organizadora para sapatos dobrável" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7qvfx-li8rftl2xc069a" alt="Caixa Organizadora para Sapatos Dobrável" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Caixa Organizadora para Sapatos Dobrável</h3>
           <span class="ver">Ver oferta →</span>
@@ -306,9 +317,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/3g21ojdVmZ?lp=aff" target="_blank" rel="noopener"
-         data-busca="pote hermético com copo medidor pote hermético com copo medidor" data-categoria="Cozinha">
+         data-busca="pote hermético com copo medidor pote hermético com copo medidor" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7reoj-m1ssae5wd29321" alt="Pote Hermético com Copo Medidor" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Pote Hermético com Copo Medidor</h3>
           <span class="ver">Ver oferta →</span>
@@ -316,9 +329,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/80B0yRyCtF?lp=aff" target="_blank" rel="noopener"
-         data-busca="cabo usb-c baseus pd 100w 66w cabo usb-c baseus pd 100w 66w" data-categoria="Tech">
+         data-busca="cabo usb-c baseus pd 100w 66w cabo usb-c baseus pd 100w 66w" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-7qukw-lhihh7g29k7ye7" alt="Cabo USB-C Baseus PD 100W 66W" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Cabo USB-C Baseus PD 100W 66W</h3>
           <span class="ver">Ver oferta →</span>
@@ -326,9 +341,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/AAFVX79x48?lp=aff" target="_blank" rel="noopener"
-         data-busca="bolsa de palha grande feminina bolsa de palha grande feminina" data-categoria="Outros">
+         data-busca="bolsa de palha grande feminina bolsa de palha grande feminina" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mgbq9pkamm84c5" alt="Bolsa de Palha Grande Feminina" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Bolsa de Palha Grande Feminina</h3>
           <span class="ver">Ver oferta →</span>
@@ -336,9 +353,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/AAFUrJj33S" target="_blank" rel="noopener"
-         data-busca="kit 2 suporte para óculos multifuncional viseira solar para… kit 2 suporte para óculos multifuncional viseira solar para óculos carro quebra sol，clip giratório 180° universal" data-categoria="Utilidades">
+         data-busca="kit 2 suporte para óculos multifuncional viseira solar para… kit 2 suporte para óculos multifuncional viseira solar para óculos carro quebra sol，clip giratório 180° universal" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820la-mleetdlp6pl1ec" alt="Kit 2 Suporte para Óculos Multifuncional Viseira Solar Para…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Kit 2 Suporte para Óculos Multifuncional Viseira Solar Para…</h3>
           <span class="ver">Ver oferta →</span>
@@ -346,9 +365,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/1gGwjuzmhC" target="_blank" rel="noopener"
-         data-busca="carregador sem fio indução magnético 20w turbo ultra rápido cor… carregador sem fio indução magnético 20w turbo ultra rápido cor preto" data-categoria="Tech">
+         data-busca="carregador sem fio indução magnético 20w turbo ultra rápido cor… carregador sem fio indução magnético 20w turbo ultra rápido cor preto" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m7avwux6sfjmd6" alt="Carregador Sem Fio Indução Magnético 20w Turbo Ultra Rápido Cor…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Carregador Sem Fio Indução Magnético 20w Turbo Ultra Rápido Cor…</h3>
           <span class="ver">Ver oferta →</span>
@@ -356,9 +377,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/qhpkOzK0I" target="_blank" rel="noopener"
-         data-busca="basike suporte de carregadores 3 em 1 sem fio para iphone mini… basike suporte de carregadores 3 em 1 sem fio para iphone mini magnético carregamento estação" data-categoria="Tech">
+         data-busca="basike suporte de carregadores 3 em 1 sem fio para iphone mini… basike suporte de carregadores 3 em 1 sem fio para iphone mini magnético carregamento estação" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mfz2y1eatrt310" alt="BASIKE Suporte De Carregadores 3 Em 1 Sem Fio Para iPhone Mini…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>BASIKE Suporte De Carregadores 3 Em 1 Sem Fio Para iPhone Mini…</h3>
           <span class="ver">Ver oferta →</span>
@@ -366,9 +389,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/7VEjLGLbxy" target="_blank" rel="noopener"
-         data-busca="conjunto de xícaras medidoras em aço inoxidável com cabo de… conjunto de xícaras medidoras em aço inoxidável com cabo de madeira – 60/80/125/250ml" data-categoria="Tech">
+         data-busca="conjunto de xícaras medidoras em aço inoxidável com cabo de… conjunto de xícaras medidoras em aço inoxidável com cabo de madeira – 60/80/125/250ml" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-mj9q2q3cwx6ue5" alt="Conjunto de xícaras medidoras em aço inoxidável com cabo de…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Conjunto de xícaras medidoras em aço inoxidável com cabo de…</h3>
           <span class="ver">Ver oferta →</span>
@@ -376,9 +401,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/3B5kBJ1L0L" target="_blank" rel="noopener"
-         data-busca="multiprocessador de alimentos turbo chef 9 em 1 mpn-01-bf… multiprocessador de alimentos turbo chef 9 em 1 mpn-01-bf mondial" data-categoria="Cozinha">
+         data-busca="multiprocessador de alimentos turbo chef 9 em 1 mpn-01-bf… multiprocessador de alimentos turbo chef 9 em 1 mpn-01-bf mondial" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-82608-mlgfmgmedhjca8" alt="Multiprocessador de Alimentos Turbo Chef 9 em 1 MPN-01-BF…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Multiprocessador de Alimentos Turbo Chef 9 em 1 MPN-01-BF…</h3>
           <span class="ver">Ver oferta →</span>
@@ -386,9 +413,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/8AUQ8VUhSG" target="_blank" rel="noopener"
-         data-busca="lata de lixo de plástico polido 10l com abertura de pressão -… lata de lixo de plástico polido 10l com abertura de pressão - lixeira casa banheiro quarto sala fora" data-categoria="Utilidades">
+         data-busca="lata de lixo de plástico polido 10l com abertura de pressão -… lata de lixo de plástico polido 10l com abertura de pressão - lixeira casa banheiro quarto sala fora" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-meor4o7keold64" alt="Lata de Lixo de Plástico Polido 10L com Abertura de Pressão -…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Lata de Lixo de Plástico Polido 10L com Abertura de Pressão -…</h3>
           <span class="ver">Ver oferta →</span>
@@ -396,9 +425,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/8fQem84HJh" target="_blank" rel="noopener"
-         data-busca="passadeira ferro a vapor com tábua de passar roupa alta… passadeira ferro a vapor com tábua de passar roupa alta potência 1,6l 10 modos para tecidos,onistek" data-categoria="Cozinha">
+         data-busca="passadeira ferro a vapor com tábua de passar roupa alta… passadeira ferro a vapor com tábua de passar roupa alta potência 1,6l 10 modos para tecidos,onistek" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l6-mmcd68eu328647" alt="Passadeira Ferro a Vapor Com Tábua De Passar Roupa Alta…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Passadeira Ferro a Vapor Com Tábua De Passar Roupa Alta…</h3>
           <span class="ver">Ver oferta →</span>
@@ -406,9 +437,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/20tmCBMFeP?lp=aff" target="_blank" rel="noopener"
-         data-busca="separador de gema de ovo separador de gema de ovo" data-categoria="Outros">
+         data-busca="separador de gema de ovo separador de gema de ovo" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rcep-ls9kx67czma9a3" alt="Separador de Gema de Ovo" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Separador de Gema de Ovo</h3>
           <span class="ver">Ver oferta →</span>
@@ -416,9 +449,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/9zw3iWegUP?lp=aff" target="_blank" rel="noopener"
-         data-busca="vídeo game stick m15 pro 4k 64gb vídeo game stick m15 pro 4k 64gb" data-categoria="Outros">
+         data-busca="vídeo game stick m15 pro 4k 64gb vídeo game stick m15 pro 4k 64gb" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-mail400zcni157" alt="Vídeo Game Stick M15 Pro 4K 64GB" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Vídeo Game Stick M15 Pro 4K 64GB</h3>
           <span class="ver">Ver oferta →</span>
@@ -426,9 +461,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/70IS8XFd3I?lp=aff" target="_blank" rel="noopener"
-         data-busca="calça wide leg jeans feminina calça wide leg jeans feminina" data-categoria="Outros">
+         data-busca="calça wide leg jeans feminina calça wide leg jeans feminina" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ln-mq6d94vs5on644" alt="Calça Wide Leg Jeans Feminina" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Calça Wide Leg Jeans Feminina</h3>
           <span class="ver">Ver oferta →</span>
@@ -436,9 +473,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/6AjL8iz42G?lp=aff" target="_blank" rel="noopener"
-         data-busca="capa inteligente com tela e-ink para iphone capa inteligente com tela e-ink para iphone" data-categoria="Outros">
+         data-busca="capa inteligente com tela e-ink para iphone capa inteligente com tela e-ink para iphone" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-7ras8-m364kyuq0hduea" alt="Capa Inteligente com Tela E-Ink para iPhone" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Capa Inteligente com Tela E-Ink para iPhone</h3>
           <span class="ver">Ver oferta →</span>
@@ -446,9 +485,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/3qLQMAsY5I" target="_blank" rel="noopener"
-         data-busca="kit com 2 bastões resfriadores de cerveja em aço inox kit com 2 bastões resfriadores de cerveja em aço inox" data-categoria="Outros">
+         data-busca="kit com 2 bastões resfriadores de cerveja em aço inox kit com 2 bastões resfriadores de cerveja em aço inox" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134202-7rfig-m9f9r76mjutcf2" alt="Kit com 2 Bastões Resfriadores de Cerveja em Aço Inox" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Kit com 2 Bastões Resfriadores de Cerveja em Aço Inox</h3>
           <span class="ver">Ver oferta →</span>
@@ -456,9 +497,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/4LHgwmcK0X?lp=aff" target="_blank" rel="noopener"
-         data-busca="lançador de avião planador com luz lançador de avião planador com luz" data-categoria="Outros">
+         data-busca="lançador de avião planador com luz lançador de avião planador com luz" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m0t9a7demezh6c" alt="Lançador de Avião Planador com Luz" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Lançador de Avião Planador com Luz</h3>
           <span class="ver">Ver oferta →</span>
@@ -466,9 +509,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/9Uzkc6Fvzs?lp=aff" target="_blank" rel="noopener"
-         data-busca="óleo poderoso koleston wella óleo poderoso koleston wella" data-categoria="Outros">
+         data-busca="óleo poderoso koleston wella óleo poderoso koleston wella" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820lq-mljkcea5yjgma4" alt="Óleo Poderoso Koleston Wella" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Óleo Poderoso Koleston Wella</h3>
           <span class="ver">Ver oferta →</span>
@@ -476,9 +521,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/8AUOtofzcl?lp=aff" target="_blank" rel="noopener"
-         data-busca="conjunto feminino malha canelado moda conjunto feminino malha canelado moda" data-categoria="Outros">
+         data-busca="conjunto feminino malha canelado moda conjunto feminino malha canelado moda" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lyavcrvb274la5" alt="Conjunto Feminino Malha Canelado Moda" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Conjunto Feminino Malha Canelado Moda</h3>
           <span class="ver">Ver oferta →</span>
@@ -486,9 +533,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/4fuWai9M0P" target="_blank" rel="noopener"
-         data-busca="gaabor ferro a vapor 127v portatil anti vazamento rapido para… gaabor ferro a vapor 127v portatil anti vazamento rapido para viagem top clean hm m01a" data-categoria="Casa">
+         data-busca="gaabor ferro a vapor 127v portatil anti vazamento rapido para… gaabor ferro a vapor 127v portatil anti vazamento rapido para viagem top clean hm m01a" data-categoria="Casa"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mfxmm6005tdxb4" alt="Gaabor Ferro a Vapor 127V Portatil Anti Vazamento Rapido Para…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Gaabor Ferro a Vapor 127V Portatil Anti Vazamento Rapido Para…</h3>
           <span class="ver">Ver oferta →</span>
@@ -496,9 +545,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/5q6Tu5HmuF?lp=aff" target="_blank" rel="noopener"
-         data-busca="lego speed champions ferrari sf-24 f1 77242 - lego lego speed champions ferrari sf-24 f1 77242 - lego" data-categoria="Outros">
+         data-busca="lego speed champions ferrari sf-24 f1 77242 - lego lego speed champions ferrari sf-24 f1 77242 - lego" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-824gg-mpl54iix7uob3c" alt="LEGO Speed Champions Ferrari SF-24 F1 77242 - Lego" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>LEGO Speed Champions Ferrari SF-24 F1 77242 - Lego</h3>
           <span class="ver">Ver oferta →</span>
@@ -506,9 +557,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/4AyFu0fwyP?lp=aff" target="_blank" rel="noopener"
-         data-busca="lego technic velozes e furiosos toyota supra mk4 810 peças lego technic velozes e furiosos toyota supra mk4 810 peças" data-categoria="Outros">
+         data-busca="lego technic velozes e furiosos toyota supra mk4 810 peças lego technic velozes e furiosos toyota supra mk4 810 peças" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdyg-mcwf57hq1jys0d" alt="LEGO Technic Velozes e Furiosos Toyota Supra MK4 810 Peças" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>LEGO Technic Velozes e Furiosos Toyota Supra MK4 810 Peças</h3>
           <span class="ver">Ver oferta →</span>
@@ -516,9 +569,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/7KvHfaZxEc?lp=aff" target="_blank" rel="noopener"
-         data-busca="5 caneca personalizada do dias dos pais 5 caneca personalizada do dias dos pais" data-categoria="Cozinha">
+         data-busca="5 caneca personalizada do dias dos pais 5 caneca personalizada do dias dos pais" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7qukw-ljbt30ivpltc22" alt="5 caneca personalizada do dias dos pais" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>5 caneca personalizada do dias dos pais</h3>
           <span class="ver">Ver oferta →</span>
@@ -526,9 +581,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/60PtH8hkPJ?lp=aff" target="_blank" rel="noopener"
-         data-busca="bota estilo inglês com zíper lateral bota estilo inglês com zíper lateral" data-categoria="Outros">
+         data-busca="bota estilo inglês com zíper lateral bota estilo inglês com zíper lateral" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd50-lw4d2jwqdasj03" alt="Bota Estilo Inglês com Zíper Lateral" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Bota Estilo Inglês com Zíper Lateral</h3>
           <span class="ver">Ver oferta →</span>
@@ -536,9 +593,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/2g9RIb9GrG" target="_blank" rel="noopener"
-         data-busca="estação de musculação gallant elite 65kg estação de musculação gallant elite 65kg" data-categoria="Fitness">
+         data-busca="estação de musculação gallant elite 65kg estação de musculação gallant elite 65kg" data-categoria="Fitness"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbll-m5kean8be2q645" alt="Estação de Musculação Gallant Elite 65kg" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Estação de Musculação Gallant Elite 65kg</h3>
           <span class="ver">Ver oferta →</span>
@@ -546,9 +605,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/7Abqeh8gMN" target="_blank" rel="noopener"
-         data-busca="porta frios hermético 3 andares porta frios hermético 3 andares" data-categoria="Casa">
+         data-busca="porta frios hermético 3 andares porta frios hermético 3 andares" data-categoria="Casa"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ma-mp0fihnr9gqob0" alt="Porta Frios Hermético 3 Andares" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Porta Frios Hermético 3 Andares</h3>
           <span class="ver">Ver oferta →</span>
@@ -556,9 +617,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/3qLOfwBgqO?lp=aff" target="_blank" rel="noopener"
-         data-busca="helicóptero com sensor e controle remoto helicóptero com sensor e controle remoto" data-categoria="Utilidades">
+         data-busca="helicóptero com sensor e controle remoto helicóptero com sensor e controle remoto" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134301-7rd6g-m6p1kp3p6ryk2b" alt="Helicóptero com Sensor e Controle Remoto" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Helicóptero com Sensor e Controle Remoto</h3>
           <span class="ver">Ver oferta →</span>
@@ -566,9 +629,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/60PtFeWRe5?lp=aff" target="_blank" rel="noopener"
-         data-busca="kit 6 almofadas decorativas com enchimento kit 6 almofadas decorativas com enchimento" data-categoria="Casa">
+         data-busca="kit 6 almofadas decorativas com enchimento kit 6 almofadas decorativas com enchimento" data-categoria="Casa"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l4-mo0kwyychn9gbf" alt="Kit 6 Almofadas Decorativas com Enchimento" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Kit 6 Almofadas Decorativas com Enchimento</h3>
           <span class="ver">Ver oferta →</span>
@@ -576,9 +641,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/1BKcftvdh5?lp=aff" target="_blank" rel="noopener"
-         data-busca="amaciante downy amaciante downy" data-categoria="Outros">
+         data-busca="amaciante downy amaciante downy" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8258n-mgdzhiw3sgzua1" alt="Amaciante downy" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Amaciante downy</h3>
           <span class="ver">Ver oferta →</span>
@@ -586,9 +653,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/8pk3nWQ0Pf?lp=aff" target="_blank" rel="noopener"
-         data-busca="caneca, xícara vidro caneca, xícara vidro" data-categoria="Cozinha">
+         data-busca="caneca, xícara vidro caneca, xícara vidro" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820lh-mn1ft3mm3pxcce" alt="Caneca, xícara vidro" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Caneca, xícara vidro</h3>
           <span class="ver">Ver oferta →</span>
@@ -596,9 +665,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/8pk3nHSpmf?lp=aff" target="_blank" rel="noopener"
-         data-busca="nutella creme de avelã com cacau nutella creme de avelã com cacau" data-categoria="Outros">
+         data-busca="nutella creme de avelã com cacau nutella creme de avelã com cacau" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-823qk-mozs0v0iqdcf10" alt="Nutella Creme De Avelã Com Cacau" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Nutella Creme De Avelã Com Cacau</h3>
           <span class="ver">Ver oferta →</span>
@@ -606,9 +677,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/AUsGxqkK14?lp=aff" target="_blank" rel="noopener"
-         data-busca="capa magnética para samsung galaxy s25, s24 e s23 capa magnética para samsung galaxy s25, s24 e s23" data-categoria="Outros">
+         data-busca="capa magnética para samsung galaxy s25, s24 e s23 capa magnética para samsung galaxy s25, s24 e s23" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m45av81za08xbd" alt="Capa Magnética para Samsung Galaxy S25, S24 e S23" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Capa Magnética para Samsung Galaxy S25, S24 e S23</h3>
           <span class="ver">Ver oferta →</span>
@@ -616,9 +689,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/3g1woxNM9t?lp=aff" target="_blank" rel="noopener"
-         data-busca="carregador veicular 120w 4 em 1 carregador veicular 120w 4 em 1" data-categoria="Tech">
+         data-busca="carregador veicular 120w 4 em 1 carregador veicular 120w 4 em 1" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8258h-mqfn37bhwgelec" alt="Carregador Veicular 120W 4 em 1" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Carregador Veicular 120W 4 em 1</h3>
           <span class="ver">Ver oferta →</span>
@@ -626,9 +701,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/40enDBeRZB" target="_blank" rel="noopener"
-         data-busca="esponja de banho esfoliante de nylon esponja de banho esfoliante de nylon" data-categoria="Outros">
+         data-busca="esponja de banho esfoliante de nylon esponja de banho esfoliante de nylon" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mfe2z44bal1c56" alt="Esponja de Banho Esfoliante de Nylon" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Esponja de Banho Esfoliante de Nylon</h3>
           <span class="ver">Ver oferta →</span>
@@ -636,9 +713,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/50XKOgQYgm" target="_blank" rel="noopener"
-         data-busca="vaquinha robô dançarina infantil vaquinha robô dançarina infantil" data-categoria="Utilidades">
+         data-busca="vaquinha robô dançarina infantil vaquinha robô dançarina infantil" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rcdf-lr4ptm19id9je9" alt="Vaquinha Robô Dançarina Infantil" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Vaquinha Robô Dançarina Infantil</h3>
           <span class="ver">Ver oferta →</span>
@@ -646,9 +725,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/9Uzjjro5w1" target="_blank" rel="noopener"
-         data-busca="caixa de som jbl partybox 720 800w caixa de som jbl partybox 720 800w" data-categoria="Utilidades">
+         data-busca="caixa de som jbl partybox 720 800w caixa de som jbl partybox 720 800w" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-82600-ml29ku18g4qped" alt="Caixa de Som JBL PartyBox 720 800W" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Caixa de Som JBL PartyBox 720 800W</h3>
           <span class="ver">Ver oferta →</span>
@@ -656,9 +737,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/LlUoUfgTj?lp=aff" target="_blank" rel="noopener"
-         data-busca="blusa de malha para recém-nascido blusa de malha para recém-nascido" data-categoria="Outros">
+         data-busca="blusa de malha para recém-nascido blusa de malha para recém-nascido" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbnh-lpko7b0twrrj35" alt="Blusa de Malha para Recém-Nascido" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Blusa de Malha para Recém-Nascido</h3>
           <span class="ver">Ver oferta →</span>
@@ -666,9 +749,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/9KgHv6BEyR" target="_blank" rel="noopener"
-         data-busca="floratta desodorante colônia 75ml o boticário floratta desodorante colônia 75ml o boticário" data-categoria="Outros">
+         data-busca="floratta desodorante colônia 75ml o boticário floratta desodorante colônia 75ml o boticário" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mijp77t5l7uu25" alt="Floratta Desodorante Colônia 75ml O Boticário" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Floratta Desodorante Colônia 75ml O Boticário</h3>
           <span class="ver">Ver oferta →</span>
@@ -676,9 +761,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/AUsFIas9v1?lp=aff" target="_blank" rel="noopener"
-         data-busca="kit 4 cuecas boxer masculinos seda gelada kit 4 cuecas boxer masculinos seda gelada" data-categoria="Outros">
+         data-busca="kit 4 cuecas boxer masculinos seda gelada kit 4 cuecas boxer masculinos seda gelada" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-823q5-mp4ml56qv8r105" alt="Kit 4 Cuecas Boxer Masculinos Seda Gelada" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Kit 4 Cuecas Boxer Masculinos Seda Gelada</h3>
           <span class="ver">Ver oferta →</span>
@@ -686,9 +773,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/9KgHtQMew4" target="_blank" rel="noopener"
-         data-busca="câmera dji osmo action 5 pro standard combo câmera dji osmo action 5 pro standard combo" data-categoria="Tech">
+         data-busca="câmera dji osmo action 5 pro standard combo câmera dji osmo action 5 pro standard combo" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8261e-mm0c4uoxwcg8db" alt="Câmera DJI Osmo Action 5 Pro Standard Combo" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Câmera DJI Osmo Action 5 Pro Standard Combo</h3>
           <span class="ver">Ver oferta →</span>
@@ -696,9 +785,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/4LHbvsAmEp?lp=aff" target="_blank" rel="noopener"
-         data-busca="pote coração artesanal em resina ecológica e cimento pote coração artesanal em resina ecológica e cimento" data-categoria="Cozinha">
+         data-busca="pote coração artesanal em resina ecológica e cimento pote coração artesanal em resina ecológica e cimento" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m9it7nql2rk27a" alt="Pote Coração Artesanal em Resina Ecológica e Cimento" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Pote Coração Artesanal em Resina Ecológica e Cimento</h3>
           <span class="ver">Ver oferta →</span>
@@ -706,9 +797,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/LlTA4Vx9b" target="_blank" rel="noopener"
-         data-busca="mangueira flexível de silicone para torneira mangueira flexível de silicone para torneira" data-categoria="Utilidades">
+         data-busca="mangueira flexível de silicone para torneira mangueira flexível de silicone para torneira" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-81zvx-mid3e3sf6zgn05" alt="Mangueira Flexível de Silicone para Torneira" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Mangueira Flexível de Silicone para Torneira</h3>
           <span class="ver">Ver oferta →</span>
@@ -716,9 +809,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/6AjG6TwaiH" target="_blank" rel="noopener"
-         data-busca="troninho redutor para vaso sanitário com escada troninho redutor para vaso sanitário com escada" data-categoria="Casa">
+         data-busca="troninho redutor para vaso sanitário com escada troninho redutor para vaso sanitário com escada" data-categoria="Casa"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-mo69pg3qu7ls9b" alt="Troninho Redutor para Vaso Sanitário com Escada" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Troninho Redutor para Vaso Sanitário com Escada</h3>
           <span class="ver">Ver oferta →</span>
@@ -726,9 +821,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/4LHb6Yxomx?lp=aff" target="_blank" rel="noopener"
-         data-busca="mesa para computador compacta mesa para computador compacta" data-categoria="Outros">
+         data-busca="mesa para computador compacta mesa para computador compacta" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m3-mms03ar6amtjab" alt="Mesa Para Computador Compacta" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Mesa Para Computador Compacta</h3>
           <span class="ver">Ver oferta →</span>
@@ -736,9 +833,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/4fuRUwxnup?lp=aff" target="_blank" rel="noopener"
-         data-busca="penteadeira com gaveta multiuso penteadeira com gaveta multiuso" data-categoria="Outros">
+         data-busca="penteadeira com gaveta multiuso penteadeira com gaveta multiuso" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mieknu9mnkznaf" alt="Penteadeira com gaveta multiuso" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Penteadeira com gaveta multiuso</h3>
           <span class="ver">Ver oferta →</span>
@@ -746,9 +845,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/5VTYU8q7aW?lp=aff" target="_blank" rel="noopener"
-         data-busca="ar condicionado elgin ar condicionado elgin" data-categoria="Outros">
+         data-busca="ar condicionado elgin ar condicionado elgin" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8261o-mlqqd6onsw02d8" alt="Ar condicionado Elgin" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Ar condicionado Elgin</h3>
           <span class="ver">Ver oferta →</span>
@@ -756,9 +857,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/7KvCf99xnP?lp=aff" target="_blank" rel="noopener"
-         data-busca="kit com 2 meias-calças térmicas kit com 2 meias-calças térmicas" data-categoria="Cozinha">
+         data-busca="kit com 2 meias-calças térmicas kit com 2 meias-calças térmicas" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m8-moj3hdmri39i93" alt="Kit com 2 Meias-Calças Térmicas" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Kit com 2 Meias-Calças Térmicas</h3>
           <span class="ver">Ver oferta →</span>
@@ -766,9 +869,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/2Vpwtp44WA?lp=aff" target="_blank" rel="noopener"
-         data-busca="sapatilha beira rio sapatilha beira rio" data-categoria="Outros">
+         data-busca="sapatilha beira rio sapatilha beira rio" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820lp-mq3g49vt0hz59b" alt="Sapatilha beira rio" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Sapatilha beira rio</h3>
           <span class="ver">Ver oferta →</span>
@@ -776,9 +881,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/LlSJNFIxk?lp=aff" target="_blank" rel="noopener"
-         data-busca="ninja blast liquidificador portátil bivolt ninja blast liquidificador portátil bivolt" data-categoria="Cozinha">
+         data-busca="ninja blast liquidificador portátil bivolt ninja blast liquidificador portátil bivolt" data-categoria="Cozinha"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-82593-mq7zn0whiccg94" alt="Ninja Blast Liquidificador Portátil Bivolt" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Ninja Blast Liquidificador Portátil Bivolt</h3>
           <span class="ver">Ver oferta →</span>
@@ -786,9 +893,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/6AjFFlAJMO?lp=aff" target="_blank" rel="noopener"
-         data-busca="frigideira saudável completa funda vermelha antiaderente tra frigideira saudável completa funda vermelha antiaderente tra" data-categoria="Outros">
+         data-busca="frigideira saudável completa funda vermelha antiaderente tra frigideira saudável completa funda vermelha antiaderente tra" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lqeuq22cx3jbe1" alt="Frigideira Saudável Completa Funda Vermelha Antiaderente Tra" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Frigideira Saudável Completa Funda Vermelha Antiaderente Tra</h3>
           <span class="ver">Ver oferta →</span>
@@ -796,9 +905,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/60PoxIFjTT?lp=aff" target="_blank" rel="noopener"
-         data-busca="controle de xbox 360 controle de xbox 360" data-categoria="Tech">
+         data-busca="controle de xbox 360 controle de xbox 360" data-categoria="Tech"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134211-7qukw-lk42sdt99rxf41" alt="Controle de Xbox 360" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Controle de Xbox 360</h3>
           <span class="ver">Ver oferta →</span>
@@ -806,9 +917,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/1qaFz8HVoG?lp=aff" target="_blank" rel="noopener"
-         data-busca="ar condicionado de janela hisense com wifi ar condicionado de janela hisense com wifi" data-categoria="Outros">
+         data-busca="ar condicionado de janela hisense com wifi ar condicionado de janela hisense com wifi" data-categoria="Outros"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m7d1on9ppfhu34" alt="Ar Condicionado de Janela Hisense com Wifi" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Ar Condicionado de Janela Hisense com Wifi</h3>
           <span class="ver">Ver oferta →</span>
@@ -816,9 +929,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/6AjF8D1N3u?lp=aff" target="_blank" rel="noopener"
-         data-busca="20 litro com pedal 20 litro com pedal" data-categoria="Utilidades">
+         data-busca="20 litro com pedal 20 litro com pedal" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lynn1dv2kueddd" alt="20 litro com pedal" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>20 litro com pedal</h3>
           <span class="ver">Ver oferta →</span>
@@ -826,9 +941,11 @@
       </a>
 
       <a class="glass prod" href="https://s.shopee.com.br/7fY1jfNBEn?lp=aff" target="_blank" rel="noopener"
-         data-busca="sacolas plásticas boca palhaço sacolas plásticas boca palhaço" data-categoria="Utilidades">
+         data-busca="sacolas plásticas boca palhaço sacolas plásticas boca palhaço" data-categoria="Utilidades"
+         data-plataforma="shopee">
         <div class="thumb"><img src="https://cf.shopee.com.br/file/6c401aed05077c9ab675bd14c4d1dbf9" alt="Sacolas Plásticas Boca Palhaço" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span></div>
+          <span class="selo">Achado topshop</span>
+          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
         <div class="body">
           <h3>Sacolas Plásticas Boca Palhaço</h3>
           <span class="ver">Ver oferta →</span>
@@ -906,16 +1023,20 @@
     const cards = Array.from(document.querySelectorAll('.prod, .prod-destaque'));
     const semRes = document.getElementById('sem-res');
     const filtros = document.querySelectorAll('.filtro');
+    const filtrosPlat = document.querySelectorAll('.filtro-plat');
     let catAtiva = 'todos';
+    let platAtiva = 'todos';
     function aplicar() {
       const termo = busca.value.trim().toLowerCase();
       let achou = 0;
       cards.forEach(function(c) {
         const alvo = c.getAttribute('data-busca') || '';
         const cat = c.getAttribute('data-categoria') || '';
+        const plat = c.getAttribute('data-plataforma') || 'shopee';
         const okB = !termo || alvo.indexOf(termo) !== -1;
         const okC = catAtiva === 'todos' || cat === catAtiva;
-        const mostra = okB && okC;
+        const okP = platAtiva === 'todos' || plat === platAtiva;
+        const mostra = okB && okC && okP;
         c.style.display = mostra ? '' : 'none';
         if (mostra) achou++;
       });
@@ -927,6 +1048,14 @@
         filtros.forEach(function(x) { x.classList.remove('ativo'); });
         b.classList.add('ativo');
         catAtiva = b.getAttribute('data-filtro');
+        aplicar();
+      });
+    });
+    filtrosPlat.forEach(function(b) {
+      b.addEventListener('click', function() {
+        filtrosPlat.forEach(function(x) { x.classList.remove('ativo'); });
+        b.classList.add('ativo');
+        platAtiva = b.getAttribute('data-plat');
         aplicar();
       });
     });
