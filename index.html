@@ -1,1341 +1,1471 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>topshop · Produtos inteligentes. Conteúdo estratégico.</title>
-<link rel="icon" type="image/png" href="/favicon-96x96.png?v=v1" sizes="96x96" />
-<link rel="shortcut icon" href="/favicon.ico?v=v1" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=v1" />
-<meta name="apple-mobile-web-app-title" content="TopShop" />
-<link rel="manifest" href="/site.webmanifest?v=v1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>topshop — o que você viu no vídeo, achou aqui</title>
+<meta name="description" content="Os achados que aparecem nos nossos vídeos, com link direto e preço conferido. Shopee e Amazon.">
+<meta property="og:title" content="topshop — o garimpo">
+<meta property="og:description" content="O que você viu no vídeo, achou aqui.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cf.shopee.com.br/file/244ef6dd01c8b2e5f42d0422778a0cd9">
+<meta name="theme-color" content="#09070E">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-  :root {
-    --bg: #0a0a12; --bg-soft: #12121f; --ink: #f4f4f8; --muted: #9a9ab0;
-    --pop: #6d5dfc; --pop2: #00d4ff; --gold: #ffc83d; --cta: #00e0b8;
-    --grad: linear-gradient(135deg, #6d5dfc 0%, #00d4ff 100%);
-    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.10);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg); color: var(--ink); line-height: 1.6;
-    -webkit-font-smoothing: antialiased; overflow-x: hidden;
-    max-width: 100%; position: relative; }
-  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
-  a { color: inherit; text-decoration: none; }
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal { opacity: 0; transform: translateY(24px);
-              transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-  }
-  nav { position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,18,0.72); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--glass-border); }
-  .nav-in { display: flex; justify-content: space-between; align-items: center;
-            padding: 16px 24px; max-width: 1140px; margin: 0 auto; }
-  .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; }
-  .logo b { background: var(--grad); -webkit-background-clip: text;
-            background-clip: text; color: transparent; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { color: var(--muted); font-weight: 600; font-size: 0.92rem;
-                 transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
-  @media (max-width: 760px) { .nav-links { display: none; } }
-  .hero { position: relative; text-align: center; padding: 110px 0 90px; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -10%; left: 50%;
-    transform: translateX(-50%); width: min(700px, 100vw); height: min(700px, 100vw);
-    max-width: 100%; background: radial-gradient(circle, rgba(109,93,252,0.22) 0%, transparent 60%);
-    z-index: -1; animation: float 8s ease-in-out infinite; pointer-events: none; }
-  @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); }
-                     50% { transform: translateX(-50%) translateY(-24px); } }
-  .badge { display: inline-block; background: var(--glass);
-    border: 1px solid var(--glass-border); color: var(--pop2);
-    font-weight: 600; font-size: 0.82rem; letter-spacing: 0.06em;
-    padding: 8px 18px; border-radius: 100px; margin-bottom: 30px;
-    text-transform: uppercase; }
-  .hero h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 800;
-             letter-spacing: -0.03em; line-height: 1.04; margin-bottom: 26px; }
-  .hero h1 b { background: var(--grad); -webkit-background-clip: text;
-               background-clip: text; color: transparent; }
-  .hero p { font-size: 1.22rem; color: var(--muted); max-width: 600px;
-            margin: 0 auto 40px; }
-  .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px;
-    font-weight: 700; font-size: 1rem; padding: 15px 32px;
-    border-radius: 100px; cursor: pointer; border: none;
-    transition: transform 0.18s ease, box-shadow 0.18s ease; }
-  .btn-primary { background: var(--grad); color: #fff;
-                 box-shadow: 0 8px 30px rgba(109,93,252,0.4); }
-  .btn-primary:hover { transform: translateY(-2px);
-                       box-shadow: 0 14px 40px rgba(109,93,252,0.55); }
-  .btn-ghost { background: var(--glass); color: var(--ink);
-               border: 1px solid var(--glass-border); }
-  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--pop2); }
-  section { padding: 90px 0; }
-  .eyebrow { color: var(--pop2); font-weight: 700; font-size: 0.85rem;
-             letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
-  .sec-title { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800;
-               letter-spacing: -0.02em; margin-bottom: 18px; }
-  .sec-sub { color: var(--muted); font-size: 1.12rem; max-width: 600px;
-             margin-bottom: 56px; }
-  .center { text-align: center; }
-  .center .sec-sub { margin-left: auto; margin-right: auto; }
-  .glass { background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 20px; backdrop-filter: blur(12px);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
-  .glass:hover { transform: translateY(-6px); border-color: rgba(109,93,252,0.5);
-                 box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
-  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-  .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
-  @media (max-width: 860px) { .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; } }
-  /* no celular os cards de PRODUTO ficam 2-por-linha (menores/mais "shopáveis");
-     só os cards de texto (grid-2) é que passam pra 1 coluna. */
-  @media (max-width: 560px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .grid-3 { grid-template-columns: 1fr 1fr; gap: 12px; }
-  }
-  .feat { padding: 32px 28px; }
-  .feat .ico { width: 46px; height: 46px; border-radius: 12px;
-               background: var(--grad); display: flex; align-items: center;
-               justify-content: center; margin-bottom: 18px; font-size: 1.3rem; }
-  .feat h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-  .feat p { color: var(--muted); font-size: 0.96rem; }
-  .difs { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 32px; margin-top: 10px; }
-  @media (max-width: 760px) { .difs { grid-template-columns: 1fr; } }
-  .dif { display: flex; align-items: center; gap: 14px; padding: 16px 0;
-         border-bottom: 1px solid var(--glass-border); }
-  .dif .check { color: var(--pop2); font-weight: 800; font-size: 1.1rem; }
-  .dif span:last-child { font-weight: 600; }
-  /* ===== Vitrine (busca + filtros + destaque + grade) ===== */
-  .busca-wrap { max-width: 560px; margin: 0 auto 18px; }
-  #busca { width: 100%; padding: 14px 18px; border-radius: 14px;
-    border: 1px solid var(--glass-border); background: var(--glass);
-    color: var(--ink); font-size: 1rem; outline: none; font-family: inherit;
-    transition: border-color .2s, box-shadow .2s; }
-  #busca:focus { border-color: var(--pop); box-shadow: 0 0 0 3px rgba(109,93,252,0.25); }
-  #busca::placeholder { color: var(--muted); }
-  .filtros { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 40px; }
-  .filtros-plat { margin-bottom: 16px; }
-  .filtro, .filtro-plat { background: var(--glass); color: var(--muted);
-    border: 1px solid var(--glass-border); border-radius: 100px;
-    padding: 8px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
-    transition: all .2s; font-family: inherit; }
-  .filtro:hover, .filtro-plat:hover { color: var(--ink); border-color: var(--pop2); }
-  .filtro.ativo, .filtro-plat.ativo { background: var(--grad); color: #fff; border-color: transparent;
-    box-shadow: 0 6px 20px rgba(109,93,252,0.4); }
-  .plat-badge { position: absolute; top: 14px; right: 14px; z-index: 2;
-    font-size: 0.62rem; font-weight: 800; letter-spacing: .3px;
-    padding: 4px 9px; border-radius: 100px; color: #fff; white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-  .plat-shopee { background: #ee4d2d; }
-  .plat-amazon { background: #ff9900; color: #131a22; }
-  .prod-destaque { display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    background: linear-gradient(135deg, rgba(109,93,252,0.12), var(--glass));
-    border: 1px solid var(--pop); border-radius: 24px; overflow: hidden;
-    margin-bottom: 50px; box-shadow: 0 0 40px rgba(109,93,252,0.25);
-    transition: transform .2s; }
-  .prod-destaque:hover { transform: translateY(-4px); }
-  @media (max-width: 760px) { .prod-destaque { grid-template-columns: 1fr; } }
-  .pd-img { position: relative; aspect-ratio: 1/1; background: linear-gradient(135deg,#1a1a2e,#16213e);
-    display: flex; align-items: center; justify-content: center; }
-  .pd-img img { width: 100%; height: 100%; object-fit: cover; }
-  .pd-ph { position: absolute; font-size: 3rem; opacity: 0.4; }
-  .pd-body { padding: 36px 32px; display: flex; flex-direction: column;
-    justify-content: center; gap: 18px; }
-  .pd-body h3 { font-size: 1.5rem; font-weight: 800; line-height: 1.25; }
-  .pd-cta { align-self: flex-start; background: var(--cta); color: #04201b;
-    font-weight: 800; padding: 13px 26px; border-radius: 100px; font-size: 1rem;
-    animation: pulsar 2.6s ease-in-out infinite; }
-  @keyframes pulsar { 0%,100% { box-shadow: 0 0 0 0 rgba(0,224,184,0); transform: scale(1); }
-    50% { box-shadow: 0 0 22px 3px rgba(0,224,184,0.5); transform: scale(1.03); } }
-  @media (prefers-reduced-motion: reduce) { .pd-cta { animation: none; } }
-  .selo { position: absolute; top: 14px; left: 14px; background: var(--gold);
-    color: #0a0a12; font-weight: 800; font-size: 0.72rem; padding: 6px 12px;
-    border-radius: 100px; letter-spacing: 0.03em; z-index: 3; }
-  .prod { overflow: hidden; display: flex; flex-direction: column; }
-  .prod .thumb { position: relative; aspect-ratio: 1/1;
-    background: linear-gradient(135deg,#1a1a2e,#16213e);
-    display: flex; align-items: center; justify-content: center; }
-  .prod .thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .prod .body { padding: 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-  .prod h3 { font-size: 1rem; font-weight: 700; line-height: 1.35;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .prod .ver { margin-top: auto; display: block; text-align: center; background: var(--glass);
-    border: 1px solid var(--glass-border); padding: 11px; border-radius: 100px;
-    font-weight: 700; font-size: 0.92rem; transition: background 0.2s, border-color 0.2s; }
-  .prod .ver:hover { border-color: var(--pop2); background: rgba(0,212,255,0.08); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
-  .contact-info { display: flex; flex-direction: column; gap: 16px; }
-  .ci { display: flex; align-items: center; gap: 14px; color: var(--muted); }
-  .ci .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--glass);
-    border: 1px solid var(--glass-border); display: flex; align-items: center;
-    justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-  .ci a { color: var(--ink); font-weight: 600; }
-  .contact-btns { display: flex; flex-direction: column; gap: 14px; }
-  .contact-btns .btn { justify-content: center; width: 100%; }
-  .btn-wa { background: #25d366; color: #052e16; }
-  .btn-tg { background: #29a9eb; color: #03263a; }
-  .btn-mail { background: var(--glass); border: 1px solid var(--glass-border); color: var(--ink); }
-  .contact-btns .btn:hover { transform: translateY(-2px); }
-  footer { background: var(--bg-soft); border-top: 1px solid var(--glass-border);
-           padding: 60px 0 30px; margin-top: 40px; }
-  .foot-top { display: flex; justify-content: space-between; flex-wrap: wrap;
-              gap: 30px; margin-bottom: 40px; }
-  .foot-brand { max-width: 320px; }
-  .foot-brand .logo { font-size: 1.5rem; margin-bottom: 12px; }
-  .foot-brand p { color: var(--muted); font-size: 0.95rem; }
-  .foot-links { display: flex; gap: 50px; flex-wrap: wrap; }
-  .foot-col h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;
-                 color: var(--muted); margin-bottom: 14px; }
-  .foot-col a { display: block; color: var(--ink); font-weight: 600; font-size: 0.95rem;
-                margin-bottom: 10px; opacity: 0.85; transition: opacity 0.2s; }
-  .foot-col a:hover { opacity: 1; color: var(--pop2); }
-  .afiliado { color: var(--muted); font-size: 0.82rem; line-height: 1.6;
-              border-top: 1px solid var(--glass-border); padding-top: 24px; margin-bottom: 16px; }
-  .copy { color: var(--muted); font-size: 0.85rem; text-align: center; }
-  .copy a { color: var(--muted); margin: 0 8px; }
-  .copy a:hover { color: var(--pop2); }
+@font-face{font-family:'Arch';src:url('topshop-fonte.woff2') format('woff2');
+  font-weight:100 900;font-stretch:62% 125%;font-display:swap}
 
-  /* ===== AJUSTES MOBILE (telas pequenas) ===== */
-  @media (max-width: 600px) {
-    .wrap { padding: 0 18px; }
-    section { padding: 56px 0; }
-    .nav-in { padding: 14px 18px; }
-    .logo { font-size: 1.15rem; }
-    .hero { padding: 64px 0 56px; }
-    .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.1; margin-bottom: 20px; }
-    .hero p { font-size: 1.02rem; padding: 0 4px; }
-    .badge { font-size: 0.7rem; padding: 7px 14px; margin-bottom: 22px; }
-    .sec-title { font-size: clamp(1.7rem, 7vw, 2.2rem); }
-    .sec-sub { font-size: 1rem; margin-bottom: 36px; }
-    .hero-cta { gap: 12px; }
-    .hero-cta .btn { width: 100%; justify-content: center; }
-    .btn { padding: 14px 26px; font-size: 0.98rem; }
-    .feat { padding: 26px 22px; }
-    .pd-body { padding: 26px 22px; }
-    .pd-body h3 { font-size: 1.25rem; }
-    .prod h3 { font-size: 0.9rem; line-height: 1.3; }
-    .prod .body { padding: 12px; gap: 8px; }
-    .prod .ver { padding: 9px; font-size: 0.85rem; }
-    .difs { gap: 4px 0; }
-    .dif { padding: 14px 0; }
-    /* trava qualquer vazamento horizontal */
-    section, .wrap, .hero, .prod-destaque, .grid-3, .grid-2 { max-width: 100%; }
-    img { max-width: 100%; height: auto; }
-  }
-  @media (max-width: 380px) {
-    .hero h1 { font-size: 1.85rem; }
-    .sec-title { font-size: 1.6rem; }
-  }
+:root{
+  --void:#09070E; --sup:#150F22; --sup2:#1E1631; --linha:rgba(255,215,240,.10);
+  --ink:#F7F2EC; --muted:#9C90AE;
+  --pink:#FF3D8A; --ouro:#FFD84D; --menta:#3DFFB0;
+  --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--ink);
+  font-family:'Arch','Segoe UI',system-ui,-apple-system,sans-serif;
+  line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+:where(a,button,input):focus-visible{outline:2px solid var(--menta);
+  outline-offset:3px;border-radius:10px}
+
+/* ══ fundo em 3 camadas (parallax só no desktop) ══════════════════════════ */
+.fundo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cam{position:absolute;inset:-30vh -12vw;will-change:transform}
+.cam i{position:absolute;border-radius:50%;display:block}
+.longe i{filter:blur(100px);opacity:.30}
+.longe i:nth-child(1){width:54vw;height:54vw;background:#8B1E52;top:8vh;right:-12vw;
+  animation:deriva1 26s ease-in-out infinite alternate}
+.longe i:nth-child(2){width:46vw;height:46vw;background:#2B1E6B;bottom:6vh;left:-10vw;
+  animation:deriva2 32s ease-in-out infinite alternate}
+.meio i{filter:blur(46px);opacity:.20}
+.meio i:nth-child(1){width:20vw;height:20vw;background:#FF3D8A;top:52vh;left:14vw;
+  animation:deriva2 19s ease-in-out infinite alternate}
+.meio i:nth-child(2){width:15vw;height:15vw;background:#3DFFB0;top:22vh;right:26vw;
+  opacity:.13;animation:deriva1 23s ease-in-out infinite alternate}
+.perto{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--linha) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--linha) 1px,transparent 1px);
+  background-size:72px 72px;background-position:0 var(--vy,0px),0 0;
+  -webkit-mask-image:radial-gradient(70% 55% at 50% 34%,#000,transparent 78%);
+  mask-image:radial-gradient(70% 55% at 50% 34%,#000,transparent 78%)}
+@keyframes deriva1{to{transform:translate(-7vw,9vh) scale(1.14)}}
+@keyframes deriva2{to{transform:translate(9vw,-7vh) scale(1.1)}}
+body>*:not(.fundo){position:relative;z-index:1}
+
+/* ══ topo ═════════════════════════════════════════════════════════════════ */
+header{position:sticky;top:0;z-index:40;backdrop-filter:blur(20px);
+  background:rgba(9,7,14,.72);border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s}
+header.colado{border-bottom-color:var(--linha);background:rgba(9,7,14,.92)}
+.barra{display:flex;align-items:center;gap:clamp(10px,2.5vw,22px);padding-block:13px}
+.marca{font-size:21px;font-weight:800;font-stretch:112%;letter-spacing:-.045em;
+  white-space:nowrap;display:flex;align-items:center;gap:2px}
+.marca i{font-style:normal;color:var(--pink)}
+.marca .pt{color:var(--pink);animation:pisca 3.4s ease-in-out infinite}
+@keyframes pisca{0%,92%,100%{opacity:1}96%{opacity:.25}}
+.busca{flex:1;position:relative;max-width:520px}
+.busca input{width:100%;background:rgba(255,255,255,.045);border:1px solid var(--linha);
+  color:var(--ink);border-radius:999px;padding:11px 54px 11px 44px;font:inherit;
+  font-size:15px;transition:border-color .25s,background .25s,box-shadow .25s}
+.busca input::placeholder{color:var(--muted)}
+.busca input:focus{outline:none;border-color:var(--pink);background:rgba(255,61,138,.07);
+  box-shadow:0 0 0 4px rgba(255,61,138,.10)}
+.busca .lupa{position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  width:17px;height:17px;stroke:var(--muted);fill:none;stroke-width:2;
+  stroke-linecap:round;transition:stroke .25s,transform .25s;pointer-events:none}
+.busca input:focus~.lupa{stroke:var(--pink);transform:translateY(-50%) scale(1.12)}
+.atalho{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;
+  color:var(--muted);border:1px solid var(--linha);border-radius:6px;padding:2px 6px;
+  pointer-events:none}
+@media(max-width:640px){.atalho{display:none}}
+.zap{background:var(--menta);color:#03291B;font-weight:700;font-size:14px;
+  padding:10px 17px;border-radius:999px;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s}
+.zap:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(61,255,176,.26)}
+@media(max-width:860px){.zap{display:none}}
+
+/* ══ herói ════════════════════════════════════════════════════════════════ */
+.heroi{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,56px);
+  align-items:center;padding:clamp(30px,6vw,64px) 0 clamp(24px,4vw,40px);
+  position:relative;isolation:isolate}
+@media(max-width:900px){.heroi{grid-template-columns:1fr;gap:26px}}
+.atmos{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);
+  width:100vw;max-width:100vw;overflow:hidden;z-index:-2;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.vivo{position:absolute;inset:-24%;border-radius:50%;filter:blur(66px);opacity:.42;
+  background:conic-gradient(from 0deg,rgba(255,61,138,.34),rgba(123,44,255,.30),
+    rgba(61,255,176,.14),rgba(255,216,77,.20),rgba(255,61,138,.34));
+  animation:gira 24s linear infinite}
+@keyframes gira{to{transform:rotate(1turn)}}
+.luz{position:absolute;inset:0;opacity:0;transition:opacity .55s;
+  background:radial-gradient(430px circle at var(--hx,50%) var(--hy,50%),
+    rgba(255,61,138,.15),transparent 66%)}
+.heroi:hover .luz{opacity:1}
+.rotulo{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:16px}
+.rotulo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--pink);
+  box-shadow:0 0 0 0 rgba(255,61,138,.6);animation:pulso 2s infinite}
+@keyframes pulso{70%{box-shadow:0 0 0 11px rgba(255,61,138,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,61,138,0)}}
+h1{font-size:clamp(38px,7.4vw,84px);font-weight:800;font-stretch:118%;
+  line-height:.92;letter-spacing:-.045em;text-wrap:balance;
+  background:linear-gradient(100deg,var(--ink) 40%,#FFFFFF 48%,var(--ink) 56%);
+  background-size:300% 100%;background-position:135% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:varre 9s ease-in-out 1.8s infinite}
+@keyframes varre{0%,62%{background-position:135% 0}100%{background-position:-35% 0}}
+h1 .risca{position:relative;display:inline-block;color:var(--pink);padding-bottom:.1em}
+h1 .risca::after{content:"";position:absolute;left:0;right:0;bottom:0;height:.075em;
+  background:var(--ouro);transform:scaleX(0);transform-origin:left;border-radius:99px;
+  animation:risca 1s cubic-bezier(.2,.7,.2,1) .5s forwards}
+@keyframes risca{to{transform:scaleX(1)}}
+.heroi p.sub{color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:42ch;margin-top:18px}
+.metricas{display:flex;gap:clamp(18px,4vw,40px);margin-top:28px;flex-wrap:wrap}
+.metricas div{display:flex;flex-direction:column}
+.metricas b{font-size:clamp(24px,3.4vw,34px);font-weight:800;font-stretch:110%;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.metricas span{font-size:12px;color:var(--muted);letter-spacing:.06em;
+  text-transform:uppercase;margin-top:5px}
+.cta-m{display:inline-flex;align-items:center;gap:9px;background:var(--pink);color:#fff;
+  font-weight:750;font-size:15px;padding:14px 26px;border-radius:999px;margin-top:24px;
+  transition:transform .18s,box-shadow .28s;box-shadow:0 10px 30px rgba(255,61,138,.28)}
+.cta-m:hover{box-shadow:0 16px 42px rgba(255,61,138,.42)}
+.cta-m .seta{transition:transform .3s}
+.cta-m:hover .seta{transform:translateX(5px)}
+
+/* moldura 9:16 — o formato do Reels de onde a pessoa veio */
+.moldura{position:relative;aspect-ratio:9/16;max-height:520px;margin:0 auto;width:100%;
+  max-width:300px;border-radius:26px;overflow:hidden;border:1px solid var(--linha);
+  background:linear-gradient(180deg,#EFEBF4 0%,#E6E0F0 38%,#3A2E56 68%,var(--sup) 100%);
+  box-shadow:0 30px 70px rgba(0,0,0,.55);display:block;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.moldura .capa{position:absolute;top:0;left:0;width:100%;height:64%;object-fit:cover;
+  -webkit-mask-image:linear-gradient(#000 74%,transparent);
+  mask-image:linear-gradient(#000 74%,transparent);
+  animation:respira 12s ease-in-out infinite}
+.moldura .capa-fb{position:absolute;top:0;left:0;width:100%;height:64%;display:grid;
+  place-items:center;font-size:84px;font-style:normal;animation:respira 12s ease-in-out infinite}
+@keyframes respira{50%{transform:scale(1.07)}}
+.moldura .brilho{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(255,61,138,.30),transparent 70%)}
+.moldura .live{position:absolute;top:14px;left:14px;display:flex;align-items:center;
+  gap:6px;background:rgba(9,7,14,.7);backdrop-filter:blur(8px);
+  border:1px solid var(--linha);border-radius:999px;padding:5px 11px;
+  font-size:11px;font-weight:700}
+.moldura .live b{width:6px;height:6px;border-radius:50%;background:var(--pink);
+  animation:pulso 1.6s infinite}
+.moldura .pe{position:absolute;left:0;right:0;bottom:0;padding:18px 16px 16px;
+  background:linear-gradient(transparent,rgba(9,7,14,.94) 55%)}
+.moldura .pe h3{font-size:14px;font-weight:600;line-height:1.3;margin-bottom:9px}
+.moldura .pe .pr b{font-size:26px;color:var(--ouro)}
+.moldura .pe .pr b i{color:rgba(255,216,77,.55)}
+.moldura .pe .afer{margin-top:7px}
+
+/* ══ esteira ══════════════════════════════════════════════════════════════ */
+.esteira{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);
+  padding:13px 0;overflow:hidden;white-space:nowrap;margin:clamp(14px,3vw,26px) 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.esteira .fita{display:inline-flex;gap:34px;animation:corre 40s linear infinite}
+.esteira:hover .fita{animation-play-state:paused}
+@keyframes corre{to{transform:translateX(-50%)}}
+.esteira span{font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+.esteira span::before{content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--pink);flex:none}
+.esteira b{color:var(--ink);font-weight:600}
+
+/* ══ controles ════════════════════════════════════════════════════════════ */
+.controles{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.lojas{display:flex;gap:5px;background:rgba(255,255,255,.04);border:1px solid var(--linha);
+  border-radius:999px;padding:5px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.lojas::-webkit-scrollbar{display:none}
+.loja{border:0;background:none;color:var(--muted);font:inherit;font-size:14px;
+  font-weight:650;padding:9px 17px;border-radius:999px;cursor:pointer;white-space:nowrap;
+  position:relative;isolation:isolate;transition:color .22s}
+.loja[aria-selected="true"]{color:#fff}
+.loja .pil{position:absolute;inset:0;border-radius:999px;z-index:0;opacity:0;
+  transform:scale(.85);background:linear-gradient(120deg,var(--pink),#B4247E);
+  transition:opacity .3s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.loja[aria-selected="true"] .pil{opacity:1;transform:scale(1)}
+.loja>span:not(.pil){position:relative;z-index:1}
+.loja .n{opacity:.62;margin-left:6px;font-variant-numeric:tabular-nums;font-style:normal}
+.loja:disabled{opacity:.38;cursor:not-allowed}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid var(--linha);background:transparent;color:var(--muted);font:inherit;
+  font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;
+  transition:color .2s,border-color .2s,background .2s,transform .2s}
+.chip:hover{color:var(--ink);transform:translateY(-1px)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#12100D;border-color:var(--ink)}
+
+/* ══ grade ════════════════════════════════════════════════════════════════ */
+.palco{position:relative}
+.holofote{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,61,138,.13),transparent 62%)}
+.palco:hover .holofote{opacity:1}
+.grade{display:grid;gap:clamp(11px,1.6vw,18px);
+  grid-template-columns:repeat(auto-fill,minmax(215px,1fr))}
+.card{background:linear-gradient(165deg,var(--sup),rgba(21,15,34,.6));
+  border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;display:flex;
+  flex-direction:column;position:relative;
+  transition:opacity .55s,transform .4s cubic-bezier(.2,.7,.2,1),
+    border-color .3s,box-shadow .4s}
+.card.esconde{display:none}
+.js .card{opacity:0;transform:translateY(24px)}
+.js .card.dentro{opacity:1;transform:none}
+.card:hover{border-color:rgba(255,61,138,.45);box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.card .foto{aspect-ratio:1;position:relative;overflow:hidden;
+  background:linear-gradient(170deg,#F6F3F8,#DDD6E6)}
+.card .foto img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;
+  transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
+.card .foto img.ok{opacity:1}
+.card:hover .foto img.ok{transform:scale(1.07)}
+.card .foto .fb{position:absolute;inset:0;display:none;place-items:center;font-size:46px;
+  font-style:normal;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.card .foto.sem-foto{background:radial-gradient(110% 80% at 50% 12%,var(--sup2),transparent)}
+.card .foto.sem-foto .fb{display:grid}
+.card:hover .foto.sem-foto .fb{transform:scale(1.14) rotate(-4deg)}
+.card .foto.carregando{background-image:linear-gradient(100deg,
+  #E9E3F0 42%,#F9F6FC 50%,#E9E3F0 58%);background-size:280% 100%;
+  animation:esqueleto 1.25s linear infinite}
+@keyframes esqueleto{from{background-position:160% 0}to{background-position:-60% 0}}
+.card .foto::after{content:"";position:absolute;inset:0;transform:translateX(-110%);
+  pointer-events:none;background:linear-gradient(112deg,transparent 40%,
+    rgba(255,255,255,.34) 50%,transparent 60%);transition:transform .8s}
+.card:hover .foto::after{transform:translateX(110%)}
+.selo{position:absolute;top:10px;left:10px;font-size:10.5px;font-weight:750;
+  padding:4px 9px;border-radius:999px;letter-spacing:.03em;background:rgba(9,7,14,.72);
+  backdrop-filter:blur(8px);border:1px solid var(--linha);color:var(--ink);z-index:2}
+.selo.novo{background:var(--menta);color:#03291B;border-color:transparent}
+.selo.off{background:var(--ouro);color:#2A1C00;border-color:transparent;left:auto;right:10px}
+.selo.plat{top:auto;bottom:10px}
+.card .corpo{padding:13px 14px 15px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:14px;font-weight:550;line-height:1.35;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .ver{display:flex;align-items:center;justify-content:center;gap:7px;
+  border:1px solid var(--linha);border-radius:11px;padding:11px;font-size:13.5px;
+  font-weight:700;margin-top:auto;transition:background .25s,border-color .25s,color .25s}
+.card:hover .ver{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* preço — o til avisa que é média, não preço travado */
+.pr{display:flex;align-items:baseline;gap:8px}
+.pr b,.pr s{white-space:nowrap}
+.pr b{font-size:21px;font-weight:800;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.pr b i{font-style:normal;font-weight:600;font-size:.62em;margin-right:2px;
+  position:relative;top:-.1em;color:var(--muted)}
+.pr s{color:var(--muted);font-size:12px}
+.afer{font-size:10.5px;color:var(--muted);letter-spacing:.015em;margin-top:-4px;
+  display:flex;align-items:flex-start;gap:5px;line-height:1.35}
+.afer::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--muted);
+  flex:none;opacity:.7;margin-top:.42em}
+.afer.caindo{color:var(--menta)}
+.afer.caindo::before{background:var(--menta);opacity:1}
+
+.vazio{text-align:center;padding:60px 20px;color:var(--muted)}
+.vazio b{display:block;color:var(--ink);font-size:19px;margin-bottom:7px;font-weight:700}
+
+/* ══ seções de conteúdo ═══════════════════════════════════════════════════ */
+section{padding:clamp(48px,8vw,88px) 0}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+h2{font-size:clamp(26px,4.4vw,44px);font-weight:800;font-stretch:112%;
+  letter-spacing:-.035em;line-height:1.05;text-wrap:balance}
+.sec-sub{color:var(--muted);margin-top:12px;max-width:56ch;font-size:clamp(14px,1.8vw,16.5px)}
+.reveal{opacity:1}
+.js .reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.dentro{opacity:1;transform:none}
+.difs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:10px;margin-top:30px}
+.dif{display:flex;align-items:center;gap:11px;padding:14px 16px;border-radius:13px;
+  border:1px solid var(--linha);background:rgba(255,255,255,.025);font-size:14.5px;
+  transition:border-color .25s,transform .25s}
+.dif:hover{border-color:rgba(255,61,138,.4);transform:translateY(-2px)}
+.dif .check{color:var(--ouro);font-size:15px;flex:none}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
+  gap:clamp(11px,1.6vw,18px);margin-top:34px}
+.feat{padding:24px 22px 26px;border-radius:var(--r);border:1px solid var(--linha);
+  background:linear-gradient(165deg,var(--sup),rgba(21,15,34,.55));
+  transition:border-color .3s,transform .3s,box-shadow .3s}
+.feat:hover{border-color:rgba(255,61,138,.4);transform:translateY(-4px);
+  box-shadow:0 20px 44px rgba(0,0,0,.45)}
+.feat .ico{font-size:26px;margin-bottom:14px}
+.feat h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.feat p{color:var(--muted);font-size:14px;line-height:1.55}
+.contato{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,56px);
+  align-items:start}
+@media(max-width:820px){.contato{grid-template-columns:1fr}}
+.cis{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.ci{display:flex;align-items:center;gap:13px;padding:15px 17px;border-radius:13px;
+  border:1px solid var(--linha);background:rgba(255,255,255,.025);
+  transition:border-color .25s,transform .25s}
+.ci:hover{border-color:rgba(61,255,176,.42);transform:translateX(3px)}
+.ci .ico{font-size:19px;flex:none}
+.ci span{display:flex;flex-direction:column;font-size:14.5px;font-weight:600}
+.ci span i{font-style:normal;font-size:12.5px;color:var(--muted);font-weight:400;margin-top:2px}
+
+footer.wrap{border-top:1px solid var(--linha);padding-block:30px 48px;color:var(--muted);
+  font-size:13px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+footer a{border-bottom:1px solid var(--linha)}
+
+@media(max-width:560px){
+  .grade{grid-template-columns:repeat(2,1fr)}
+  .card .corpo{padding:10px 11px 12px;gap:8px}
+  .card h3{font-size:12.5px}
+  .card .ver{padding:9px;font-size:12.5px}
+  .card .foto .fb{font-size:36px}
+  /* preço empilhado: lado a lado o riscado quebrava no meio do número
+     ("R$" numa linha, "220,37" na outra) no card de duas colunas */
+  .pr{flex-direction:column;align-items:flex-start;gap:1px}
+  .pr b{font-size:17px}
+  .pr s{font-size:11px}
+  /* chips numa fita rolável: em pé eles ocupavam 3 fileiras inteiras antes
+     do primeiro produto aparecer */
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+    margin-inline:calc(-1 * clamp(16px,4vw,32px));
+    padding-inline:clamp(16px,4vw,32px)}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .js .card,.js .reveal{opacity:1;transform:none}
+  h1{background:none;-webkit-text-fill-color:var(--ink);color:var(--ink)}
+}
 </style>
 </head>
 <body>
-<nav><div class="nav-in">
-  <div class="logo">top<b>shop</b>.</div>
-  <div class="nav-links">
-    <a href="#inicio">Início</a><a href="#diferenciais">Diferenciais</a>
-    <a href="#servicos">Serviços</a><a href="#produtos">Produtos</a>
-    <a href="#contato">Contato</a>
-  </div>
-  <a href="#contato" class="btn btn-primary" style="padding:10px 22px;font-size:0.9rem;">Parcerias</a>
-</div></nav>
+<div class="fundo" aria-hidden="true">
+  <div class="cam longe" data-k="0.10"><i></i><i></i></div>
+  <div class="cam meio"  data-k="0.30"><i></i><i></i></div>
+  <div class="perto" data-k="0.55"></div>
+</div>
 
-<header class="hero" id="inicio"><div class="wrap">
-  <span class="badge">Curadoria · Conteúdo · Tecnologia</span>
-  <h1>Produtos inteligentes.<br><b>Conteúdo que converte.</b></h1>
-  <p>A topshop garimpa, testa e transforma achados em vídeos estratégicos —
-     unindo curadoria afiada e inteligência artificial pra escalar resultado.</p>
-  <div class="hero-cta">
-    <a href="#produtos" class="btn btn-primary">Ver produtos</a>
-    <a href="#contato" class="btn btn-ghost">Propor parceria</a>
+<header id="topo">
+  <div class="wrap barra">
+    <a class="marca" href="#topo">top<i>shop</i><span class="pt">.</span></a>
+    <label class="busca">
+      <input id="busca" type="search" placeholder="Buscar o achado do vídeo..."
+             autocomplete="off" aria-label="Buscar produto">
+      <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      <span class="atalho">/</span>
+    </label>
+    <a class="zap" href="https://chat.whatsapp.com/G0DPGQV0rRc1tFRWIwOjrv" target="_blank" rel="noopener">Entrar no grupo</a>
   </div>
-</div></header>
+</header>
 
-<section id="diferenciais" class="wrap reveal">
-  <span class="eyebrow">Por que a topshop</span>
-  <h2 class="sec-title">Diferenciais que entregam</h2>
-  <p class="sec-sub">Não é sobre postar muito. É sobre postar o que funciona, com método e tecnologia por trás.</p>
-  <div class="difs">
-    <div class="dif"><span class="check">✦</span><span>Curadoria inteligente de produtos</span></div>
-    <div class="dif"><span class="check">✦</span><span>Conteúdo feito pra prender atenção</span></div>
-    <div class="dif"><span class="check">✦</span><span>Uso estratégico de inteligência artificial</span></div>
-    <div class="dif"><span class="check">✦</span><span>Foco em produtos úteis e virais</span></div>
-    <div class="dif"><span class="check">✦</span><span>Presença em múltiplas plataformas</span></div>
-    <div class="dif"><span class="check">✦</span><span>Mentalidade de escala</span></div>
-    <div class="dif"><span class="check">✦</span><span>Atendimento direto pra parcerias</span></div>
-    <div class="dif"><span class="check">✦</span><span>Tecnologia própria em movimento</span></div>
-  </div>
-</section>
-
-<section id="servicos" class="wrap reveal">
-  <div class="center">
-    <span class="eyebrow">O que fazemos</span>
-    <h2 class="sec-title">Serviços</h2>
-    <p class="sec-sub">Do achado ao alcance — uma operação completa de conteúdo e divulgação.</p>
-  </div>
-  <div class="grid-3">
-    <div class="glass feat"><div class="ico">📢</div><h3>Divulgação de produtos</h3><p>Seu produto apresentado pra um público pronto pra comprar.</p></div>
-    <div class="glass feat"><div class="ico">🎬</div><h3>Conteúdo para redes</h3><p>Vídeos curtos e diretos, pensados pra cada plataforma.</p></div>
-    <div class="glass feat"><div class="ico">⭐</div><h3>Reviews e demonstrações</h3><p>Demonstração honesta que mostra o produto em ação.</p></div>
-    <div class="glass feat"><div class="ico">🔗</div><h3>Estratégia de afiliados</h3><p>Links rastreáveis e conversão acompanhada de perto.</p></div>
-    <div class="glass feat"><div class="ico">🤝</div><h3>Parcerias comerciais</h3><p>Colaborações sob medida pra marcas e lojistas.</p></div>
-    <div class="glass feat"><div class="ico">⚡</div><h3>Campanhas com vídeos curtos</h3><p>Volume e ritmo de publicação pensados pra escala.</p></div>
-  </div>
-</section>
-
-<section id="produtos" class="wrap reveal">
-  <div class="center">
-    <span class="eyebrow">Achados da vez</span>
-    <h2 class="sec-title">Vitrine topshop</h2>
-    <p class="sec-sub">Os produtos que ganharam o selo de achado esperto. Busque, filtre e garanta o seu.</p>
-  </div>
-  <div class="busca-wrap"><input id="busca" type="search" placeholder="🔍 Buscar produto do vídeo..." autocomplete="off"></div><div class="filtros filtros-plat" id="filtros-plat"><button class="filtro-plat ativo" data-plat="todos">Tudo</button><button class="filtro-plat" data-plat="shopee">🛒 Shopee</button><button class="filtro-plat" data-plat="amazon">📦 Amazon</button></div><div class="filtros" id="filtros"><button class="filtro ativo" data-filtro="todos">Tudo</button><button class="filtro" data-filtro="Cozinha">Cozinha</button><button class="filtro" data-filtro="Beleza">Beleza</button><button class="filtro" data-filtro="Tech">Tech</button><button class="filtro" data-filtro="Fitness">Fitness</button><button class="filtro" data-filtro="Moda">Moda</button><button class="filtro" data-filtro="Pet">Pet</button><button class="filtro" data-filtro="Utilidades">Utilidades</button><button class="filtro" data-filtro="Casa">Casa</button><button class="filtro" data-filtro="Outros">Outros</button></div>
-    <a class="prod-destaque" href="https://s.shopee.com.br/70Ixkweor3" target="_blank" rel="noopener"
-       data-busca="chaveiro abridor de garrafas do martelo thor de garrafa de liga… chaveiro abridor de garrafas do martelo thor de garrafa de liga metálica criativa" data-categoria="Cozinha"
-       data-plataforma="shopee">
-      <div class="pd-img"><img src="https://cf.shopee.com.br/file/244ef6dd01c8b2e5f42d0422778a0cd9" alt="Chaveiro Abridor De Garrafas Do Martelo Thor De Garrafa De Liga…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-        <span class="selo">⭐ Produto do dia</span>
-        <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-      <div class="pd-body">
-        <h3>Chaveiro Abridor De Garrafas Do Martelo Thor De Garrafa De Liga…</h3>
-        <span class="pd-cta">🛒 PEGAR MEU DESCONTO</span>
+<main class="wrap">
+  <section class="heroi" id="inicio">
+    <div class="atmos" id="atmos"><div class="vivo"></div><div class="luz" id="luz"></div></div>
+    <div>
+      <div class="rotulo">Achado de hoje</div>
+      <h1>O que você viu<br>no vídeo, <span class="risca">achou aqui</span>.</h1>
+      <p class="sub">A gente garimpa, testa e mostra. Se apareceu no Reels, o link
+         tá aqui embaixo — com preço conferido.</p>
+      <div class="metricas">
+        <div><b data-alvo="78">78</b><span>achados ativos</span></div>
+        <div><b data-alvo="2">2</b><span>lojas</span></div>
+        <div><b data-alvo="48">48</b><span>% off médio</span></div>
       </div>
-    </a><div class="grid-3" id="grade-prod">
-      <a class="glass prod" href="https://s.shopee.com.br/6AjtOromx7?lp=aff" target="_blank" rel="noopener"
+      <a class="cta-m" href="#produtos">Ver o garimpo <span class="seta">&rarr;</span></a>
+    </div>
+    
+    <a class="moldura" id="moldura" href="https://s.shopee.com.br/70Ixkweor3" target="_blank" rel="noopener">
+      <img class="capa" src="https://cf.shopee.com.br/file/244ef6dd01c8b2e5f42d0422778a0cd9" alt="Chaveiro Abridor De Garrafas Do Martelo Thor De Garrafa De Liga…" decoding="async">
+      <div class="brilho"></div>
+      <div class="live"><b></b> VISTO NO REELS</div>
+      <div class="pe">
+        <h3>Chaveiro Abridor De Garrafas Do Martelo Thor De Garrafa De Liga…</h3>
+        <div class="pr"><b>R$ 14,62</b></div><span class="afer">conferido em 1/ago</span>
+      </div>
+    </a>
+  </section>
+
+  <div class="esteira"><div class="fita"><span>acabou de sair: <b>Chaveiro Abridor De Garrafas Do</b></span><span>acabou de sair: <b>Elefante Musical Interativo</b></span><span>acabou de sair: <b>Cropped Feminino Canelado com Golinha</b></span><span>acabou de sair: <b>Tábua de Corte em L</b></span><span>acabou de sair: <b>Macacão Power Fit Fitness</b></span><span>acabou de sair: <b>Escova Massageadora de Silicone para</b></span><span>acabou de sair: <b>BT Coca-Cola Stick Blush -</b></span><span>acabou de sair: <b>kit 02 Caixa Organizadora Rattan</b></span><span>acabou de sair: <b>Rodo Combinado Limpa e Seca</b></span><span>acabou de sair: <b>Torneira Gourmet Pia Cozinha Com</b></span><span>acabou de sair: <b>Brinquedo Interativo Pato Dispensador de</b></span><span>acabou de sair: <b>Apple iPhone 17 Pro 17</b></span><span>acabou de sair: <b>Chaveiro Abridor De Garrafas Do</b></span><span>acabou de sair: <b>Elefante Musical Interativo</b></span><span>acabou de sair: <b>Cropped Feminino Canelado com Golinha</b></span><span>acabou de sair: <b>Tábua de Corte em L</b></span><span>acabou de sair: <b>Macacão Power Fit Fitness</b></span><span>acabou de sair: <b>Escova Massageadora de Silicone para</b></span><span>acabou de sair: <b>BT Coca-Cola Stick Blush -</b></span><span>acabou de sair: <b>kit 02 Caixa Organizadora Rattan</b></span><span>acabou de sair: <b>Rodo Combinado Limpa e Seca</b></span><span>acabou de sair: <b>Torneira Gourmet Pia Cozinha Com</b></span><span>acabou de sair: <b>Brinquedo Interativo Pato Dispensador de</b></span><span>acabou de sair: <b>Apple iPhone 17 Pro 17</b></span></div></div>
+
+  <section id="produtos" style="padding-top:clamp(18px,3vw,32px)">
+    <div class="controles"><div class="lojas" id="filtros-plat" role="tablist"><button class="loja" role="tab" aria-selected="true" data-plat="todos"><span class="pil"></span><span>Tudo<i class="n">78</i></span></button><button class="loja" role="tab" aria-selected="false" data-plat="shopee"><span class="pil"></span><span>Shopee<i class="n">69</i></span></button><button class="loja" role="tab" aria-selected="false" data-plat="amazon"><span class="pil"></span><span>Amazon<i class="n">9</i></span></button><button class="loja" role="tab" aria-selected="false" data-plat="meli" disabled title="Aparece sozinha quando o primeiro produto entrar"><span class="pil"></span><span>Mercado Livre<i class="n">em breve</i></span></button></div><div class="chips" id="filtros"><button class="chip" aria-pressed="true" data-filtro="todos">Tudo</button><button class="chip" aria-pressed="false" data-filtro="Cozinha">Cozinha</button><button class="chip" aria-pressed="false" data-filtro="Beleza">Beleza</button><button class="chip" aria-pressed="false" data-filtro="Tech">Tech</button><button class="chip" aria-pressed="false" data-filtro="Fitness">Fitness</button><button class="chip" aria-pressed="false" data-filtro="Moda">Moda</button><button class="chip" aria-pressed="false" data-filtro="Pet">Pet</button><button class="chip" aria-pressed="false" data-filtro="Utilidades">Utilidades</button><button class="chip" aria-pressed="false" data-filtro="Casa">Casa</button><button class="chip" aria-pressed="false" data-filtro="Outros">Outros</button></div></div><div class="palco"><div class="holofote" id="holofote"></div><div class="grade" id="grade-prod">
+      <a class="card" href="https://s.shopee.com.br/70Ixkweor3" target="_blank" rel="noopener"
+         data-busca="chaveiro abridor de garrafas do martelo thor de garrafa de liga… chaveiro abridor de garrafas do martelo thor de garrafa de liga metálica criativa" data-categoria="Cozinha"
+         data-plataforma="shopee">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/244ef6dd01c8b2e5f42d0422778a0cd9" alt="Chaveiro Abridor De Garrafas Do Martelo Thor De Garrafa De Liga…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo novo">novo</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
+          <h3>Chaveiro Abridor De Garrafas Do Martelo Thor De Garrafa De Liga…</h3>
+          <div class="pr"><b>R$ 14,62</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="card" href="https://s.shopee.com.br/6AjtOromx7?lp=aff" target="_blank" rel="noopener"
          data-busca="elefante musical interativo elefante musical interativo" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lyy0gx0d846d8f" alt="Elefante Musical Interativo" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lyy0gx0d846d8f" alt="Elefante Musical Interativo" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo novo">novo</span><span class="selo off">-46%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Elefante Musical Interativo</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 59,40</b><s>R$ 110,00</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1Vy3pxoEa2?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/1Vy3pxoEa2?lp=aff" target="_blank" rel="noopener"
          data-busca="cropped feminino canelado com golinha cropped feminino canelado com golinha" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7qvfe-ljzqkf8qgaja05" alt="Cropped Feminino Canelado com Golinha" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7qvfe-ljzqkf8qgaja05" alt="Cropped Feminino Canelado com Golinha" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo novo">novo</span><span class="selo off">-49%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Cropped Feminino Canelado com Golinha</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 25,49</b><s>R$ 49,98</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3g2YPRse8G?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3g2YPRse8G?lp=aff" target="_blank" rel="noopener"
          data-busca="tábua de corte em l para bancada e pia tábua de corte em l para bancada e pia" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820mb-mls0yrv3s7ie7c" alt="Tábua de Corte em L para Bancada e Pia" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820mb-mls0yrv3s7ie7c" alt="Tábua de Corte em L para Bancada e Pia" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-55%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Tábua de Corte em L para Bancada e Pia</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 131,69</b><s>R$ 292,64</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/qiN1LCvH5?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/qiN1LCvH5?lp=aff" target="_blank" rel="noopener"
          data-busca="macacão power fit fitness macacão power fit fitness" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m8lzl31uz8j572" alt="Macacão Power Fit Fitness" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m8lzl31uz8j572" alt="Macacão Power Fit Fitness" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Macacão Power Fit Fitness</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 169,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4LIFBM1Il6?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4LIFBM1Il6?lp=aff" target="_blank" rel="noopener"
          data-busca="escova massageadora de silicone para couro cabeludo escova massageadora de silicone para couro cabeludo" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/cl-11134201-23020-t6owe4u6slnv4c" alt="Escova Massageadora de Silicone para Couro Cabeludo" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/cl-11134201-23020-t6owe4u6slnv4c" alt="Escova Massageadora de Silicone para Couro Cabeludo" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-17%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Escova Massageadora de Silicone para Couro Cabeludo</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 8,45</b><s>R$ 10,18</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4qEQ3F3jEQ" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4qEQ3F3jEQ" target="_blank" rel="noopener"
          data-busca="bt coca-cola stick blush - bruna tavares bt coca-cola stick blush - bruna tavares" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-81zw6-mieruye28mx3a9" alt="BT Coca-Cola Stick Blush - Bruna Tavares" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-81zw6-mieruye28mx3a9" alt="BT Coca-Cola Stick Blush - Bruna Tavares" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>BT Coca-Cola Stick Blush - Bruna Tavares</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 119,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9zwWCv5wg5" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/9zwWCv5wg5" target="_blank" rel="noopener"
          data-busca="kit 02 caixa organizadora rattan 42 litros organize com estilo… kit 02 caixa organizadora rattan 42 litros organize com estilo em casa e escritório" data-categoria="Utilidades"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mera1ct3deypc8" alt="kit 02 Caixa Organizadora Rattan 42 litros Organize com Estilo…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mera1ct3deypc8" alt="kit 02 Caixa Organizadora Rattan 42 litros Organize com Estilo…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-20%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>kit 02 Caixa Organizadora Rattan 42 litros Organize com Estilo…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 74,90</b><s>R$ 93,62</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/80BWXQ8Njv" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/80BWXQ8Njv" target="_blank" rel="noopener"
          data-busca="rodo combinado limpa e seca vidro 25cm com cabo de 50cm rodo combinado limpa e seca vidro 25cm com cabo de 50cm" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdxs-lzf5czwn40iy4f" alt="Rodo Combinado Limpa e Seca Vidro 25cm com Cabo de 50cm" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdxs-lzf5czwn40iy4f" alt="Rodo Combinado Limpa e Seca Vidro 25cm com Cabo de 50cm" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Rodo Combinado Limpa e Seca Vidro 25cm com Cabo de 50cm</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 54,43</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/5ArLAIqLW5" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/5ArLAIqLW5" target="_blank" rel="noopener"
          data-busca="torneira gourmet pia cozinha com extensor flexível misturador… torneira gourmet pia cozinha com extensor flexível misturador monocomando pull spray arejador articulado inox fosco" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m5-mqlj9stfz4e859" alt="Torneira Gourmet Pia Cozinha Com Extensor Flexível Misturador…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820m5-mqlj9stfz4e859" alt="Torneira Gourmet Pia Cozinha Com Extensor Flexível Misturador…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-41%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Torneira Gourmet Pia Cozinha Com Extensor Flexível Misturador…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 176,99</b><s>R$ 299,98</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/30mozdFNKd" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/30mozdFNKd" target="_blank" rel="noopener"
          data-busca="brinquedo interativo pato dispensador de ração | alimentador… brinquedo interativo pato dispensador de ração | alimentador tigela lenta divertida para cães e gatos petiscos e ração" data-categoria="Pet"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-821eg-mgmm5na8uq6l50" alt="Brinquedo Interativo Pato Dispensador de Ração | Alimentador…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-821eg-mgmm5na8uq6l50" alt="Brinquedo Interativo Pato Dispensador de Ração | Alimentador…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-51%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Brinquedo Interativo Pato Dispensador de Ração | Alimentador…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 28,99</b><s>R$ 59,16</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/2BDjzarzIF?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/2BDjzarzIF?lp=aff" target="_blank" rel="noopener"
          data-busca="apple iphone 17 pro 17 pro max 256gb 512gb 1tb 6.9 apple iphone 17 pro 17 pro max 256gb 512gb 1tb 6.9" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mf3zo49qosg56e" alt="Apple iPhone 17 Pro 17 Pro Max 256GB 512GB 1TB 6.9" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mf3zo49qosg56e" alt="Apple iPhone 17 Pro 17 Pro Max 256GB 512GB 1TB 6.9" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Apple iPhone 17 Pro 17 Pro Max 256GB 512GB 1TB 6.9</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 11.692,00</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/7ps6jgR9qz?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/7ps6jgR9qz?lp=aff" target="_blank" rel="noopener"
          data-busca="kit short academia kit short academia" data-categoria="Fitness"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-mjg83xen83r5d4" alt="Kit short academia" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-mjg83xen83r5d4" alt="Kit short academia" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-58%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit short academia</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 49,99</b><s>R$ 119,02</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3Vj5aaqGG2" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3Vj5aaqGG2" target="_blank" rel="noopener"
          data-busca="deltarune - placas quadros decorativos posters rpg indie kris… deltarune - placas quadros decorativos posters rpg indie kris susie ralsei pixel art" data-categoria="Casa"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m7-mnhb5wf3h8g1f1" alt="deltarune - Placas Quadros Decorativos Posters RPG Indie Kris…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820m7-mnhb5wf3h8g1f1" alt="deltarune - Placas Quadros Decorativos Posters RPG Indie Kris…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>deltarune - Placas Quadros Decorativos Posters RPG Indie Kris…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 13,23</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8V7iQC1qHQ" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/8V7iQC1qHQ" target="_blank" rel="noopener"
          data-busca="kit organizador cosmético maquiagem acrílico giratório 360º +… kit organizador cosmético maquiagem acrílico giratório 360º + organizador acrílico porta algodão e cotonete 2 em 1" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7repw-m81s8dqxyv8i37" alt="Kit Organizador Cosmético Maquiagem Acrílico Giratório 360º +…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7repw-m81s8dqxyv8i37" alt="Kit Organizador Cosmético Maquiagem Acrílico Giratório 360º +…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-58%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit Organizador Cosmético Maquiagem Acrílico Giratório 360º +…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 41,98</b><s>R$ 99,95</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=Mini+necessaire+com+visor&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=Mini+necessaire+com+visor&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="mini necessaire com visor mini necessaire com visor" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>Mini necessaire com visor</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/2LX9yn2qSj?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/2LX9yn2qSj?lp=aff" target="_blank" rel="noopener"
          data-busca="sandália vizzano papete feminina tiras tendência moda 6510 sandália vizzano papete feminina tiras tendência moda 6510" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-md1td54rryuq23" alt="Sandália Vizzano Papete Feminina Tiras Tendência Moda 6510" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-md1td54rryuq23" alt="Sandália Vizzano Papete Feminina Tiras Tendência Moda 6510" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-21%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Sandália Vizzano Papete Feminina Tiras Tendência Moda 6510</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 134,90</b><s>R$ 170,76</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4Ayo94njTk?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4Ayo94njTk?lp=aff" target="_blank" rel="noopener"
          data-busca="repelente off baby 117g repelente off baby 117g" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-825aa-mrcosp67a3nmcc" alt="Repelente Off Baby 117g" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-825aa-mrcosp67a3nmcc" alt="Repelente Off Baby 117g" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Repelente Off Baby 117g</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 37,39</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8fRDUSbDgE?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/8fRDUSbDgE?lp=aff" target="_blank" rel="noopener"
          data-busca="sandália feminina lumiss salto baixo sandália feminina lumiss salto baixo" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lztdamd2c0mdca" alt="Sandália Feminina Lumiss Salto Baixo" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lztdamd2c0mdca" alt="Sandália Feminina Lumiss Salto Baixo" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-42%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Sandália Feminina Lumiss Salto Baixo</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 75,92</b><s>R$ 130,90</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3B6GmZcy0I" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3B6GmZcy0I" target="_blank" rel="noopener"
          data-busca="lixeira suspensa para cozinha dobrável retrátil para porta de… lixeira suspensa para cozinha dobrável retrátil para porta de armário com tampa economia de espaço" data-categoria="Utilidades"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-82594-mr1ndi8u9bet1a" alt="Lixeira Suspensa para Cozinha Dobrável Retrátil para Porta de…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-82594-mr1ndi8u9bet1a" alt="Lixeira Suspensa para Cozinha Dobrável Retrátil para Porta de…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-38%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Lixeira Suspensa para Cozinha Dobrável Retrátil para Porta de…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 30,99</b><s>R$ 49,98</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8fRDKlOoBV" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/8fRDKlOoBV" target="_blank" rel="noopener"
          data-busca="kit mini motosserra e tesoura de poda eletrica sem fio com… kit mini motosserra e tesoura de poda eletrica sem fio com extensor 180cm 2 baterias 48v" data-categoria="Utilidades"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m6-mpktwzyfewox94" alt="Kit Mini Motosserra e Tesoura de Poda Eletrica Sem Fio com…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820m6-mpktwzyfewox94" alt="Kit Mini Motosserra e Tesoura de Poda Eletrica Sem Fio com…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-51%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit Mini Motosserra e Tesoura de Poda Eletrica Sem Fio com…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 488,89</b><s>R$ 997,73</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/AUspvUFrsk" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/AUspvUFrsk" target="_blank" rel="noopener"
          data-busca="urso pelúcia teddy gigante rose 1,10m com laço macio… urso pelúcia teddy gigante rose 1,10m com laço macio antialérgico presente decoração quarto infantil" data-categoria="Utilidades"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820m8-mlwr1d446uivc3" alt="Urso Pelúcia Teddy Gigante Rose 1,10m Com Laço Macio…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820m8-mlwr1d446uivc3" alt="Urso Pelúcia Teddy Gigante Rose 1,10m Com Laço Macio…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-38%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Urso Pelúcia Teddy Gigante Rose 1,10m Com Laço Macio…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 159,99</b><s>R$ 258,05</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6ffzMK8Kvv" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/6ffzMK8Kvv" target="_blank" rel="noopener"
          data-busca="20/30/50 nécessaire bolsinha transparente prova da agua viagem… 20/30/50 nécessaire bolsinha transparente prova da agua viagem necessaire estojos transparente" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-22110-ju2cgg08ywjvbe" alt="20/30/50 Nécessaire Bolsinha Transparente Prova Da Agua Viagem…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-22110-ju2cgg08ywjvbe" alt="20/30/50 Nécessaire Bolsinha Transparente Prova Da Agua Viagem…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-74%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>20/30/50 Nécessaire Bolsinha Transparente Prova Da Agua Viagem…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 20,99</b><s>R$ 80,73</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=Tips+pelo+huela+rico+todo&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=Tips+pelo+huela+rico+todo&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="tips pelo huela rico todo tips pelo huela rico todo" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>Tips pelo huela rico todo</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1gHSLHUXTE?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/1gHSLHUXTE?lp=aff" target="_blank" rel="noopener"
          data-busca="luminária led 3d i love you luminária led 3d i love you" data-categoria="Casa"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-ltl1k4jjeyig04" alt="Luminária LED 3D I Love You" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-ltl1k4jjeyig04" alt="Luminária LED 3D I Love You" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Luminária LED 3D I Love You</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 49,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/2qTPixkXkd?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/2qTPixkXkd?lp=aff" target="_blank" rel="noopener"
          data-busca="hud obd2 projetor de para-brisa hud obd2 projetor de para-brisa" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd4t-ludq35qxzvkda4" alt="HUD OBD2 Projetor de Para-brisa" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd4t-ludq35qxzvkda4" alt="HUD OBD2 Projetor de Para-brisa" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-50%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>HUD OBD2 Projetor de Para-brisa</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 82,93</b><s>R$ 165,86</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4VbdhUijCg?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4VbdhUijCg?lp=aff" target="_blank" rel="noopener"
          data-busca="boné esportivo magnético com abertura para rabo de cavalo boné esportivo magnético com abertura para rabo de cavalo" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdyw-m1fo2nqq8inq6d" alt="Boné Esportivo Magnético com Abertura para Rabo de Cavalo" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdyw-m1fo2nqq8inq6d" alt="Boné Esportivo Magnético com Abertura para Rabo de Cavalo" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-85%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Boné Esportivo Magnético com Abertura para Rabo de Cavalo</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 46,17</b><s>R$ 307,80</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9fJjpT1VHA" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/9fJjpT1VHA" target="_blank" rel="noopener"
          data-busca="hot wheels premium 2-pack 2004 volkswagen golf r32 / volkswagen… hot wheels premium 2-pack 2004 volkswagen golf r32 / volkswagen golf mk7 toy vehicles mini cars for ages 3 and up blue j" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-824iy-mpsukxgktngtae" alt="Hot Wheels Premium 2-Pack 2004 Volkswagen Golf R32 / Volkswagen…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-824iy-mpsukxgktngtae" alt="Hot Wheels Premium 2-Pack 2004 Volkswagen Golf R32 / Volkswagen…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Hot Wheels Premium 2-Pack 2004 Volkswagen Golf R32 / Volkswagen…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 113,00</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3LPgHBbN57?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3LPgHBbN57?lp=aff" target="_blank" rel="noopener"
          data-busca="kit cabo extensor flexível para parafusadeira kit cabo extensor flexível para parafusadeira" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lzm9x83rhdtt8d" alt="Kit Cabo Extensor Flexível para Parafusadeira" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lzm9x83rhdtt8d" alt="Kit Cabo Extensor Flexível para Parafusadeira" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit Cabo Extensor Flexível para Parafusadeira</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 29,89</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/5q71FUhmtQ" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/5q71FUhmtQ" target="_blank" rel="noopener"
          data-busca="capa luxo para iphone 13 ao 17 pro max capa luxo para iphone 13 ao 17 pro max" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8226p-mhuk0t5jmkg087" alt="Capa Luxo para iPhone 13 ao 17 Pro Max" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-8226p-mhuk0t5jmkg087" alt="Capa Luxo para iPhone 13 ao 17 Pro Max" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Capa Luxo para iPhone 13 ao 17 Pro Max</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 19,36</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3LPgGHBWjW?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3LPgGHBWjW?lp=aff" target="_blank" rel="noopener"
          data-busca="túnel labirinto dobrável para pets túnel labirinto dobrável para pets" data-categoria="Pet"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ld-mp819v2i0bgj8b" alt="Túnel Labirinto Dobrável para Pets" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820ld-mp819v2i0bgj8b" alt="Túnel Labirinto Dobrável para Pets" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-53%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Túnel Labirinto Dobrável para Pets</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 32,90</b><s>R$ 70,00</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=Copo+batedor+de+ovos&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=Copo+batedor+de+ovos&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="copo batedor de ovos copo batedor de ovos" data-categoria="Cozinha"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>Copo batedor de ovos</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/BSdamEIDI" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/BSdamEIDI" target="_blank" rel="noopener"
          data-busca="kit jogo 4 xícaras canecas porcelana empilhável decoradas café… kit jogo 4  xícaras canecas porcelana empilhável decoradas café chá presente + suporte metal" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m0x2zuouqwxs7d" alt="Kit Jogo 4 Xícaras Canecas Porcelana Empilhável Decoradas Café…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m0x2zuouqwxs7d" alt="Kit Jogo 4 Xícaras Canecas Porcelana Empilhável Decoradas Café…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit Jogo 4 Xícaras Canecas Porcelana Empilhável Decoradas Café…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 56,65</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=Dispensador+autom%C3%A1tico+de+rem%C3%A9dios&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=Dispensador+autom%C3%A1tico+de+rem%C3%A9dios&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="dispensador automático de remédios dispensador automático de remédios" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>Dispensador automático de remédios</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=fidget+spinner+arma&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=fidget+spinner+arma&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="fidget spinner arma fidget spinner arma" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>fidget spinner arma</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3B6Dat50KW" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3B6Dat50KW" target="_blank" rel="noopener"
          data-busca="pó compacto facial matte ultrafino real color 9g - vult 100%… pó compacto facial matte ultrafino real color 9g - vult 100% original" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mhqcshezclqa55" alt="Pó Compacto Facial Matte Ultrafino Real Color 9g - Vult 100%…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mhqcshezclqa55" alt="Pó Compacto Facial Matte Ultrafino Real Color 9g - Vult 100%…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-28%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Pó Compacto Facial Matte Ultrafino Real Color 9g - Vult 100%…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 28,90</b><s>R$ 40,14</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/70IwA3Mv1U" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/70IwA3Mv1U" target="_blank" rel="noopener"
          data-busca="paleta de maquiagem de 67 cores e conjunto de sombras 3 em 1-#… paleta de maquiagem de 67 cores e conjunto de sombras 3 em 1-# valueset para iluminador , blush os olhos , pigmentos pro" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-823rb-mp4mrk508558b9" alt="Paleta De Maquiagem De 67 Cores E Conjunto De Sombras 3 Em 1-#…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-823rb-mp4mrk508558b9" alt="Paleta De Maquiagem De 67 Cores E Conjunto De Sombras 3 Em 1-#…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-50%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Paleta De Maquiagem De 67 Cores E Conjunto De Sombras 3 Em 1-#…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 68,85</b><s>R$ 137,70</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8KoLJp900u" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/8KoLJp900u" target="_blank" rel="noopener"
          data-busca="caneca misturadora automática recarregável 380ml magnética… caneca misturadora automática recarregável 380ml magnética térmica inox para café shake achocolatado" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820l7-mpmdiji2rg1ud7" alt="Caneca Misturadora Automática Recarregável 380ml Magnética…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820l7-mpmdiji2rg1ud7" alt="Caneca Misturadora Automática Recarregável 380ml Magnética…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-45%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Caneca Misturadora Automática Recarregável 380ml Magnética…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 35,99</b><s>R$ 65,44</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/AKZPhX0VbW" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/AKZPhX0VbW" target="_blank" rel="noopener"
          data-busca="espremedor laranja frutas suco mini automático elétrico espremedor laranja frutas suco mini automático elétrico" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98s-lmf0j7v86x4b4c" alt="Espremedor Laranja Frutas Suco Mini Automático Elétrico" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98s-lmf0j7v86x4b4c" alt="Espremedor Laranja Frutas Suco Mini Automático Elétrico" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-72%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Espremedor Laranja Frutas Suco Mini Automático Elétrico</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 54,89</b><s>R$ 196,04</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/7KvoDYVlVx?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/7KvoDYVlVx?lp=aff" target="_blank" rel="noopener"
          data-busca="vestido feminino longo vestido feminino longo" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mi4kv9dhgetd2b" alt="VESTIDO FEMININO LONGO" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mi4kv9dhgetd2b" alt="VESTIDO FEMININO LONGO" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-47%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>VESTIDO FEMININO LONGO</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 55,90</b><s>R$ 105,47</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1qareui6Wh?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/1qareui6Wh?lp=aff" target="_blank" rel="noopener"
          data-busca="scarpin bico fino salto fino sapato feminino salto elegante scarpin bico fino salto fino sapato feminino salto elegante " data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m7jj71xs69my86" alt="Scarpin Bico Fino Salto Fino Sapato Feminino Salto Elegante" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m7jj71xs69my86" alt="Scarpin Bico Fino Salto Fino Sapato Feminino Salto Elegante" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Scarpin Bico Fino Salto Fino Sapato Feminino Salto Elegante</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 119,00</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4LICd1kUzV?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4LICd1kUzV?lp=aff" target="_blank" rel="noopener"
          data-busca="manta xale para sofa poltrona manta xale para sofa poltrona" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lrn7seggceuzc0" alt="Manta Xale Para Sofa Poltrona" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lrn7seggceuzc0" alt="Manta Xale Para Sofa Poltrona" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-19%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Manta Xale Para Sofa Poltrona</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 63,90</b><s>R$ 78,89</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/40fKafQdhx" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/40fKafQdhx" target="_blank" rel="noopener"
          data-busca="blush compacto beauty red mocha alta pìgmentação vizzela + la&#x27;s… blush compacto beauty red mocha alta pìgmentação vizzela + la&#x27;s clothing vegano" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ll-mq6mfrf64hkw06" alt="Blush Compacto Beauty Red Mocha Alta Pìgmentação Vizzela + La&#x27;s…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820ll-mq6mfrf64hkw06" alt="Blush Compacto Beauty Red Mocha Alta Pìgmentação Vizzela + La&#x27;s…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-25%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Blush Compacto Beauty Red Mocha Alta Pìgmentação Vizzela + La&#x27;s…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 39,90</b><s>R$ 53,20</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/AAFxw4NL8r" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/AAFxw4NL8r" target="_blank" rel="noopener"
          data-busca="kit 3x hidratante labial carmed seleções edição surpresa… kit 3x hidratante labial carmed seleções edição surpresa incolor 5g" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-823qs-mostekm8fo5c41" alt="Kit 3x Hidratante Labial Carmed Seleções Edição Surpresa…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-823qs-mostekm8fo5c41" alt="Kit 3x Hidratante Labial Carmed Seleções Edição Surpresa…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit 3x Hidratante Labial Carmed Seleções Edição Surpresa…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 58,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1gHMgaVjPv" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/1gHMgaVjPv" target="_blank" rel="noopener"
          data-busca="capa de celular magnética de silicone tpu fosco macio… capa de celular magnética de silicone tpu fosco macio compatível com iphone 17 16 11 12 13 14 15 pro max" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-migggrp0hbeu02" alt="Capa de Celular Magnética de Silicone TPU Fosco Macio…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-migggrp0hbeu02" alt="Capa de Celular Magnética de Silicone TPU Fosco Macio…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-60%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Capa de Celular Magnética de Silicone TPU Fosco Macio…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 19,99</b><s>R$ 49,97</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6pzWmWjRaG?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/6pzWmWjRaG?lp=aff" target="_blank" rel="noopener"
          data-busca="guarda-roupa solteiro madesa luke guarda-roupa solteiro madesa luke" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbkw-lpscr6iy2rhm26" alt="Guarda-Roupa Solteiro Madesa Luke" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbkw-lpscr6iy2rhm26" alt="Guarda-Roupa Solteiro Madesa Luke" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Guarda-Roupa Solteiro Madesa Luke</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 1.021,73</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/5ArEr7Fi0a" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/5ArEr7Fi0a" target="_blank" rel="noopener"
          data-busca="pulseira de urso tecido à prova de choque capa anti-telefone… pulseira de urso tecido à prova de choque capa anti-telefone para 17 16 15 14 13 12 11 pro max plus" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-meg3c9ekmd532e" alt="Pulseira De Urso Tecido À Prova De Choque Capa anti-Telefone…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-meg3c9ekmd532e" alt="Pulseira De Urso Tecido À Prova De Choque Capa anti-Telefone…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-49%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Pulseira De Urso Tecido À Prova De Choque Capa anti-Telefone…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 29,99</b><s>R$ 58,80</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/19Cd2SLid?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/19Cd2SLid?lp=aff" target="_blank" rel="noopener"
          data-busca="kit churrasco copo térmico kit churrasco copo térmico" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820lw-mp83v1xmo740a8" alt="Kit Churrasco Copo Térmico" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820lw-mp83v1xmo740a8" alt="Kit Churrasco Copo Térmico" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Kit Churrasco Copo Térmico</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 74,18</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9zwYWOl02A?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/9zwYWOl02A?lp=aff" target="_blank" rel="noopener"
          data-busca="caderno de discos stitch caderno de discos stitch" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m5nib6umf8hee4" alt="Caderno de Discos Stitch" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m5nib6umf8hee4" alt="Caderno de Discos Stitch" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Caderno de Discos Stitch</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 69,99</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/W5TC3hNnP" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/W5TC3hNnP" target="_blank" rel="noopener"
          data-busca="sally hansen instant cuticle remover sally hansen instant cuticle remover" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-8261w-mkjv5edr981v24" alt="Sally Hansen Instant Cuticle Remover" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-8261w-mkjv5edr981v24" alt="Sally Hansen Instant Cuticle Remover" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Sally Hansen Instant Cuticle Remover</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 124,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3qLv96dx71?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3qLv96dx71?lp=aff" target="_blank" rel="noopener"
          data-busca="papete infantil margarida para menina papete infantil margarida para menina" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-824i2-mfeda8bng6iw40" alt="Papete Infantil Margarida para Menina" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-824i2-mfeda8bng6iw40" alt="Papete Infantil Margarida para Menina" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-64%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Papete Infantil Margarida para Menina</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 19,80</b><s>R$ 55,00</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6VMgJGQes9?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/6VMgJGQes9?lp=aff" target="_blank" rel="noopener"
          data-busca="escova secadora britânia soft 4 em 1 escova secadora britânia soft 4 em 1" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdw6-mc7vv0kt0c01fc" alt="Escova Secadora Britânia Soft 4 em 1" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rdw6-mc7vv0kt0c01fc" alt="Escova Secadora Britânia Soft 4 em 1" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Escova Secadora Britânia Soft 4 em 1</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 142,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4LIBikQEqE?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4LIBikQEqE?lp=aff" target="_blank" rel="noopener"
          data-busca="jogo com 6 taças de vidro coloridas jogo com 6 taças de vidro coloridas" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-825zt-ml3sw3lq2v41ad" alt="Jogo com 6 Taças de Vidro Coloridas" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-825zt-ml3sw3lq2v41ad" alt="Jogo com 6 Taças de Vidro Coloridas" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-42%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Jogo com 6 Taças de Vidro Coloridas</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 442,00</b><s>R$ 762,07</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=gloss+labial+pimenta&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=gloss+labial+pimenta&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="gloss labial pimenta gloss labial pimenta" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>gloss labial pimenta</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/7fYcyJyWXo" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/7fYcyJyWXo" target="_blank" rel="noopener"
          data-busca="6 pçs/set kawaii animal dos desenhos animados olá kitty câmera… 6 pçs/set kawaii animal dos desenhos animados olá kitty câmera fada jardim miniaturas diy verão hellokitty terrário esta" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-mpglquq91u6907" alt="6 Pçs/set Kawaii Animal Dos Desenhos Animados Olá Kitty Câmera…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-mpglquq91u6907" alt="6 Pçs/set Kawaii Animal Dos Desenhos Animados Olá Kitty Câmera…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-76%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>6 Pçs/set Kawaii Animal Dos Desenhos Animados Olá Kitty Câmera…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 24,50</b><s>R$ 102,08</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1VxzX1UX3s?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/1VxzX1UX3s?lp=aff" target="_blank" rel="noopener"
          data-busca="guarda-chuva para pets guarda-chuva para pets" data-categoria="Pet"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134201-22120-wh6e8a4ia5kvfe" alt="Guarda-Chuva para Pets" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134201-22120-wh6e8a4ia5kvfe" alt="Guarda-Chuva para Pets" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Guarda-Chuva para Pets</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 39,99</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4AyhfKw2TN" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4AyhfKw2TN" target="_blank" rel="noopener"
          data-busca="capinha de celular luxuosa suporte urso para galaxy… capinha de celular luxuosa suporte urso para galaxy a05,a05s,a14,a15,a25,a34,a35,a54,a55,m34,a06,a16" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m83ivy8ivw29fc" alt="Capinha de Celular Luxuosa Suporte Urso para Galaxy…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m83ivy8ivw29fc" alt="Capinha de Celular Luxuosa Suporte Urso para Galaxy…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Capinha de Celular Luxuosa Suporte Urso para Galaxy…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 29,99</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3g2R4SNOYW" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3g2R4SNOYW" target="_blank" rel="noopener"
          data-busca="capa magnética magsafe de couro original para iphone 13 14 15… capa magnética magsafe de couro original para iphone 13 14 15 16 pro max luxo e proteção" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-meq4tsyoxwqr98" alt="Capa Magnética MagSafe De Couro Original Para iPhone 13 14 15…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-meq4tsyoxwqr98" alt="Capa Magnética MagSafe De Couro Original Para iPhone 13 14 15…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-36%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Capa Magnética MagSafe De Couro Original Para iPhone 13 14 15…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 38,40</b><s>R$ 60,00</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=luz+vermelha+dormir&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=luz+vermelha+dormir&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="luz vermelha dormir luz vermelha dormir" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>luz vermelha dormir</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=Recetas+naturales+una+piel+cabello&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=Recetas+naturales+una+piel+cabello&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="recetas naturales una piel cabello recetas naturales una piel cabello" data-categoria="Outros"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>Recetas naturales una piel cabello</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/40fHT068wx" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/40fHT068wx" target="_blank" rel="noopener"
          data-busca="case com strass &amp; magsafe com suporte e película de câmera para… case com strass &amp; magsafe com suporte e película de câmera para iphone 11 12 13 15 &amp; pro max (lac)" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mi30tgdygxkz4e" alt="Case com Strass &amp; Magsafe com Suporte e Película de Câmera Para…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81z1k-mi30tgdygxkz4e" alt="Case com Strass &amp; Magsafe com Suporte e Película de Câmera Para…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-45%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Case com Strass &amp; Magsafe com Suporte e Película de Câmera Para…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 32,45</b><s>R$ 59,00</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://www.amazon.com.br/s?k=capa+de+celular+urso+3D+gradiente&amp;tag=topshop0de-20" target="_blank" rel="noopener"
+      <a class="card" href="https://www.amazon.com.br/s?k=capa+de+celular+urso+3D+gradiente&amp;tag=topshop0de-20" target="_blank" rel="noopener"
          data-busca="capa de celular urso 3d gradiente capa de celular urso 3d gradiente" data-categoria="Tech"
          data-plataforma="amazon">
-        <div class="thumb"><span class="pd-ph">📦</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-amazon">📦 Amazon</span></div>
-        <div class="body">
+        <div class="foto sem-foto"><em class="fb">📦</em><span class="selo plat">Amazon</span></div>
+        <div class="corpo">
           <h3>capa de celular urso 3D gradiente</h3>
-          <span class="ver">Ver oferta →</span>
+          
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/6VMefY8qcb?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/6VMefY8qcb?lp=aff" target="_blank" rel="noopener"
          data-busca="liquidificador portátil recarregável 420ml liquidificador portátil recarregável 420ml" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m9cgn45250e1d6" alt="Liquidificador Portátil Recarregável 420ml" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m9cgn45250e1d6" alt="Liquidificador Portátil Recarregável 420ml" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-25%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Liquidificador Portátil Recarregável 420ml</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 52,42</b><s>R$ 69,89</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/2qTMHzCbo6?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/2qTMHzCbo6?lp=aff" target="_blank" rel="noopener"
          data-busca="capa antichoque para xiaomi redmi turbo 4 poco x7 pro capa antichoque para xiaomi redmi turbo 4 poco x7 pro" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rce5-m6dgp6x16h6o85" alt="Capa Antichoque para Xiaomi Redmi Turbo 4 POCO X7 Pro" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rce5-m6dgp6x16h6o85" alt="Capa Antichoque para Xiaomi Redmi Turbo 4 POCO X7 Pro" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-45%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Capa Antichoque para Xiaomi Redmi Turbo 4 POCO X7 Pro</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 34,00</b><s>R$ 61,82</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4VbaGa4mOE?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4VbaGa4mOE?lp=aff" target="_blank" rel="noopener"
          data-busca="lixeira automotiva em couro ecológico lixeira automotiva em couro ecológico" data-categoria="Utilidades"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-mjhs1299y0hycf" alt="Lixeira Automotiva em Couro Ecológico" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-mjhs1299y0hycf" alt="Lixeira Automotiva em Couro Ecológico" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-71%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Lixeira Automotiva em Couro Ecológico</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 15,20</b><s>R$ 52,41</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/AKZNCbDTbn?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/AKZNCbDTbn?lp=aff" target="_blank" rel="noopener"
          data-busca="porta treco cubo stitch disney porta treco cubo stitch disney" data-categoria="Casa"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-822xp-mi03wxlozpj6c8" alt="Porta Treco Cubo Stitch Disney" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-822xp-mi03wxlozpj6c8" alt="Porta Treco Cubo Stitch Disney" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Porta Treco Cubo Stitch Disney</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 74,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/5fnXdgUvSj?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/5fnXdgUvSj?lp=aff" target="_blank" rel="noopener"
          data-busca="esmalte efeito gel bella brazil 9ml esmalte efeito gel bella brazil 9ml" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lykt10zedeedf9" alt="Esmalte Efeito Gel Bella Brazil 9ml" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-lykt10zedeedf9" alt="Esmalte Efeito Gel Bella Brazil 9ml" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Esmalte Efeito Gel Bella Brazil 9ml</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 13,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3B6CeVxSBD?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3B6CeVxSBD?lp=aff" target="_blank" rel="noopener"
          data-busca="luminária led 3d ursinho dorminhoco luminária led 3d ursinho dorminhoco" data-categoria="Casa"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-ltl1k4jj54jcf7" alt="Luminária LED 3D Ursinho Dorminhoco" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-ltl1k4jj54jcf7" alt="Luminária LED 3D Ursinho Dorminhoco" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Luminária LED 3D Ursinho Dorminhoco</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 49,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/4qEQdCICEu?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/4qEQdCICEu?lp=aff" target="_blank" rel="noopener"
          data-busca="copo de vidro canelado 710ml com tampa copo de vidro canelado 710ml com tampa" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134211-820l4-mq5q0q1v1s7h45" alt="Copo de Vidro Canelado 710ml com Tampa" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/cn-11134211-820l4-mq5q0q1v1s7h45" alt="Copo de Vidro Canelado 710ml com Tampa" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-47%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Copo de Vidro Canelado 710ml com Tampa</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 169,99</b><s>R$ 320,74</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/70IrRMIgGB" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/70IrRMIgGB" target="_blank" rel="noopener"
          data-busca="kit modelador de cachos cetim sem calor+ touca de cetim dupla… kit modelador de cachos cetim sem calor+ touca de cetim dupla face + 1piranha +2 scrunchies para cabelo 025-066" data-categoria="Beleza"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-miw1luapjbwj1e" alt="kit Modelador de Cachos Cetim Sem Calor+ touca de Cetim Dupla…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81ztc-miw1luapjbwj1e" alt="kit Modelador de Cachos Cetim Sem Calor+ touca de Cetim Dupla…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-50%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>kit Modelador de Cachos Cetim Sem Calor+ touca de Cetim Dupla…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 34,99</b><s>R$ 69,98</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3B68r9HGDp" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3B68r9HGDp" target="_blank" rel="noopener"
          data-busca="skin1004 centella toning toner 210ml, toner facial coreano com… skin1004 centella toning toner 210ml, toner facial coreano com centella de madagáscar e ácido hialurônico" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-moplc6vn39xdbf" alt="SKIN1004 Centella Toning Toner 210ml, Toner Facial Coreano com…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/cn-11134207-820l4-moplc6vn39xdbf" alt="SKIN1004 Centella Toning Toner 210ml, Toner Facial Coreano com…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-50%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>SKIN1004 Centella Toning Toner 210ml, Toner Facial Coreano com…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 70,60</b><s>R$ 141,20</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/5q6veWM8Hq" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/5q6veWM8Hq" target="_blank" rel="noopener"
          data-busca="capa magnética brilhante de luxo para telefone samsung galaxy… capa magnética brilhante de luxo para telefone samsung galaxy s23 plus s23 ultra s22 s21 s21fe com proteção da lente câmera macia à prova de choque" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbk7-lo99jqvkpjxbad" alt="Capa Magnética Brilhante De Luxo Para Telefone Samsung Galaxy…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rbk7-lo99jqvkpjxbad" alt="Capa Magnética Brilhante De Luxo Para Telefone Samsung Galaxy…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Capa Magnética Brilhante De Luxo Para Telefone Samsung Galaxy…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 14,63</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/3g2R4ZKqIU" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/3g2R4ZKqIU" target="_blank" rel="noopener"
          data-busca="capa laranja para iphone 11 12 13 14 15 pro max com magsafe à… capa laranja para iphone 11 12 13 14 15 pro max com magsafe à prova de choque capa igual 17 entrega rápido" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-820ll-mltfjb8krx1j21" alt="CAPA LARANJA Para iPhone 11 12 13 14 15 Pro Max Com MagSafe À…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-820ll-mltfjb8krx1j21" alt="CAPA LARANJA Para iPhone 11 12 13 14 15 Pro Max Com MagSafe À…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-56%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>CAPA LARANJA Para iPhone 11 12 13 14 15 Pro Max Com MagSafe À…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 44,00</b><s>R$ 100,00</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8KoHzEdxeT?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/8KoHzEdxeT?lp=aff" target="_blank" rel="noopener"
          data-busca="rack para tv até 75 polegadas charlotte rack para tv até 75 polegadas charlotte" data-categoria="Outros"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd70-lvj0vzbokz8j65" alt="Rack para TV Até 75 Polegadas Charlotte" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/sg-11134201-7rd70-lvj0vzbokz8j65" alt="Rack para TV Até 75 Polegadas Charlotte" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Rack para TV Até 75 Polegadas Charlotte</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 419,89</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/9Kgp8aAMtf?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/9Kgp8aAMtf?lp=aff" target="_blank" rel="noopener"
          data-busca="sandália babuche unissex sandália babuche unissex" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m8amf70ho3ch3f" alt="Sandália babuche unissex" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m8amf70ho3ch3f" alt="Sandália babuche unissex" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-75%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Sandália babuche unissex</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 24,70</b><s>R$ 98,80</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/1BL7PBK4z0?lp=aff" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/1BL7PBK4z0?lp=aff" target="_blank" rel="noopener"
          data-busca="babuche plataforma alta nuvem macia 100 % decorada com bótons… babuche plataforma alta nuvem macia 100 % decorada com bótons pingentes em abs confortável" data-categoria="Moda"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-81zu9-mkpc3fgyf0u9e5" alt="BABUCHE PLATAFORMA ALTA NUVEM MACIA 100 % DECORADA COM BÓTONS…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-81zu9-mkpc3fgyf0u9e5" alt="BABUCHE PLATAFORMA ALTA NUVEM MACIA 100 % DECORADA COM BÓTONS…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-52%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>BABUCHE PLATAFORMA ALTA NUVEM MACIA 100 % DECORADA COM BÓTONS…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 38,39</b><s>R$ 79,98</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/8AUooMkDdh" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/8AUooMkDdh" target="_blank" rel="noopener"
          data-busca="caneca personalizadas as meninas super poderosas varios modelos… caneca personalizadas as meninas super poderosas varios modelos - 325ml" data-categoria="Cozinha"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m67ckyk30a7m88" alt="Caneca Personalizadas As Meninas Super Poderosas Varios Modelos…" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m67ckyk30a7m88" alt="Caneca Personalizadas As Meninas Super Poderosas Varios Modelos…" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Caneca Personalizadas As Meninas Super Poderosas Varios Modelos…</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 16,90</b></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
       </a>
 
-      <a class="glass prod" href="https://s.shopee.com.br/50Xn2Znlbg" target="_blank" rel="noopener"
+      <a class="card" href="https://s.shopee.com.br/50Xn2Znlbg" target="_blank" rel="noopener"
          data-busca="impressora para smartphone instax mini link 3 green fujifilm impressora para smartphone instax mini link 3 green fujifilm" data-categoria="Tech"
          data-plataforma="shopee">
-        <div class="thumb"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m4rgxyvgf2o1cf" alt="Impressora para Smartphone Instax Mini Link 3 Green Fujifilm" loading="lazy" onerror="this.style.display='none'"><span class="pd-ph">🛍️</span>
-          <span class="selo">Achado topshop</span>
-          <span class="plat-badge plat-shopee">🛒 Shopee</span></div>
-        <div class="body">
+        <div class="foto carregando"><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m4rgxyvgf2o1cf" alt="Impressora para Smartphone Instax Mini Link 3 Green Fujifilm" loading="lazy" decoding="async"><em class="fb">🛍️</em><span class="selo off">-41%</span><span class="selo plat">Shopee</span></div>
+        <div class="corpo">
           <h3>Impressora para Smartphone Instax Mini Link 3 Green Fujifilm</h3>
-          <span class="ver">Ver oferta →</span>
+          <div class="pr"><b>R$ 738,00</b><s>R$ 1.250,85</s></div><span class="afer">conferido em 1/ago</span>
+          <span class="ver">Ver oferta <span>&rarr;</span></span>
         </div>
-      </a></div><p class="sem-res" id="sem-res" style="display:none;text-align:center;color:var(--muted);padding:24px;">Nenhum produto encontrado 🔍</p>
-</section>
+      </a></div></div><p class="vazio" id="sem-res" style="display:none"><b>Esse a gente ainda não garimpou</b>Tenta outra busca — a vitrine enche toda semana.</p>
+  </section>
 
-<section id="contato" class="wrap reveal">
-  <div class="contact-grid">
-    <div>
-      <span class="eyebrow">Vamos conversar</span>
-      <h2 class="sec-title">Fale comigo</h2>
-      <p class="sec-sub" style="margin-bottom:30px;">Quer indicar um produto, propor uma parceria ou entrar nos grupos de achadinhos? Chama aí.</p>
-      <div class="contact-info">
+  <section id="diferenciais" class="reveal">
+    <span class="eyebrow">Por que a topshop</span>
+    <h2>Diferenciais que entregam</h2>
+    <p class="sec-sub">Não é sobre postar muito. É sobre postar o que funciona,
+       com método e tecnologia por trás.</p>
+    <div class="difs">
+      <div class="dif"><span class="check">&#10022;</span><span>Curadoria inteligente de produtos</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Conteúdo feito pra prender atenção</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Uso estratégico de inteligência artificial</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Foco em produtos úteis e virais</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Presença em múltiplas plataformas</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Mentalidade de escala</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Atendimento direto pra parcerias</span></div>
+      <div class="dif"><span class="check">&#10022;</span><span>Tecnologia própria em movimento</span></div>
+    </div>
+  </section>
 
-        <div class="ci"><div class="ico">👥</div><span>Grupo no WhatsApp: <a href="https://chat.whatsapp.com/G0DPGQV0rRc1tFRWIwOjrv" target="_blank">Entrar no grupo</a></span></div><div class="ci"><div class="ico">📨</div><span>Canal no Telegram: <a href="https://t.me/achadinhosrelampagoh" target="_blank">Entrar no canal</a></span></div>
-        <div class="ci"><div class="ico">✉️</div><span>E-mail: <a href="mailto:jhon-henrique2018@hotmail.com">jhon-henrique2018@hotmail.com</a></span></div>
-        <div class="ci"><div class="ico">📍</div><span>Goiânia — GO</span></div>
-        <div class="ci"><div class="ico">📸</div><span>Instagram: <a href="https://www.instagram.com/topshop.__/" target="_blank">@topshop.__</a></span></div>
-        <div class="ci"><div class="ico">🎵</div><span>TikTok: <a href="https://www.tiktok.com/@topshop.__" target="_blank">@topshop.__</a></span></div>
-        <div class="ci"><div class="ico">▶️</div><span>YouTube: <a href="https://www.youtube.com/@TopShop._0" target="_blank">TopShop_.</a></span></div>
+  <section id="servicos" class="reveal">
+    <span class="eyebrow">O que fazemos</span>
+    <h2>Serviços</h2>
+    <p class="sec-sub">Do achado ao alcance — uma operação completa de conteúdo e divulgação.</p>
+    <div class="feats">
+      <div class="feat"><div class="ico">📢</div><h3>Divulgação de produtos</h3><p>Seu produto apresentado pra um público pronto pra comprar.</p></div>
+      <div class="feat"><div class="ico">🎬</div><h3>Conteúdo para redes</h3><p>Vídeos curtos e diretos, pensados pra cada plataforma.</p></div>
+      <div class="feat"><div class="ico">⭐</div><h3>Reviews e demonstrações</h3><p>Demonstração honesta que mostra o produto em ação.</p></div>
+      <div class="feat"><div class="ico">🔗</div><h3>Estratégia de afiliados</h3><p>Links rastreáveis e conversão acompanhada de perto.</p></div>
+      <div class="feat"><div class="ico">🤝</div><h3>Parcerias comerciais</h3><p>Colaborações sob medida pra marcas e lojistas.</p></div>
+      <div class="feat"><div class="ico">⚡</div><h3>Campanhas com vídeos curtos</h3><p>Volume e ritmo de publicação pensados pra escala.</p></div>
+    </div>
+  </section>
+
+  <section id="contato" class="reveal">
+    <div class="contato">
+      <div>
+        <span class="eyebrow">Vamos conversar</span>
+        <h2>Fale comigo</h2>
+        <p class="sec-sub">Quer indicar um produto, propor uma parceria ou entrar
+           nos grupos de achadinhos? Chama aí.</p>
+      </div>
+      <div class="cis">
+        <a class="ci" href="https://chat.whatsapp.com/G0DPGQV0rRc1tFRWIwOjrv" target="_blank" rel="noopener"><span class="ico">👥</span><span>Grupo no WhatsApp<i>entrar no grupo</i></span></a><a class="ci" href="https://t.me/achadinhosrelampagoh" target="_blank" rel="noopener"><span class="ico">📨</span><span>Canal no Telegram<i>entrar no canal</i></span></a>
+        <a class="ci" href="mailto:jhon-henrique2018@hotmail.com"><span class="ico">✉️</span>
+          <span>E-mail<i>jhon-henrique2018@hotmail.com</i></span></a>
+        <a class="ci" href="https://www.instagram.com/topshop.__/" target="_blank" rel="noopener"><span class="ico">📸</span>
+          <span>Instagram<i>@topshop.__</i></span></a>
+        <a class="ci" href="https://www.tiktok.com/@topshop.__" target="_blank" rel="noopener"><span class="ico">🎵</span>
+          <span>TikTok<i>@topshop.__</i></span></a>
+        <a class="ci" href="https://www.youtube.com/@TopShop._0" target="_blank" rel="noopener"><span class="ico">▶️</span>
+          <span>YouTube<i>@TopShop._0</i></span></a>
       </div>
     </div>
-    <div class="contact-btns">
-      <a href="mailto:jhon-henrique2018@hotmail.com" class="btn btn-mail">Enviar e-mail</a>
-      <a href="#produtos" class="btn btn-primary" style="justify-content:center;">Ver ofertas</a>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<footer><div class="wrap">
-  <div class="foot-top">
-    <div class="foot-brand">
-      <div class="logo">top<b>shop</b>.</div>
-      <p>Produtos inteligentes. Conteúdo estratégico. Tecnologia em movimento.</p>
-    </div>
-    <div class="foot-links">
-      <div class="foot-col"><h4>Navegação</h4>
-        <a href="#inicio">Início</a><a href="#produtos">Produtos</a>
-        <a href="#servicos">Serviços</a><a href="#contato">Contato</a></div>
-      <div class="foot-col"><h4>Redes</h4>
-        <a href="https://www.instagram.com/topshop.__/" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@topshop.__" target="_blank">TikTok</a>
-        <a href="https://www.youtube.com/@TopShop._0" target="_blank">YouTube</a></div>
-    </div>
-  </div>
-  <p class="afiliado">Aviso de afiliado: a topshop participa de programas de afiliados.
-     Alguns links nesta página podem gerar comissão sobre compras, sem custo adicional
-     para você. Esta página não coleta dados pessoais. As ofertas e disponibilidades são
-     de responsabilidade das lojas anunciantes.</p>
-  <p class="copy">© 2026 topshop · 78 achados · atualizado em 01/08/2026</p>
-</div></footer>
+<footer class="wrap">
+  <span>&copy; 2026 topshop &middot; conteúdo publicitário &middot; links de afiliado
+    &middot; atualizado em 01/08/2026</span>
+  <span><a href="https://www.instagram.com/topshop.__/" target="_blank" rel="noopener">Instagram</a>
+    &middot; <a href="https://www.tiktok.com/@topshop.__" target="_blank" rel="noopener">TikTok</a>
+    &middot; <a href="https://www.youtube.com/@TopShop._0" target="_blank" rel="noopener">YouTube</a></span>
+</footer>
 
 <script>
-  const reveals = document.querySelectorAll('.reveal');
-  function revelarTudo() { reveals.forEach(el => el.classList.add('in')); }
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-    reveals.forEach(el => obs.observe(el));
-    // rede de segurança: no celular, uma seção mais alta que a tela pode nunca
-    // "intersectar" o suficiente e ficaria invisível (opacity:0). Depois de um
-    // tempinho, mostra tudo de qualquer jeito.
-    setTimeout(revelarTudo, 1600);
-  } else {
-    revelarTudo();
-  }
+/* a classe .js liga as animações de entrada. Sem JS, tudo já nasce visível —
+   os cards vêm prontos do servidor, então a vitrine funciona mesmo assim. */
+document.documentElement.className += ' js';
+var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fino  = matchMedia('(pointer:fine)').matches;
+if (calmo) document.documentElement.className =
+  document.documentElement.className.replace(' js', '');
 
-  // Busca + filtro da vitrine
-  const busca = document.getElementById('busca');
-  if (busca) {
-    const cards = Array.from(document.querySelectorAll('.prod, .prod-destaque'));
-    const semRes = document.getElementById('sem-res');
-    const filtros = document.querySelectorAll('.filtro');
-    const filtrosPlat = document.querySelectorAll('.filtro-plat');
-    let catAtiva = 'todos';
-    let platAtiva = 'todos';
-    function aplicar() {
-      const termo = busca.value.trim().toLowerCase();
-      let achou = 0;
-      cards.forEach(function(c) {
-        const alvo = c.getAttribute('data-busca') || '';
-        const cat = c.getAttribute('data-categoria') || '';
-        const plat = c.getAttribute('data-plataforma') || 'shopee';
-        const okB = !termo || alvo.indexOf(termo) !== -1;
-        const okC = catAtiva === 'todos' || cat === catAtiva;
-        const okP = platAtiva === 'todos' || plat === platAtiva;
-        const mostra = okB && okC && okP;
-        c.style.display = mostra ? '' : 'none';
-        if (mostra) achou++;
+/* ── fotos: esqueleto -> ok, ou volta pro emoji se a CDN falhar ─────────── */
+document.querySelectorAll('.foto img').forEach(function(im){
+  var box = im.parentNode;
+  var pronto = function(){ box.classList.remove('carregando'); im.classList.add('ok'); };
+  var falhou = function(){ box.classList.remove('carregando');
+                           box.classList.add('sem-foto'); im.remove(); };
+  if (im.complete) { im.naturalWidth ? pronto() : falhou(); return; }
+  im.addEventListener('load', pronto);
+  im.addEventListener('error', falhou);
+});
+
+/* ── revelação em cascata ───────────────────────────────────────────────── */
+var obs = new IntersectionObserver(function(ents){
+  ents.forEach(function(en){
+    if (!en.isIntersecting) return;
+    var el = en.target, i = +(el.dataset.i || 0);
+    setTimeout(function(){ el.classList.add('dentro'); }, (i % 8) * 55);
+    obs.unobserve(el);
+  });
+}, {rootMargin: '0px 0px -8% 0px'});
+document.querySelectorAll('.card').forEach(function(c, i){
+  c.dataset.i = i; obs.observe(c);
+});
+document.querySelectorAll('.reveal').forEach(function(s){ obs.observe(s); });
+
+/* ── números do herói subindo (o valor certo já está no HTML) ───────────── */
+document.querySelectorAll('.metricas b').forEach(function(el){
+  var alvo = +el.dataset.alvo || 0;
+  if (calmo || !alvo) return;
+  var t0 = null;
+  requestAnimationFrame(function passo(t){
+    if (!t0) t0 = t;
+    var k = Math.min(1, (t - t0) / 1100), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = Math.round(alvo * e);
+    if (k < 1) requestAnimationFrame(passo);
+  });
+});
+
+/* ── filtros e busca: só mostram e escondem o que já veio pronto ────────── */
+var st = {plat: 'todos', cat: 'todos', q: ''};
+var cards = [].slice.call(document.querySelectorAll('.card'));
+var semRes = document.getElementById('sem-res');
+
+function aplicar(){
+  var visiveis = 0;
+  cards.forEach(function(c){
+    var ok = (st.plat === 'todos' || c.dataset.plataforma === st.plat)
+          && (st.cat === 'todos' || c.dataset.categoria === st.cat)
+          && (!st.q || (c.dataset.busca || '').indexOf(st.q) > -1);
+    c.classList.toggle('esconde', !ok);
+    if (ok) visiveis++;
+  });
+  if (semRes) semRes.style.display = visiveis ? 'none' : '';
+}
+
+var caixaLojas = document.getElementById('filtros-plat');
+if (caixaLojas) caixaLojas.addEventListener('click', function(e){
+  var b = e.target.closest('.loja');
+  if (!b || b.disabled) return;
+  caixaLojas.querySelectorAll('.loja').forEach(function(o){
+    o.setAttribute('aria-selected', String(o === b)); });
+  st.plat = b.dataset.plat; aplicar();
+});
+var caixaCats = document.getElementById('filtros');
+if (caixaCats) caixaCats.addEventListener('click', function(e){
+  var b = e.target.closest('.chip');
+  if (!b) return;
+  caixaCats.querySelectorAll('.chip').forEach(function(o){
+    o.setAttribute('aria-pressed', String(o === b)); });
+  st.cat = b.dataset.filtro; aplicar();
+});
+var inp = document.getElementById('busca');
+if (inp){
+  inp.addEventListener('input', function(e){
+    st.q = e.target.value.toLowerCase().trim(); aplicar();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== inp){ e.preventDefault(); inp.focus(); }
+  });
+}
+
+/* ── holofote sobre a grade e inclinação 3D dos cards ───────────────────── */
+var palco = document.querySelector('.palco'), holo = document.getElementById('holofote');
+if (palco && holo) palco.addEventListener('pointermove', function(e){
+  var r = palco.getBoundingClientRect();
+  holo.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+  holo.style.setProperty('--my', (e.clientY - r.top) + 'px');
+});
+if (!calmo && fino) cards.forEach(function(c){
+  c.addEventListener('pointermove', function(e){
+    var r = c.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    c.style.transform = 'perspective(760px) rotateX(' + (-y * 7).toFixed(2) +
+      'deg) rotateY(' + (x * 7).toFixed(2) + 'deg) translateY(-5px)';
+  });
+  c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+});
+
+/* ── herói: luz no cursor e moldura acompanhando ────────────────────────── */
+var heroi = document.querySelector('.heroi'), luz = document.getElementById('luz');
+var atmos = document.getElementById('atmos'), mold = document.getElementById('moldura');
+var giro = {x:0, y:0}, desloc = 0;
+function porMoldura(){
+  if (!mold) return;
+  mold.style.transform = 'perspective(1000px) translateY(' + desloc.toFixed(1) + 'px)' +
+    ' rotateY(' + giro.x.toFixed(2) + 'deg) rotateX(' + giro.y.toFixed(2) + 'deg)';
+}
+if (!calmo && fino && heroi){
+  heroi.addEventListener('pointermove', function(e){
+    /* medido contra .atmos, que é mais largo que o herói */
+    var r = atmos.getBoundingClientRect();
+    luz.style.setProperty('--hx', (e.clientX - r.left) + 'px');
+    luz.style.setProperty('--hy', (e.clientY - r.top) + 'px');
+  });
+  addEventListener('pointermove', function(e){
+    giro.x = (e.clientX / innerWidth - .5) * 9;
+    giro.y = -(e.clientY / innerHeight - .5) * 6;
+    porMoldura();
+  });
+}
+
+/* ── profundidade: 3 camadas em velocidades diferentes, só no desktop ────
+   No celular o parallax de scroll engasga e a gente perde mais do que ganha —
+   e o tráfego daqui vem quase todo da bio do Instagram. */
+var camadas = [].slice.call(document.querySelectorAll('.cam'));
+var perto = document.querySelector('.perto');
+if (!calmo && fino && matchMedia('(min-width:900px)').matches){
+  var agendado = false;
+  addEventListener('scroll', function(){
+    if (agendado) return;
+    agendado = true;
+    requestAnimationFrame(function(){
+      var y = scrollY;
+      camadas.forEach(function(c){
+        c.style.transform = 'translate3d(0,' + (-y * (+c.dataset.k)).toFixed(1) + 'px,0)';
       });
-      if (semRes) semRes.style.display = achou === 0 ? 'block' : 'none';
-    }
-    busca.addEventListener('input', aplicar);
-    filtros.forEach(function(b) {
-      b.addEventListener('click', function() {
-        filtros.forEach(function(x) { x.classList.remove('ativo'); });
-        b.classList.add('ativo');
-        catAtiva = b.getAttribute('data-filtro');
-        aplicar();
-      });
+      if (perto) perto.style.setProperty('--vy', (-y * (+perto.dataset.k)).toFixed(1) + 'px');
+      desloc = Math.max(-26, -y * 0.06);
+      porMoldura();
+      agendado = false;
     });
-    filtrosPlat.forEach(function(b) {
-      b.addEventListener('click', function() {
-        filtrosPlat.forEach(function(x) { x.classList.remove('ativo'); });
-        b.classList.add('ativo');
-        platAtiva = b.getAttribute('data-plat');
-        aplicar();
-      });
-    });
-  }
+  }, {passive:true});
+}
+
+addEventListener('scroll', function(){
+  document.getElementById('topo').classList.toggle('colado', scrollY > 8);
+}, {passive:true});
 </script>
 </body>
 </html>
