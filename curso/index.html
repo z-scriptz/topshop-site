@@ -1,0 +1,490 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Afiliado Online — uma renda online sem precisar aparecer</title>
+<meta name="description" content="Um método passo a passo para construir renda
+online no formato faceless: sem mostrar o rosto e sem postar o dia inteiro na
+mão.">
+<meta name="theme-color" content="#060d0a">
+<meta property="og:title" content="Afiliado Online">
+<meta property="og:description" content="Uma renda online de verdade — sem
+precisar aparecer. Um método, não um milagre.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --bg1:#0c1512; --bg2:#060d0a; --verde:#12251b;
+  --ink:#f2f7f2; --muted:#9fb0a4;
+  --gold:#d8b25a; --goldSoft:#f5e0ad; --quente:#e08b63;
+  --linha:rgba(216,178,90,.16);
+  --card:rgba(18,37,27,.6);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg2);color:var(--ink);overflow-x:hidden;
+  font:16px/1.7 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;padding-bottom:88px}
+.wrap{max-width:1090px;margin:0 auto;padding:0 22px}
+section{padding:84px 0;position:relative}
+section.faixa{background:linear-gradient(180deg,transparent,rgba(18,37,27,.45),transparent)}
+h1,h2,h3{line-height:1.14;margin:0 0 16px;letter-spacing:-.025em}
+h1{font-size:clamp(34px,6.6vw,66px);font-weight:800}
+h2{font-size:clamp(27px,4.2vw,44px);font-weight:800}
+h3{font-size:18.5px;font-weight:650;letter-spacing:-.012em}
+p{margin:0 0 15px;color:var(--muted)}
+b{color:var(--goldSoft);font-weight:650}
+.g{background:linear-gradient(103deg,var(--gold),var(--goldSoft) 48%,var(--quente));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.olho{display:inline-flex;align-items:center;gap:9px;
+  font:700 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:20px;padding:9px 16px;border-radius:999px;
+  border:1px solid rgba(216,178,90,.32);background:rgba(216,178,90,.08)}
+.olho::before{content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 0 rgba(216,178,90,.6);
+  animation:pulso 2.4s ease-out infinite}
+@keyframes pulso{70%{box-shadow:0 0 0 9px rgba(216,178,90,0)}
+                100%{box-shadow:0 0 0 0 rgba(216,178,90,0)}}
+
+.orbe{position:fixed;border-radius:50%;filter:blur(100px);z-index:-1;
+  pointer-events:none}
+.orbe.a{width:58vw;height:58vw;top:-20vw;right:-16vw;opacity:.55;
+  background:radial-gradient(closest-side,rgba(216,178,90,.22),transparent);
+  animation:flutua 24s ease-in-out infinite alternate}
+.orbe.b{width:48vw;height:48vw;bottom:-18vw;left:-16vw;opacity:.45;
+  background:radial-gradient(closest-side,rgba(224,139,99,.18),transparent);
+  animation:flutua 33s ease-in-out infinite alternate-reverse}
+@keyframes flutua{to{transform:translate3d(5vw,6vw,0) scale(1.16)}}
+
+.heroi{padding:104px 0 84px;position:relative;isolation:isolate}
+.heroi::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(460px circle at var(--mx,74%) var(--my,26%),
+             rgba(216,178,90,.13),transparent 70%)}
+.heroi h1{max-width:16ch}
+.lead{font-size:clamp(17.5px,2.3vw,21.5px);max-width:58ch;margin-top:22px}
+.confia{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;list-style:none;padding:0}
+.confia li{font-size:13.5px;color:var(--muted);border:1px solid var(--linha);
+  border-radius:999px;padding:8px 15px;background:rgba(18,37,27,.5)}
+.confia b{color:var(--goldSoft)}
+
+[data-revela]{opacity:0;transform:translateY(26px);
+  transition:opacity .66s cubic-bezier(.2,.7,.3,1),transform .66s cubic-bezier(.2,.7,.3,1)}
+[data-revela].visivel{opacity:1;transform:none}
+[data-revela][style*="--atraso"]{transition-delay:var(--atraso)}
+
+ul.grade{list-style:none;display:grid;gap:17px;padding:0;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(276px,1fr))}
+.cartao{background:var(--card);border:1px solid var(--linha);border-radius:19px;
+  padding:28px;position:relative;overflow:hidden;
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease}
+.cartao::before{content:"";position:absolute;inset:0;opacity:0;pointer-events:none;
+  background:radial-gradient(320px circle at 50% -10%,rgba(216,178,90,.14),transparent 70%);
+  transition:opacity .28s}
+.cartao:hover{transform:translateY(-5px);border-color:rgba(216,178,90,.45);
+  box-shadow:0 18px 44px rgba(0,0,0,.36)}
+.cartao:hover::before{opacity:1}
+.cartao p{margin:0;font-size:15.5px}
+.cartao .ico{font-size:30px;display:block;margin-bottom:14px;line-height:1}
+.cartao .num{font:800 13px/1 ui-monospace,Menlo,monospace;color:var(--gold);
+  letter-spacing:.16em;display:block;margin-bottom:13px}
+
+.duas{display:grid;gap:17px;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));
+  margin-top:34px}
+.duas>div{border-radius:19px;padding:30px;border:1px solid var(--linha);
+  background:var(--card)}
+.duas .sim{border-color:rgba(216,178,90,.34)}
+.duas .sim h3{color:var(--gold)}
+.duas .nao{border-color:rgba(224,139,99,.32)}
+.duas .nao h3{color:var(--quente)}
+
+.quem{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(324px,1fr))}
+.quem li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;
+  color:var(--muted);background:var(--card);border:1px solid var(--linha);
+  border-radius:14px;padding:16px 18px}
+.quem .m{flex:0 0 auto;font-weight:800;line-height:1.5}
+.quem .ok .m{color:var(--gold)}
+.quem .no .m{color:var(--quente)}
+
+.mods{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:13px}
+.mod{background:var(--card);border:1px solid var(--linha);border-radius:17px;
+  overflow:hidden;transition:border-color .22s,box-shadow .22s}
+.mod:hover{border-color:rgba(216,178,90,.42);box-shadow:0 12px 34px rgba(0,0,0,.3)}
+.mod>summary{cursor:pointer;list-style:none;padding:21px 24px;display:flex;
+  align-items:center;gap:16px}
+.mod>summary::-webkit-details-marker{display:none}
+.mod .idx{flex:0 0 auto;width:42px;height:42px;border-radius:13px;display:grid;
+  place-items:center;background:rgba(216,178,90,.12);color:var(--gold);
+  border:1px solid rgba(216,178,90,.32);
+  font:800 15px/1 ui-monospace,Menlo,monospace}
+.mod .tit{flex:1 1 auto;font-weight:650;font-size:17px;letter-spacing:-.015em}
+.mod .tit em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);
+  font-weight:400;margin-top:4px}
+.mod .selo-m{flex:0 0 auto;font:700 10.5px/1 ui-monospace,Menlo,monospace;
+  letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;
+  white-space:nowrap}
+.mod .ok{color:#122016;background:linear-gradient(135deg,var(--gold),var(--goldSoft))}
+.mod .breve{color:var(--muted);border:1px solid var(--linha)}
+.mod .seta{flex:0 0 auto;color:var(--gold);font-size:21px;transition:transform .25s;
+  line-height:1}
+.mod[open] .seta{transform:rotate(45deg)}
+.mod ul{margin:0;padding:0 24px 22px 82px;list-style:none}
+.mod ul li{color:var(--muted);font-size:15px;padding:7px 0 7px 19px;position:relative}
+.mod ul li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;
+  border-radius:50%;background:rgba(216,178,90,.5)}
+.mod.bonus{border-color:rgba(224,139,99,.34)}
+.mod.bonus .idx{color:var(--quente);background:rgba(224,139,99,.12);
+  border-color:rgba(224,139,99,.32)}
+
+.preco{text-align:center;border-radius:28px;padding:52px 28px;margin-top:34px;
+  background:linear-gradient(165deg,rgba(18,37,27,.94),rgba(8,15,12,.94));
+  border:1px solid rgba(216,178,90,.34);position:relative;overflow:hidden}
+.preco::before{content:"";position:absolute;inset:-45%;
+  background:conic-gradient(from 0deg,transparent,rgba(216,178,90,.16),transparent 30%);
+  animation:gira 8s linear infinite;pointer-events:none}
+@keyframes gira{to{transform:rotate(360deg)}}
+.preco>*{position:relative}
+.preco .rot{color:var(--muted);font-size:15px;margin:0}
+.valor{font-size:clamp(46px,9vw,80px);font-weight:800;color:var(--goldSoft);
+  letter-spacing:-.04em;line-height:1;margin:10px 0 4px}
+.valor .x{font-size:.4em;font-weight:700;color:var(--gold);
+  vertical-align:.55em;margin-right:6px;letter-spacing:0}
+.valor small{font-size:.34em;font-weight:700;color:var(--gold);
+  vertical-align:.95em;margin-right:5px}
+.avista{color:var(--muted);font-size:15.5px;margin:0}
+.avista b{font-size:17px}
+
+.botao{display:inline-block;margin-top:28px;padding:19px 44px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold),var(--goldSoft));color:#122016;
+  font-weight:800;text-decoration:none;font-size:17.5px;position:relative;
+  overflow:hidden;letter-spacing:-.01em;
+  box-shadow:0 14px 38px rgba(216,178,90,.3);
+  transition:transform .18s ease,box-shadow .18s ease}
+.botao::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  animation:brilho 3.4s ease-in-out infinite}
+@keyframes brilho{0%,66%{left:-120%}100%{left:180%}}
+.botao:hover{transform:translateY(-3px);box-shadow:0 20px 48px rgba(216,178,90,.42)}
+.botao.grande{font-size:19.5px;padding:22px 52px}
+.botao.pendente{background:rgba(224,139,99,.16);color:var(--quente);
+  border:1px dashed var(--quente);box-shadow:none;cursor:not-allowed}
+.botao.pendente::after{display:none}
+.selo{display:block;margin-top:17px;font-size:13.5px;color:var(--muted)}
+
+.faq{margin-top:34px;display:grid;gap:12px}
+.faq details{background:var(--card);border:1px solid var(--linha);
+  border-radius:16px;overflow:hidden;transition:border-color .22s}
+.faq details:hover{border-color:rgba(216,178,90,.34)}
+.faq summary{cursor:pointer;padding:21px 24px;font-weight:650;font-size:16.5px;
+  list-style:none;display:flex;justify-content:space-between;gap:17px;
+  align-items:center;transition:color .18s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--goldSoft)}
+.faq summary::after{content:"+";color:var(--gold);font-size:23px;font-weight:400;
+  transition:transform .25s;flex:0 0 auto;line-height:1}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .resp{padding:0 24px 22px;color:var(--muted);font-size:15.5px;margin:0}
+
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:rgba(6,13,10,.96);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(216,178,90,.24);padding:13px 20px;
+  display:flex;gap:18px;align-items:center;justify-content:center;
+  transform:translateY(120%);transition:transform .32s cubic-bezier(.2,.7,.3,1)}
+.barra.aberta{transform:none}
+.barra .b-preco{font-weight:800;color:var(--goldSoft);white-space:nowrap;
+  font-size:17px;letter-spacing:-.02em}
+.barra .b-preco span{display:block;font-size:12px;color:var(--muted);
+  font-weight:400;letter-spacing:0}
+.barra .botao{margin:0;padding:14px 30px;font-size:15.5px}
+
+hr.div{border:0;border-top:1px solid var(--linha);margin:0}
+footer{padding:52px 0 34px;color:var(--muted);font-size:13.5px}
+footer .aviso{margin-top:13px;font-size:13px;opacity:.85;max-width:76ch}
+
+@media (max-width:600px){
+  section{padding:62px 0}
+  .heroi{padding:74px 0 60px}
+  .mod ul{padding-left:28px}
+  .mod .selo-m{display:none}
+  .mod>summary{padding:18px 17px;gap:13px}
+  .barra{gap:13px;padding:11px 15px}
+  .barra .b-preco{font-size:15px}
+  .barra .botao{padding:13px 24px;font-size:14.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<div class="orbe a"></div><div class="orbe b"></div>
+
+<div class="wrap">
+
+<section class="heroi" id="heroi">
+  <span class="olho">Afiliado Online</span>
+  <h1>Uma renda online de verdade —<br><span class="g">sem precisar aparecer.</span></h1>
+  <p class="lead">A vontade existe. O que trava é quase sempre o mesmo:
+  <b>não quero aparecer</b>, <b>não tenho tempo</b>, <b>não sei por onde
+  começar</b>. Este é o caminho que resolve os três — construindo um
+  <b>sistema que trabalha por você</b>, em vez de você trabalhar o dia inteiro.</p>
+  <a class="botao grande" data-checkout href="https://go.hotmart.com/B106927444O?dp=1" rel="noopener">Quero começar agora</a>
+  <ul class="confia">
+    <li>✓ Formato <b>faceless</b></li>
+    <li>✓ <b>8 módulos</b> · 26 aulas</li>
+    <li>✓ Acesso <b>imediato</b></li>
+    <li>✓ <b>7 dias</b> de garantia</li>
+  </ul>
+</section>
+
+<hr class="div">
+
+<section>
+  <span class="olho" data-revela>O que te trouxe aqui</span>
+  <h2 data-revela>Você quer — mas <span class="g">trava</span></h2>
+  <p data-revela>São quase sempre os mesmos três motivos. E os três têm resposta.</p>
+  <ul class="grade">
+      <li class="cartao" data-revela style="--atraso:0ms"><span class="ico">🙈</span><h3>“Não quero aparecer”</h3><p>Você não precisa. O método inteiro é feito pra funcionar sem mostrar o rosto — não é adaptação, é o desenho.</p></li>
+      <li class="cartao" data-revela style="--atraso:90ms"><span class="ico">⏳</span><h3>“Não tenho tempo”</h3><p>O trabalho é montar o sistema uma vez. Depois é ele que roda, não você.</p></li>
+      <li class="cartao" data-revela style="--atraso:180ms"><span class="ico">🧭</span><h3>“Não sei por onde começar”</h3><p>Existe uma ordem. Você vai segui-la, passo a passo, sem adivinhar nada.</p></li>
+  </ul>
+</section>
+
+<section class="faixa">
+  <span class="olho" data-revela>O que este curso é</span>
+  <h2 data-revela>Um <span class="g">método</span>. Não um milagre.</h2>
+  <div class="duas">
+    <div class="sim" data-revela><h3>✓ É isto</h3><p>Um sistema real, passo a
+      passo, que você constrói e coloca pra rodar. Com ordem, com régua, e com
+      o que fazer em cada etapa.</p></div>
+    <div class="nao" data-revela style="--atraso:110ms"><h3>✕ Não é isto</h3>
+      <p>Promessa de ficar rico da noite pro dia. Resultado vem de execução —
+      e a gente é honesto sobre isso desde a primeira aula.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="olho" data-revela>A máquina</span>
+  <h2 data-revela>O que você vai <span class="g">construir</span></h2>
+  <p data-revela>Cinco peças que se encaixam. Sozinha, nenhuma funciona.</p>
+  <ul class="grade">
+      <li class="cartao" data-revela style="--atraso:0ms"><span class="num">01</span><h3>Você não cria. Você <b>conecta</b>.</h3><p>O conteúdo que converte já existe. O que falta é o sistema que liga uma peça na outra.</p></li>
+      <li class="cartao" data-revela style="--atraso:70ms"><span class="num">02</span><h3>Vídeos que <b>não mostram você</b></h3><p>O formato faceless não é limitação — é o que torna possível produzir em volume sem depender da sua presença.</p></li>
+      <li class="cartao" data-revela style="--atraso:140ms"><span class="num">03</span><h3>Alcance é <b>volume</b>, não sorte</h3><p>Um vídeo que estoura é ruído. Muitos vídeos, com método, viram média — e média dá pra prever.</p></li>
+      <li class="cartao" data-revela style="--atraso:210ms"><span class="num">04</span><h3>Do vídeo até o <b>checkout</b></h3><p>O caminho inteiro, sem buraco: onde a pessoa te encontra, o que ela vê depois, e como ela chega na compra.</p></li>
+      <li class="cartao" data-revela style="--atraso:280ms"><span class="num">05</span><h3>Repita o que o <b>número</b> aprova</h3><p>Parar de decidir por opinião. O que mediu e funcionou, repete; o que não, sai.</p></li>
+  </ul>
+</section>
+
+<section class="faixa">
+  <span class="olho" data-revela>A grade completa</span>
+  <h2 data-revela>8 módulos, do <span class="g">zero ao sistema</span></h2>
+  <p data-revela>Clique num módulo pra ver as aulas. O <b>Módulo 0 já está
+  liberado</b>; os demais entram conforme são gravados — e você
+  <b>não paga nada a mais</b> por eles.</p>
+  <ul class="mods">
+      <details class="mod" data-revela open>
+        <summary><span class="idx">00</span><span class="tit">Boas-vindas<em>3 aulas</em></span><span class="selo-m ok">disponível</span><span class="seta">+</span></summary>
+        <ul>
+        <li>Bem-vindo ao Afiliado Online</li>
+        <li>O que você vai construir (a visão da máquina)</li>
+        <li>Mentalidade: sistema &gt; esforço</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">01</span><span class="tit">Fundamentos do Afiliado Faceless<em>3 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>Como funciona a comissão (Shopee) e o rastreio</li>
+        <li>Por que “sem aparecer” vende</li>
+        <li>Criando sua conta de afiliado + seus primeiros links</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">02</span><span class="tit">Montando as Contas (a Fundação)<em>3 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>Escolhendo o nicho e criando os perfis</li>
+        <li>Bio que converte</li>
+        <li>Identidade visual: template, logo e feed</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">03</span><span class="tit">A Esteira de Conteúdo (o Coração)<em>5 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>De onde vem o conteúdo (fontes virais)</li>
+        <li>Produzindo o vídeo faceless (corte, template, áudio)</li>
+        <li>O hook que para o scroll</li>
+        <li>A legenda que gera alcance (informativa + Publi)</li>
+        <li>Hashtags em escada (SEO)</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">04</span><span class="tit">Alcance (o Gargalo Real)<em>3 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>Por que alcance é tudo no começo</li>
+        <li>As alavancas de alcance (áudio, retenção, saves)</li>
+        <li>Medindo o que funciona</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">05</span><span class="tit">Conversão (View &rarr; R$)<em>3 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>Link na bio, ID do produto e marcação nativa do IG</li>
+        <li>O canal do Telegram como ativo próprio</li>
+        <li>Respondendo comentários e DMs</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">06</span><span class="tit">Automação (a Máquina Sozinha)<em>3 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>O que dá (e o que não dá) pra automatizar</li>
+        <li>Postagem no piloto automático</li>
+        <li>Medir, podar e escalar o que funciona</li>
+        </ul>
+      </details>
+      <details class="mod" data-revela>
+        <summary><span class="idx">07</span><span class="tit">Escala (do Afiliado ao Empresário)<em>3 aulas</em></span><span class="selo-m breve">em breve</span><span class="seta">+</span></summary>
+        <ul>
+        <li>Ser dono da audiência (a lista)</li>
+        <li>Tráfego pago quando faz sentido (CPA &lt; LTV)</li>
+        <li>Próximos degraus: loja e infoproduto</li>
+        </ul>
+      </details>
+      <details class="mod bonus" data-revela>
+        <summary><span class="idx">🎁</span><span class="tit">Bônus — Kit do Aluno<em>2 itens</em></span><span class="seta">+</span></summary>
+        <ul>
+        <li>Templates e checklists</li>
+        <li>Comunidade (em breve)</li>
+        </ul>
+      </details>
+  </ul>
+</section>
+
+<section>
+  <span class="olho" data-revela>A parte que ninguém te conta</span>
+  <h2 data-revela>A <span class="g">mentalidade</span> que sustenta o resultado</h2>
+  <p data-revela>É o que decide quem continua depois do primeiro mês.</p>
+  <ul class="grade">
+      <li class="cartao" data-revela style="--atraso:0ms"><h3>Os primeiros vão ser <b>ruins</b></h3><p>E isso está previsto. Quem desiste no quinto vídeo desiste antes da parte em que o método começa a agir.</p></li>
+      <li class="cartao" data-revela style="--atraso:70ms"><h3>Ninguém pode <b>garantir</b> resultado</h3><p>Nem eu. Quem garante está vendendo outra coisa. O que dá pra garantir é o método e a ordem.</p></li>
+      <li class="cartao" data-revela style="--atraso:140ms"><h3>Meta de <b>processo</b>, não de resultado</h3><p>“Publicar X vídeos nesta semana” você controla. “Faturar Y” não. A primeira te move; a segunda te paralisa.</p></li>
+      <li class="cartao" data-revela style="--atraso:210ms"><h3>Compare com <b>você de ontem</b></h3><p>A régua é o seu próprio avanço. Comparar com quem começou há dois anos só serve pra parar.</p></li>
+  </ul>
+</section>
+
+<section class="faixa">
+  <span class="olho" data-revela>Antes de decidir</span>
+  <h2 data-revela>Isto é <span class="g">pra você</span>?</h2>
+  <p data-revela>Prefiro que você saia agora a comprar esperando outra coisa.</p>
+  <ul class="quem">
+      <li class="ok" data-revela style="--atraso:0ms"><span class="m">✓</span><span>Quer uma renda online e não quer aparecer</span></li>
+      <li class="ok" data-revela style="--atraso:55ms"><span class="m">✓</span><span>Prefere seguir um passo a passo a testar no escuro</span></li>
+      <li class="ok" data-revela style="--atraso:110ms"><span class="m">✓</span><span>Aceita que resultado vem de execução, não de sorte</span></li>
+      <li class="no" data-revela style="--atraso:165ms"><span class="m">✕</span><span>Procura ficar rico rápido ou renda sem trabalho</span></li>
+      <li class="no" data-revela style="--atraso:220ms"><span class="m">✕</span><span>Quer garantia de valor ou de prazo — ninguém honesto dá</span></li>
+      <li class="no" data-revela style="--atraso:275ms"><span class="m">✕</span><span>Não pretende publicar com constância</span></li>
+  </ul>
+</section>
+
+<section>
+  <span class="olho" data-revela>Acesso</span>
+  <h2 data-revela>Comece <span class="g">hoje</span></h2>
+  <div class="preco" data-revela>
+    <p class="rot">Curso Afiliado Online · acesso completo</p>
+    <div class="valor"><span class="x">12x</span>
+      <small>R$</small>18,62</div>
+    <p class="avista">ou <b>R$ 179,99</b> à vista</p>
+    <a class="botao grande" data-checkout href="https://go.hotmart.com/B106927444O?dp=1" rel="noopener">Garantir meu acesso</a>
+    <span class="selo">Pagamento pela Hotmart · 7 dias de garantia ·
+      acesso imediato</span>
+  </div>
+</section>
+
+<section class="faixa">
+  <span class="olho" data-revela>Dúvidas</span>
+  <h2 data-revela>O que costumam <span class="g">perguntar</span></h2>
+  <div class="faq">
+      <details data-revela style="--atraso:0ms"><summary>Preciso mostrar o rosto?</summary><p class="resp">Não. O método inteiro é construído no formato <b>faceless</b> — os vídeos não mostram você. Não é uma adaptação: é o desenho do curso desde a primeira aula.</p></details>
+      <details data-revela style="--atraso:50ms"><summary>Preciso criar conteúdo do zero?</summary><p class="resp">Não. Uma das ideias centrais é que <b>você não cria, você conecta</b>. O conteúdo que converte já existe; o que falta é o sistema que liga uma peça na outra.</p></details>
+      <details data-revela style="--atraso:100ms"><summary>Em quanto tempo eu vejo resultado?</summary><p class="resp">Não tem resposta honesta com número. <b>Ninguém pode garantir resultado ou prazo</b> — e quem garante está vendendo outra coisa. O curso entrega o método e a ordem; o resto depende da sua execução.</p></details>
+      <details data-revela style="--atraso:150ms"><summary>E se meus primeiros vídeos forem ruins?</summary><p class="resp">Vão ser. Isso está previsto e tem uma aula inteira sobre. Quem desiste no quinto vídeo desiste <b>antes</b> da parte em que o método começa a agir.</p></details>
+      <details data-revela style="--atraso:200ms"><summary>Os módulos que estão “em breve” custam mais?</summary><p class="resp">Não. Você paga uma vez e recebe tudo que entrar depois, sem pagar nada a mais. O <b>Módulo 0 já está liberado</b>; os demais entram conforme são gravados.</p></details>
+      <details data-revela style="--atraso:250ms"><summary>Que nome aparece na fatura do meu cartão?</summary><p class="resp">A cobrança é processada pela Hotmart e aparece começando com <b>HTM*</b>, seguido de uma abreviação do produto — cada banco abrevia de um jeito. Não é cobrança de outra empresa: é a Hotmart processando a sua compra.</p></details>
+      <details data-revela style="--atraso:300ms"><summary>E se eu não gostar?</summary><p class="resp">Você tem <b>7 dias</b> de garantia. Pede o reembolso pela própria Hotmart e recebe o valor de volta.</p></details>
+  </div>
+</section>
+
+<hr class="div">
+
+<footer>
+  <div><b>Afiliado Online</b> — um método para construir renda online no
+  formato faceless.</div>
+  <p class="aviso">Este curso ensina um método. Ele não garante resultado,
+  ganho ou prazo: o que você alcança depende da sua execução — e a gente diz
+  isso na aula, não só aqui embaixo.</p>
+</footer>
+
+</div>
+
+<div class="barra" id="barra">
+  <div class="b-preco">12x R$ 18,62
+    <span>ou R$ 179,99 à vista</span></div>
+  <a class="botao" data-checkout href="https://go.hotmart.com/B106927444O?dp=1" rel="noopener">Quero o curso</a>
+</div>
+
+<script>
+(function(){
+  var busca = window.location.search;
+  if (busca && busca.length > 1){
+    var extra = busca.substring(1);
+    var bts = document.querySelectorAll('a[data-checkout]');
+    for (var i=0;i<bts.length;i++){
+      var h = bts[i].getAttribute('href');
+      if (!h || h === '#') continue;
+      bts[i].setAttribute('href', h + (h.indexOf('?') === -1 ? '?' : '&') + extra);
+    }
+  }
+
+  var calmo = window.matchMedia &&
+              window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var alvos = document.querySelectorAll('[data-revela]');
+  if (calmo || !('IntersectionObserver' in window)){
+    for (var j=0;j<alvos.length;j++) alvos[j].classList.add('visivel');
+  } else {
+    var obs = new IntersectionObserver(function(ents){
+      ents.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('visivel'); obs.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px', threshold:0.08});
+    for (var k=0;k<alvos.length;k++) obs.observe(alvos[k]);
+  }
+
+  var barra = document.getElementById('barra');
+  var heroi = document.getElementById('heroi');
+  function mostra(v){ if (barra) barra.classList.toggle('aberta', v); }
+  if (barra && heroi){
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ mostra(!e[0].isIntersecting); },
+                               {threshold:0}).observe(heroi);
+    } else {
+      window.addEventListener('scroll', function(){
+        mostra(window.scrollY > heroi.offsetHeight * 0.8);
+      }, {passive:true});
+    }
+  }
+
+  if (!calmo && heroi && window.matchMedia('(pointer:fine)').matches){
+    heroi.addEventListener('pointermove', function(e){
+      var r = heroi.getBoundingClientRect();
+      heroi.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      heroi.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  }
+
+  var faqs = document.querySelectorAll('.faq details');
+  for (var f=0; f<faqs.length; f++){
+    faqs[f].addEventListener('toggle', function(){
+      if (!this.open) return;
+      for (var g=0; g<faqs.length; g++) if (faqs[g] !== this) faqs[g].open = false;
+    });
+  }
+})();
+</script>
