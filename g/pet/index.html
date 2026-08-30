@@ -8,9 +8,33 @@
 <title>Achadinhos da Shopee — grupo gratuito no WhatsApp</title>
 <style>
  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
- body{margin:0;background:#0b0d12;color:#eef1f5;
+ body{margin:0;background:#0b0d12;color:#eef1f5;position:relative;
       font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-      padding-bottom:92px}
+      padding-bottom:92px;overflow-x:hidden}
+ /* ⚠️ AURORA EM CSS, NÃO IMAGEM. Fundo chamativo sem um único request extra:
+    quem vem de anúncio no 4G abandona antes de a imagem chegar, e aí o clique
+    foi pago e perdido. `pointer-events:none` pra não engolir o toque no botão. */
+ body::before{content:"";position:fixed;inset:-30% -30% auto -30%;height:70vh;
+      pointer-events:none;z-index:0;filter:blur(64px);opacity:.85;
+      background:radial-gradient(40% 48% at 20% 26%,#25d36688,transparent 72%),
+                 radial-gradient(36% 44% at 82% 14%,#3b82f666,transparent 72%),
+                 radial-gradient(30% 38% at 60% 52%,#a855f744,transparent 72%);
+      animation:aurora 16s ease-in-out infinite alternate}
+ @keyframes aurora{to{transform:translate3d(0,7%,0) scale(1.12)}}
+ @media (prefers-reduced-motion:reduce){
+   body::before{animation:none} .fita{animation:none} }
+ .w{position:relative;z-index:1}
+ /* a esteira: o wrapper corta, a fita anda. Ver `_faixa` pro porquê da cópia */
+ .faixa{overflow:hidden;margin:22px -18px 0;
+        -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,
+                           #000 88%,transparent);
+        mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,
+                   transparent)}
+ .fita{display:flex;width:max-content;animation:corre 26s linear infinite}
+ .fita span{flex:none;padding:7px 15px;margin-right:9px;border-radius:99px;
+            background:#151a23;color:#9aa3b0;font-size:13.5px;font-weight:600;
+            white-space:nowrap;text-transform:lowercase}
+ @keyframes corre{to{transform:translateX(-50%)}}
  .w{max-width:520px;margin:0 auto;padding:0 18px}
  header{padding:30px 0 0}
  .selo{display:inline-flex;align-items:center;gap:7px;background:#16341f;
@@ -68,9 +92,11 @@
     só o que tem tração de verdade — com o link direto.</p>
   </header>
 
+  <div class="faixa"><div class="fita"><span>casa</span><span>beleza</span><span>pet</span><span>tech</span><span>moda</span><span>cozinha</span><span>organização</span><span>achadinhos da Shopee</span><span>achadinhos da Amazon</span><span>casa</span><span>beleza</span><span>pet</span><span>tech</span><span>moda</span><span>cozinha</span><span>organização</span><span>achadinhos da Shopee</span><span>achadinhos da Amazon</span></div></div>
+
   <div class="stats"><div><b>227</b><span>produtos analisados</span></div><div><b>146</b><span>passaram no corte</span></div><div><b>70.209</b><span>vendas somadas</span></div></div>
 
-  <h2>O que entrou no grupo essa semana</h2><div class="grade"><figure class="c"><span class="v">4.931 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-820lk-mpi6iipynv9f27" alt="Kit 6 Potes Com Tampa e Trava 2,2L Alto Off White Freezer E Microondas" loading="lazy"><figcaption><div class="n">Kit 6 Potes Com Tampa e Trava 2,2L Alto Off White Freezer E Microondas</div><b>R$ 32,97</b></figcaption></figure><figure class="c"><span class="v">3.116 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-820le-mmrsr2ewmjgh8f" alt="Capa Magnética MagSafe Laranja para iPhone 13 14 15 16 17 Pro Max Anti" loading="lazy"><figcaption><div class="n">Capa Magnética MagSafe Laranja para iPhone 13 14 15 16 17 Pro Max Anti</div><b>R$ 28,60</b></figcaption></figure><figure class="c"><span class="v">2.563 vendas</span><img src="https://cf.shopee.com.br/file/sg-11134201-822xm-mo9xwm3n5zwscd" alt="13 TWS Sem Fio Bluetooth 5.0 Air Pro 3 Fone De Ouvido Esport" loading="lazy"><figcaption><div class="n">13 TWS Sem Fio Bluetooth 5.0 Air Pro 3 Fone De Ouvido Esport</div><b>R$ 17,99</b></figcaption></figure><figure class="c"><span class="v">891 vendas</span><img src="https://cf.shopee.com.br/file/br-11134201-820ls-mqx57uu3lgxz1f" alt="Luminária Mesa 3 Cores Abajur Led Dimerizável Recarregável" loading="lazy"><figcaption><div class="n">Luminária Mesa 3 Cores Abajur Led Dimerizável Recarregável</div><b>R$ 47,70</b></figcaption></figure><figure class="c"><span class="v">876 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m9amodnp3v2a32" alt="Maquina de barbear Barbeador elétrico sem fio recarregável K" loading="lazy"><figcaption><div class="n">Maquina de barbear Barbeador elétrico sem fio recarregável K</div><b>R$ 59,88</b></figcaption></figure><figure class="c"><span class="v">764 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-820lv-mr05xjx6q7t397" alt="Kit 6 Cadeiras Gruvyer Coral" loading="lazy"><figcaption><div class="n">Kit 6 Cadeiras Gruvyer Coral</div><b>R$ 469,00</b></figcaption></figure></div>
+  <h2>O que entrou no grupo essa semana</h2><div class="grade"><figure class="c"><span class="v">4.931 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-820lk-mpi6iipynv9f27" alt="" loading="lazy"><figcaption><div class="n">Kit 6 Potes Com Tampa e Trava 2,2L Alto Off White Freezer E Microondas</div><b>R$ 32,97</b></figcaption></figure><figure class="c"><span class="v">3.116 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-820le-mmrsr2ewmjgh8f" alt="" loading="lazy"><figcaption><div class="n">Capa Magnética MagSafe Laranja para iPhone 13 14 15 16 17 Pro Max Anti</div><b>R$ 28,60</b></figcaption></figure><figure class="c"><span class="v">2.563 vendas</span><img src="https://cf.shopee.com.br/file/sg-11134201-822xm-mo9xwm3n5zwscd" alt="" loading="lazy"><figcaption><div class="n">13 TWS Sem Fio Bluetooth 5.0 Air Pro 3 Fone De Ouvido Esport</div><b>R$ 17,99</b></figcaption></figure><figure class="c"><span class="v">891 vendas</span><img src="https://cf.shopee.com.br/file/br-11134201-820ls-mqx57uu3lgxz1f" alt="" loading="lazy"><figcaption><div class="n">Luminária Mesa 3 Cores Abajur Led Dimerizável Recarregável</div><b>R$ 47,70</b></figcaption></figure><figure class="c"><span class="v">876 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-7r98o-m9amodnp3v2a32" alt="" loading="lazy"><figcaption><div class="n">Maquina de barbear Barbeador elétrico sem fio recarregável K</div><b>R$ 59,88</b></figcaption></figure><figure class="c"><span class="v">764 vendas</span><img src="https://cf.shopee.com.br/file/br-11134207-820lv-mr05xjx6q7t397" alt="" loading="lazy"><figcaption><div class="n">Kit 6 Cadeiras Gruvyer Coral</div><b>R$ 469,00</b></figcaption></figure></div>
 
   <h2>Como funciona</h2>
   <ul>
