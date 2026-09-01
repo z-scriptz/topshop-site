@@ -1465,6 +1465,21 @@ addEventListener('keydown', function(e){ if (e.key === 'Escape' && !gav.hidden) 
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
     scrollTo({top: 0, behavior: calmo ? 'auto' : 'smooth'});
+    /* ⚠️ ROLAGEM SUAVE É CANCELÁVEL. O navegador aborta a animação se o layout
+       mudar no meio — e com foto carregando, o layout MUDA. O sintoma é a
+       página parar no meio do caminho, e ele é intermitente por natureza:
+       depende de a imagem chegar durante a animação. 📌 Quem descobriu foi um
+       teste que falhava 1 em 2 — flaky ali não era teste ruim, era o defeito
+       aparecendo na frequência dele. Aqui a saída não é confiar: é OLHAR se a
+       rolagem parou de andar, e terminar na mão se parou longe do topo. */
+    var ultimo = scrollY, parado = 0;
+    (function conferir(){
+      if (scrollY === 0) return;
+      parado = (scrollY === ultimo) ? parado + 1 : 0;
+      ultimo = scrollY;
+      if (parado > 12) { scrollTo(0, 0); return; }   /* ~200ms sem andar */
+      requestAnimationFrame(conferir);
+    })();
   });
 })();
 
